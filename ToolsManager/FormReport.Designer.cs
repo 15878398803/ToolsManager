@@ -33,8 +33,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.listViewLeft = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.listViewTop = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.listViewTop = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -69,7 +69,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 352F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(795, 352);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -92,16 +92,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // listViewTop
-            // 
-            this.listViewTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewTop.LargeImageList = this.imageList1;
-            this.listViewTop.Location = new System.Drawing.Point(3, 3);
-            this.listViewTop.Name = "listViewTop";
-            this.listViewTop.Size = new System.Drawing.Size(795, 77);
-            this.listViewTop.TabIndex = 1;
-            this.listViewTop.UseCompatibleStateImageBehavior = false;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -112,6 +102,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(628, 346);
             this.dataGridView1.TabIndex = 1;
             // 
+            // listViewTop
+            // 
+            this.listViewTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewTop.LargeImageList = this.imageList1;
+            this.listViewTop.Location = new System.Drawing.Point(3, 3);
+            this.listViewTop.Name = "listViewTop";
+            this.listViewTop.Size = new System.Drawing.Size(795, 77);
+            this.listViewTop.TabIndex = 1;
+            this.listViewTop.UseCompatibleStateImageBehavior = false;
+            // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -120,6 +120,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormReport";
             this.Text = "业务报表";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormReport_FormClosing);
             this.Load += new System.EventHandler(this.FormReport_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

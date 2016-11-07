@@ -32,10 +32,10 @@
             System.Windows.Forms.Label lb_passwd;
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-            this.tx_password = new System.Windows.Forms.TextBox();
             this.btn_exit = new System.Windows.Forms.Button();
-            this.btn_login = new System.Windows.Forms.Button();
             this.tx_username = new System.Windows.Forms.TextBox();
+            this.tx_password = new System.Windows.Forms.TextBox();
+            this.btn_login = new System.Windows.Forms.Button();
             lb_user = new System.Windows.Forms.Label();
             lb_passwd = new System.Windows.Forms.Label();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,17 +43,6 @@
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tx_password
-            // 
-            this.tx_password.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tx_password.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.tx_password.Location = new System.Drawing.Point(147, 69);
-            this.tx_password.MaxLength = 100;
-            this.tx_password.Name = "tx_password";
-            this.tx_password.PasswordChar = '●';
-            this.tx_password.Size = new System.Drawing.Size(136, 26);
-            this.tx_password.TabIndex = 1;
             // 
             // lb_user
             // 
@@ -80,39 +69,6 @@
             lb_passwd.TabIndex = 1;
             lb_passwd.Text = "密码：";
             lb_passwd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btn_exit
-            // 
-            this.btn_exit.Location = new System.Drawing.Point(147, 98);
-            this.btn_exit.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(61, 23);
-            this.btn_exit.TabIndex = 3;
-            this.btn_exit.Text = "退出系统";
-            this.btn_exit.UseVisualStyleBackColor = true;
-            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
-            // 
-            // btn_login
-            // 
-            this.btn_login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_login.Location = new System.Drawing.Point(76, 98);
-            this.btn_login.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(65, 23);
-            this.btn_login.TabIndex = 2;
-            this.btn_login.Text = "登录系统";
-            this.btn_login.UseVisualStyleBackColor = true;
-            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
-            // 
-            // tx_username
-            // 
-            this.tx_username.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tx_username.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.tx_username.Location = new System.Drawing.Point(147, 37);
-            this.tx_username.MaxLength = 100;
-            this.tx_username.Name = "tx_username";
-            this.tx_username.Size = new System.Drawing.Size(136, 26);
-            this.tx_username.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -158,6 +114,50 @@
             tableLayoutPanel2.Size = new System.Drawing.Size(288, 158);
             tableLayoutPanel2.TabIndex = 0;
             // 
+            // btn_exit
+            // 
+            this.btn_exit.Location = new System.Drawing.Point(147, 98);
+            this.btn_exit.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(61, 23);
+            this.btn_exit.TabIndex = 3;
+            this.btn_exit.Text = "退出系统";
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
+            // 
+            // tx_username
+            // 
+            this.tx_username.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tx_username.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.tx_username.Location = new System.Drawing.Point(147, 37);
+            this.tx_username.MaxLength = 100;
+            this.tx_username.Name = "tx_username";
+            this.tx_username.Size = new System.Drawing.Size(136, 26);
+            this.tx_username.TabIndex = 0;
+            // 
+            // tx_password
+            // 
+            this.tx_password.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tx_password.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.tx_password.Location = new System.Drawing.Point(147, 69);
+            this.tx_password.MaxLength = 100;
+            this.tx_password.Name = "tx_password";
+            this.tx_password.PasswordChar = '●';
+            this.tx_password.Size = new System.Drawing.Size(136, 26);
+            this.tx_password.TabIndex = 1;
+            // 
+            // btn_login
+            // 
+            this.btn_login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_login.Location = new System.Drawing.Point(76, 98);
+            this.btn_login.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(65, 23);
+            this.btn_login.TabIndex = 2;
+            this.btn_login.Text = "登录系统";
+            this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -170,6 +170,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录 —— 广东电网肇庆怀集供电局智能工器具管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();

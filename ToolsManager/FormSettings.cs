@@ -15,5 +15,10 @@ namespace ToolsManager
         {
             InitializeComponent();
         }
+
+        private void FormSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Global.formSettings = null;
+        }
     }
 }

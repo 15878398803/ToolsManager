@@ -15,5 +15,15 @@ namespace ToolsManager
         {
             InitializeComponent();
         }
+
+        private void FormSubsystem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormSubsystem_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Global.formSubsystem = null;
+        }
     }
 }

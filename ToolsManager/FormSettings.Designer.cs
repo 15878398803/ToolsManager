@@ -120,6 +120,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormSettings";
             this.Text = "我的设置";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSettings_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

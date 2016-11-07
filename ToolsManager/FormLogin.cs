@@ -14,6 +14,7 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
+            Global.formLogin = this;
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -23,7 +24,18 @@ namespace ToolsManager
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            if (Global.formMain == null)
+            {
+                Global.formMain = new FormMain();
+                Global.formMain.TopMost = true;
+                Global.formMain.Show();
+                this.Hide();
+            }
+        }
 
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Global.formLogin = null;
         }
     }
 }

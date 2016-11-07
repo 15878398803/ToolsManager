@@ -20,5 +20,10 @@ namespace ToolsManager
         {
 
         }
+
+        private void FormReport_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Global.formReport = null;
+        }
     }
 }
