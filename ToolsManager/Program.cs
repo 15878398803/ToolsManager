@@ -15,7 +15,15 @@ namespace ToolsManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+#if DEBUG
+            Global.formMain = new FormMain();
+            Global.formMain.TopMost = false;
+            Global.formMain.FormBorderStyle = FormBorderStyle.FixedDialog;
+            Application.Run(Global.formMain);
+#else
+            Global.formLogin = new FormLogin();
+            Application.Run(Global.formLogin);
+#endif
         }
     }
 }

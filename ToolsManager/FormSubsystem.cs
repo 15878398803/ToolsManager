@@ -25,5 +25,18 @@ namespace ToolsManager
         {
             Global.formSubsystem = null;
         }
+
+        private void FormSubsystem_DoubleClick(object sender, EventArgs e)
+        {
+            switch (listViewLeft.SelectedItems[0].Text)
+            {
+                case "视频监控系统":
+                    break;
+                case "温湿度控制系统":
+                    break;
+                case "门禁系统":
+                    break;
+            }
+        }
     }
 }

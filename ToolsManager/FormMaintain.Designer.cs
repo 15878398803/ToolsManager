@@ -118,6 +118,7 @@
             this.listViewLeft.TabIndex = 0;
             this.listViewLeft.UseCompatibleStateImageBehavior = false;
             this.listViewLeft.View = System.Windows.Forms.View.SmallIcon;
+            this.listViewLeft.DoubleClick += new System.EventHandler(this.listViewLeft_DoubleClick);
             // 
             // dataGridView1
             // 
@@ -138,6 +139,7 @@
             this.Name = "FormMaintain";
             this.Text = "维护管理";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMaintain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMaintain_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -20,12 +20,16 @@ namespace ToolsManager
         {
 
         }
-
+        /// <summary>
+        /// 打开各个功能窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
-            switch (listView1.SelectedItems[0].Index)
+            switch (listView1.SelectedItems[0].Text)
             {
-                case 0:
+                case "领还记录":
                     if (Global.formRecord == null)
                     {
                         Global.formRecord = new FormRecord();
@@ -33,7 +37,7 @@ namespace ToolsManager
                         Global.formRecord.Show();
                     }
                     break;
-                case 1:
+                case "维护管理":
                     if (Global.formMaintain == null)
                     {
                         Global.formMaintain = new FormMaintain();
@@ -41,7 +45,7 @@ namespace ToolsManager
                         Global.formMaintain.Show();
                     }
                     break;
-                case 2:
+                case "业务报表":
                     if (Global.formReport == null)
                     {
                         Global.formReport = new FormReport();
@@ -49,7 +53,7 @@ namespace ToolsManager
                         Global.formReport.Show();
                     }
                     break;
-                case 3:
+                case "子系统":
                     if (Global.formSubsystem == null)
                     {
                         Global.formSubsystem = new FormSubsystem();
@@ -57,7 +61,7 @@ namespace ToolsManager
                         Global.formSubsystem.Show();
                     }
                     break;
-                case 4:
+                case "个人设置":
                     if (Global.formSettings == null)
                     {
                         Global.formSettings = new FormSettings();

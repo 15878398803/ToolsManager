@@ -100,6 +100,7 @@
             this.listViewLeft.TabIndex = 0;
             this.listViewLeft.UseCompatibleStateImageBehavior = false;
             this.listViewLeft.View = System.Windows.Forms.View.SmallIcon;
+            this.listViewLeft.DoubleClick += new System.EventHandler(this.listViewLeft_DoubleClick);
             // 
             // imageList1
             // 

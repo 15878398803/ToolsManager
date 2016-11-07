@@ -14,7 +14,6 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
-            Global.formLogin = this;
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -27,7 +26,12 @@ namespace ToolsManager
             if (Global.formMain == null)
             {
                 Global.formMain = new FormMain();
+#if DEBUG
+                Global.formMain.TopMost = false;
+                Global.formMain.FormBorderStyle = FormBorderStyle.FixedDialog;
+#else
                 Global.formMain.TopMost = true;
+#endif
                 Global.formMain.Show();
                 this.Hide();
             }

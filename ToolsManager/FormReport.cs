@@ -25,5 +25,26 @@ namespace ToolsManager
         {
             Global.formReport = null;
         }
+
+        private void listViewLeft_DoubleClick(object sender, EventArgs e)
+        {
+            switch (listViewLeft.SelectedItems[0].Text)
+            {
+                case "申购计划":
+                    break;
+                case "局申购汇总":
+                    break;
+                case "报废记录":
+                    break;
+                case "局报废汇总":
+                    break;
+                case "工作类别":
+                    break;
+                case "缺陷类别":
+                    break;
+                case "员工权限":
+                    break;
+            }
+        }
     }
 }
