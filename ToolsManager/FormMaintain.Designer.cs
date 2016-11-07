@@ -54,7 +54,7 @@
             this.listViewTop.LargeImageList = this.imageList1;
             this.listViewTop.Location = new System.Drawing.Point(3, 3);
             this.listViewTop.Name = "listViewTop";
-            this.listViewTop.Size = new System.Drawing.Size(408, 56);
+            this.listViewTop.Size = new System.Drawing.Size(471, 61);
             this.listViewTop.TabIndex = 1;
             this.listViewTop.UseCompatibleStateImageBehavior = false;
             // 
@@ -78,7 +78,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.85442F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.14558F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(414, 334);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(477, 356);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -89,12 +89,12 @@
             this.tableLayoutPanel2.Controls.Add(this.listViewLeft, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 65);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 70);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 244F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(408, 266);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(471, 283);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // listViewLeft
@@ -113,7 +113,7 @@
             this.listViewLeft.Location = new System.Drawing.Point(3, 3);
             this.listViewLeft.MultiSelect = false;
             this.listViewLeft.Name = "listViewLeft";
-            this.listViewLeft.Size = new System.Drawing.Size(77, 260);
+            this.listViewLeft.Size = new System.Drawing.Size(89, 277);
             this.listViewLeft.SmallImageList = this.imageList1;
             this.listViewLeft.TabIndex = 0;
             this.listViewLeft.UseCompatibleStateImageBehavior = false;
@@ -123,17 +123,17 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(86, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(98, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(319, 260);
+            this.dataGridView1.Size = new System.Drawing.Size(370, 277);
             this.dataGridView1.TabIndex = 1;
             // 
             // FormMaintain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 334);
+            this.ClientSize = new System.Drawing.Size(477, 356);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormMaintain";
             this.Text = "维护管理";
