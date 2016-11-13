@@ -1,14 +1,28 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ToolsManager
 {
     public class Server
     {
-        public static bool Login(string username, string passwd)
+        static public int FirstTask(object state)
+        {
+            int data = (int)state;
+            for (int i = 0; i < data; i++)
+            {
+                //Thread.Sleep(100);
+                Console.WriteLine(string.Format("current thread {0} slept for {1} milisecond.", Task.CurrentId, ( i + 1 ) * 100));
+            }
+            data++;
+            return data;
+        }
+
+        async public static Task<bool> Login(string username, string passwd)
         {
             byte[] result = Encoding.Default.GetBytes(passwd);
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -21,14 +35,21 @@ namespace ToolsManager
             builder.AppendFormat("Http://{0}/user/login.api?username={1}&userpwd={2}", Global.ServerIp, username, passwd);
             try
             {
-                var resp = HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
-                var login = JsonHelper.parse<JsonEntity.Login>(resp);
+                //异步执行GET请求，不影响UI主线程
+                string jsonString = await Task.Factory.StartNew(() =>
+                 {
+                     return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+                 });
+                //以下代码在上面的Task执行完后会自动回来调用
+                var login = JsonHelper.parse<JsonEntity.Login>(jsonString);
                 switch (login.msg)
                 {
                     case "参数无效":
+                        MessageBox.Show("网络传输异常，请重新登录。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Global.LoginInfo = null;
                         break;
                     case "账号密码错误":
+                        MessageBox.Show("账号或密码错误，请重新输入。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Global.LoginInfo = null;
                         break;
                     case "true":
@@ -39,7 +60,7 @@ namespace ToolsManager
             }
             catch (Exception)
             {
-                MessageBox.Show("网络连接失败，请尝试重启计算机。");
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return false;

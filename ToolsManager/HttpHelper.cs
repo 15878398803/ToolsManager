@@ -6,13 +6,15 @@ using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ToolsManager
 {
     public class HttpHelper
     {
-        private static readonly string DefaultUserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
-        
+        //private static readonly string DefaultUserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
+
 
         public static HttpWebResponse CreateGetHttpResponse(string url)
         {
@@ -53,6 +55,9 @@ namespace ToolsManager
                 request.CookieContainer.Add(cookies);
             }
 
+            Thread.Sleep(3000);//测试服务器延时
+
+            //将请求发出，同时等待服务器返回后返回
             return request.GetResponse() as HttpWebResponse;
         }
 
@@ -121,7 +126,6 @@ namespace ToolsManager
             {
                 StreamReader reader = new StreamReader(s, Encoding.UTF8);
                 return reader.ReadToEnd();
-
             }
         }
 
