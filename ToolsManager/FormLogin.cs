@@ -52,13 +52,13 @@ namespace ToolsManager
             {
                 //登录成功
                 Global.FormMain.Show();
-
+                Global.FormLogin.Hide();
             }
             else
             {
                 //登录失败
             }
-            Global.FormLogin.Hide();
+
             Global.FormLoading.Hide();
 
         }

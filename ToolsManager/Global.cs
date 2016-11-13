@@ -50,12 +50,10 @@ namespace ToolsManager
                 if (formMain == null)
                 {
                     formMain = new FormMain();
-#if DEBUG
+
                     Global.formMain.TopMost = false;
                     Global.formMain.FormBorderStyle = FormBorderStyle.FixedDialog;
-#else
-                    Global.formMain.TopMost = true;
-#endif
+
                 }
                 return formMain;
             }
@@ -72,12 +70,10 @@ namespace ToolsManager
                 if (formLogin == null)
                 {
                     formLogin = new FormLogin();
-#if DEBUG
+
                     formLogin.TopMost = false;
                     formLogin.FormBorderStyle = FormBorderStyle.FixedDialog;
-#else
-                    Global.formMain.TopMost = true;
-#endif
+
                 }
                 return formLogin;
             }

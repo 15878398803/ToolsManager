@@ -12,6 +12,7 @@ namespace ToolsManager
     {
         async public static Task<bool> Login(string username, string passwd)
         {
+            //MD5加密密码
             byte[] result = Encoding.Default.GetBytes(passwd);
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] output = md5.ComputeHash(result);
@@ -41,6 +42,7 @@ namespace ToolsManager
                         Global.LoginInfo = null;
                         break;
                     case "true":
+                        MessageBox.Show("您好，"+login.name+"，欢迎您使用本系统。", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Global.LoginInfo = login;
                         return true;
                 }
