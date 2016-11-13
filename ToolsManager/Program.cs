@@ -16,10 +16,12 @@ namespace ToolsManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 #if DEBUG
-            Global.formMain = new FormMain();
-            Global.formMain.TopMost = false;
-            Global.formMain.FormBorderStyle = FormBorderStyle.FixedDialog;
-            Application.Run(Global.formMain);
+            Global.formLogin = new FormLogin();
+            Application.Run(Global.formLogin);
+            //Global.formMain = new FormMain();
+            //Global.formMain.TopMost = false;
+            //Global.formMain.FormBorderStyle = FormBorderStyle.FixedDialog;
+            //Application.Run(Global.formMain);
 #else
             Global.formLogin = new FormLogin();
             Application.Run(Global.formLogin);

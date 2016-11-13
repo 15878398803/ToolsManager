@@ -14,5 +14,9 @@ namespace ToolsManager
         public static FormReport formReport;
         public static FormSettings formSettings;
         public static FormSubsystem formSubsystem;
+
+        public static string ServerIp = "120.76.121.79";
+
+        public static JsonEntity.Login LoginInfo;
     }
 }

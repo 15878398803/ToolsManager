@@ -75,7 +75,11 @@ namespace ToolsManager
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+#if DEBUG
+
+#else
             Global.formLogin.Show();
+#endif
             this.Dispose();
         }
     }
