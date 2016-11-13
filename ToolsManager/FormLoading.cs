@@ -23,12 +23,12 @@ namespace ToolsManager
 
         private void FormLoading_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+           
         }
 
         private void FormLoading_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            Global.FormLoading = null;
         }
     }
 }

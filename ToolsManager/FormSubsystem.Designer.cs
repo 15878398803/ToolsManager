@@ -129,6 +129,7 @@
             this.Text = "子系统";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSubsystem_FormClosing);
             this.Load += new System.EventHandler(this.FormSubsystem_Load);
+            this.Shown += new System.EventHandler(this.FormSubsystem_Shown);
             this.DoubleClick += new System.EventHandler(this.FormSubsystem_DoubleClick);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

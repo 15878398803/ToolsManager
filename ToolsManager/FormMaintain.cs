@@ -19,7 +19,7 @@ namespace ToolsManager
 
         private void FormMaintain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Global.formMaintain = null;
+            Global.FormMaintain = null;
         }
 
         private void listViewLeft_DoubleClick(object sender, EventArgs e)
@@ -46,6 +46,11 @@ namespace ToolsManager
         }
 
         private void FormMaintain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMaintain_Shown(object sender, EventArgs e)
         {
 
         }

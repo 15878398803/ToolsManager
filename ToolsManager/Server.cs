@@ -10,18 +10,6 @@ namespace ToolsManager
 {
     public class Server
     {
-        static public int FirstTask(object state)
-        {
-            int data = (int)state;
-            for (int i = 0; i < data; i++)
-            {
-                //Thread.Sleep(100);
-                Console.WriteLine(string.Format("current thread {0} slept for {1} milisecond.", Task.CurrentId, ( i + 1 ) * 100));
-            }
-            data++;
-            return data;
-        }
-
         async public static Task<bool> Login(string username, string passwd)
         {
             byte[] result = Encoding.Default.GetBytes(passwd);

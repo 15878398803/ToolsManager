@@ -23,7 +23,7 @@ namespace ToolsManager
 
         private void FormSubsystem_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Global.formSubsystem = null;
+            Global.FormSubsystem = null;
         }
 
         private void FormSubsystem_DoubleClick(object sender, EventArgs e)
@@ -37,6 +37,11 @@ namespace ToolsManager
                 case "门禁系统":
                     break;
             }
+        }
+
+        private void FormSubsystem_Shown(object sender, EventArgs e)
+        {
+            
         }
     }
 }

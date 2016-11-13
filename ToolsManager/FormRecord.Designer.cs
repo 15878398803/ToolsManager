@@ -136,6 +136,7 @@
             this.Text = "领还记录";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRecord_FormClosing);
             this.Load += new System.EventHandler(this.FormRecord_Load);
+            this.Shown += new System.EventHandler(this.FormRecord_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

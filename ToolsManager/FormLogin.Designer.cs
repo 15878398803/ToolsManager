@@ -171,6 +171,7 @@
             this.Text = "登录 —— 广东电网肇庆怀集供电局智能工器具管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
+            this.Shown += new System.EventHandler(this.FormLogin_Shown);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();

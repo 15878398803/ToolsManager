@@ -55,7 +55,7 @@ namespace ToolsManager
                 request.CookieContainer.Add(cookies);
             }
 
-            Thread.Sleep(3000);//测试服务器延时
+            //Thread.Sleep(3000);//测试服务器延时
 
             //将请求发出，同时等待服务器返回后返回
             return request.GetResponse() as HttpWebResponse;

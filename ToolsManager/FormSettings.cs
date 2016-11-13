@@ -18,7 +18,12 @@ namespace ToolsManager
 
         private void FormSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Global.formSettings = null;
+            Global.FormSettings = null;
+        }
+
+        private void FormSettings_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }

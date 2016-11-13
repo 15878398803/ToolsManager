@@ -138,6 +138,7 @@
             this.Text = "业务报表";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormReport_FormClosing);
             this.Load += new System.EventHandler(this.FormReport_Load);
+            this.Shown += new System.EventHandler(this.FormReport_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

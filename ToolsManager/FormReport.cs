@@ -23,7 +23,7 @@ namespace ToolsManager
 
         private void FormReport_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Global.formReport = null;
+            Global.FormReport = null;
         }
 
         private void listViewLeft_DoubleClick(object sender, EventArgs e)
@@ -45,6 +45,11 @@ namespace ToolsManager
                 case "员工权限":
                     break;
             }
+        }
+
+        private void FormReport_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }

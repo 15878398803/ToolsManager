@@ -140,6 +140,7 @@
             this.Text = "维护管理";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMaintain_FormClosing);
             this.Load += new System.EventHandler(this.FormMaintain_Load);
+            this.Shown += new System.EventHandler(this.FormMaintain_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

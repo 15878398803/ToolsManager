@@ -24,7 +24,7 @@ namespace ToolsManager
 
         private void FormRecord_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Global.formRecord = null;
+            Global.FormRecord = null;
         }
 
         private void listViewLeft_DoubleClick(object sender, EventArgs e)
@@ -40,6 +40,11 @@ namespace ToolsManager
                 case "单号事件记录表":
                     break;
             }
+        }
+
+        private void FormRecord_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }
