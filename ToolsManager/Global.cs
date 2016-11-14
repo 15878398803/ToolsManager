@@ -172,5 +172,6 @@ namespace ToolsManager
         public static List<JsonEntity.Tool> Tools;
         public static JsonEntity.SensorList SensorList;
         public static List<JsonEntity.Defect> DefectList;
+        public static JsonEntity.UserList UserList;
     }
 }

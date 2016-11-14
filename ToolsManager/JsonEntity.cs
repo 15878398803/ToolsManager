@@ -258,5 +258,73 @@ namespace ToolsManager
             /// </summary>
             public string is_delete { get; set; }
         }
+
+        public class UserListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 顾明轩
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 顾明轩班组
+            /// </summary>
+            public string team { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string openid { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string username { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string userpwd { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string role { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string code { get; set; }
+        }
+
+        public class UserListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public int page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class UserList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<UserListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public UserListNum num { get; set; }
+        }
     }
 }

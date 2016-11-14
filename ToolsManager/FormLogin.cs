@@ -49,6 +49,7 @@ namespace ToolsManager
             //await Server.InsertDefect(2, "8d9dad5db5c07313a4331466ec461f24", 1, "YYQTest", "YYQ");
             //await Server.DeleteDefect(2, "8d9dad5db5c07313a4331466ec461f24", 291);
             //await Server.UpdateDefect(2, "8d9dad5db5c07313a4331466ec461f24", 291,1,"Y","Q");
+            await Server.GetUserList(2, "8d9dad5db5c07313a4331466ec461f24", 2, 2);
 
         }
         async private void btn_login_Click(object sender, EventArgs e)
