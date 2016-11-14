@@ -232,7 +232,7 @@ namespace ToolsManager
             else
             {
 
-                JsonEntity.AddUpdateTool AddTool = JsonHelper.parse<JsonEntity.AddUpdateTool>(jsonString);
+                JsonEntity.Msg AddTool = JsonHelper.parse<JsonEntity.Msg>(jsonString);
                 MessageBox.Show(AddTool.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -271,7 +271,7 @@ namespace ToolsManager
             else
             {
 
-                JsonEntity.AddUpdateTool AddTool = JsonHelper.parse<JsonEntity.AddUpdateTool>(jsonString);
+                JsonEntity.Msg AddTool = JsonHelper.parse<JsonEntity.Msg>(jsonString);
                 MessageBox.Show(AddTool.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -290,6 +290,153 @@ namespace ToolsManager
 #endif
 
         }
+        async public static Task<bool> DeleteTool(int user_id, string UserCode, int ToolID)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/tools/delete_tool.api?user_id={1}&user_code={2}&tool_id={3}", Global.ServerIp, user_id, UserCode, ToolID);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+
+        async public static Task<bool> InsertToolClass(int user_id, string UserCode, string ClassName, string memo)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/defect/insert_tool_class.api?user_id={1}&user_code={2}&class_name={3}&memo={4}", Global.ServerIp, user_id, UserCode, ClassName, memo);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateToolClass(int user_id, string UserCode, int ClassID, string ClassName, string memo)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/defect/update_tool_class.api?user_id={1}&user_code={2}&class_id={5}&class_name={3}&memo={4}", Global.ServerIp, user_id, UserCode, ClassName, memo, ClassID);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> DeleteToolClass(int user_id, string UserCode, int ClassID)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/defect/delete_tool_class.api?user_id={1}&user_code={2}&class_id={3}", Global.ServerIp, user_id, UserCode, ClassID);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+
+
 
     }
 }
