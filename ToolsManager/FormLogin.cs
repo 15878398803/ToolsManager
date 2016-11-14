@@ -37,8 +37,8 @@ namespace ToolsManager
         //}
         async private void TestStation()
         {
-            await Server.GetToolsList(2, "8d9dad5db5c07313a4331466ec461f24", 1, 2);
-
+            //await Server.GetToolsList(2, "8d9dad5db5c07313a4331466ec461f24", 1, 2);
+            await Server.GetTools();
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {

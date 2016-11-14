@@ -166,5 +166,13 @@ namespace ToolsManager
             /// </summary>
             public ToolListNum num { get; set; }
         }
+
+        public class Tool
+        {
+            public string class_id { get; set; }
+            public string class_name { get; set; }
+            public string memo { get; set; }
+
+        }
     }
 }

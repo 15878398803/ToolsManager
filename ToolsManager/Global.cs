@@ -169,7 +169,7 @@ namespace ToolsManager
         public static List<JsonEntity.Station> StationList;
         public static JsonEntity.AutoLogin AutoLogin;
         public static JsonEntity.ToolsList ToolsList;
-
+        public static List<JsonEntity.Tool> Tools;
 
     }
 }
