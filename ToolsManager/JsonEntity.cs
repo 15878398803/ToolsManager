@@ -51,42 +51,120 @@ namespace ToolsManager
         }
 
 
-        public class ToolList
+        public class ToolListItem
         {
-            public class Tool
-            {
-                public int tool_id { get; set; }
-                public int sensor_id { get; set; }
-                public int station_id { get; set; }
-                public int class_id { get; set; }
-                public int user_id { get; set; }
-                public string name { get; set; }
-                public string model { get; set; }
-                public string number { get; set; }
-                public string subject { get; set; }
-                public DateTime factory_time { get; set; }
-                public DateTime buy_time { get; set; }
-                public DateTime test_time { get; set; }
-                public int test_cycle { get; set; }
-                public int life_cycle { get; set; }
-                public int vender { get; set; }
-                public string sensor_name { get; set; }
-                public string class_name { get; set; }
-                public DateTime naxt_test { get; set; }
-                public DateTime death_time { get; set; }
-                public bool in_depot { get; set; }
-                public string user_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string model { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string subject { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string factory_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string buy_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string life_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string vender { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string naxt_test { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string death_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string in_depot { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_name { get; set; }
+        }
 
+        public class ToolListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public int page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
 
-            }
-
-            public class ToolListPage
-            {
-                public int list_num { get; set; }
-                public int page { get; set; }
-                public int page_num { get; set; }
-
-            }
+        public class ToolsList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<ToolListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public ToolListNum num { get; set; }
         }
     }
 }
