@@ -167,7 +167,7 @@ namespace ToolsManager
         public static string ServerIp = "120.76.121.79";
         public static JsonEntity.Login LoginInfo;
         public static List<JsonEntity.Station> StationList;
-
+        public static JsonEntity.AutoLogin AutoLogin;
 
 
     }

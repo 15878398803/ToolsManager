@@ -84,5 +84,34 @@ namespace ToolsManager
 #endif
             return false;
         }
+
+        async public static Task<bool> AutoLogin(int StationId, string UserCode)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/user/auto_login.api?station_id={1}&user_code={2}", Global.ServerIp, StationId, UserCode);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            var autologin = JsonHelper.parse<JsonEntity.AutoLogin>(jsonString);
+            Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+#endif
+            return false;
+        }
+
     }
 }
