@@ -229,5 +229,10 @@ namespace ToolsManager
             /// </summary>
             public SensorListNum num { get; set; }
         }
+
+        public class AddTool
+        {
+            public string msg { get; set; }
+        }
     }
 }

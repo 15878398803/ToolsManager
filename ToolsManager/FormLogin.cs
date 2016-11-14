@@ -38,7 +38,8 @@ namespace ToolsManager
         async private void TestStation()
         {
             //await Server.GetToolsList(2, "8d9dad5db5c07313a4331466ec461f24", 1, 2);
-            await Server.GetSensorList(2, "8d9dad5db5c07313a4331466ec461f24", 1, 2);
+            //await Server.GetSensorList(2, "8d9dad5db5c07313a4331466ec461f24", 1, 2);
+            //await Server.AddTool(2, "8d9dad5db5c07313a4331466ec461f24", 3, 4, "5", "6", "7", 8, DateTime.Now.AddYears(1), DateTime.Now.AddMonths(1), DateTime.Now.AddDays(1), 9, 10, "11");
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {

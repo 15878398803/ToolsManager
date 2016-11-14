@@ -212,6 +212,45 @@ namespace ToolsManager
 
         }
 
+        async public static Task<bool> AddTool(int user_id, string UserCode, int sensor_id, int class_id, string ToolName, string ToolModel, string ToolNum, int Subject, DateTime factory_time, DateTime buy_time, DateTime test_time, int test_cycle, int life_cycle, string Vender)
+        {
+            StringBuilder builder = new StringBuilder(400);
+
+            builder.AppendFormat("http://{0}/tools/insert_tool.api?user_id={1}&user_code={2}&sensor_id={3}&class_id={4}&name={5}&model={6}&number={7}&subject={8}&factory_time={9}&buy_time={10}&test_time={11}&test_cycle={12}&life_cycle={13}&vender={14}",
+                Global.ServerIp, user_id, UserCode, sensor_id, class_id, ToolName, ToolModel, ToolNum, Subject, factory_time.ToString("yyyy-MM-dd"), buy_time.ToString("yyyy-MM-dd"), test_time.ToString("yyyy-MM-dd"), test_cycle, life_cycle, Vender);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            if (jsonString == "true")
+                return true;
+            else
+            {
+                
+                JsonEntity.AddTool AddTool = JsonHelper.parse<JsonEntity.AddTool>(jsonString);
+                MessageBox.Show(AddTool.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.SensorList = SensorList;
+
+            
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
 
     }
 }
