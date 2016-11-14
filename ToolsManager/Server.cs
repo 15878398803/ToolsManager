@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net;
 using System.Security.Cryptography;
@@ -42,7 +44,7 @@ namespace ToolsManager
                         Global.LoginInfo = null;
                         break;
                     case "true":
-                        MessageBox.Show("您好，"+login.name+"，欢迎您使用本系统。", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("您好，" + login.name + "，欢迎您使用本系统。", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Global.LoginInfo = login;
                         return true;
                 }
@@ -53,6 +55,33 @@ namespace ToolsManager
                 MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            return false;
+        }
+
+        async public static Task<bool> GetStationList()
+        {
+            StringBuilder builder = new StringBuilder(200);
+            builder.AppendFormat("Http://{0}/station/station_list.api", Global.ServerIp);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            var stations = JsonHelper.parse<List<JsonEntity.Station>>(jsonString);
+            Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+#endif
             return false;
         }
     }

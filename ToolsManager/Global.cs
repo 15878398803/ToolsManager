@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -17,9 +18,7 @@ namespace ToolsManager
         private static FormSubsystem formSubsystem;
         private static FormLoading formLoading;
 
-        public static string ServerIp = "120.76.121.79";
-        public static JsonEntity.Login LoginInfo;
-
+        #region 窗体初始化
         public static FormLoading FormLoading
         {
             get
@@ -162,5 +161,14 @@ namespace ToolsManager
                 formSubsystem = value;
             }
         }
+
+        #endregion
+
+        public static string ServerIp = "120.76.121.79";
+        public static JsonEntity.Login LoginInfo;
+        public static List<JsonEntity.Station> StationList;
+
+
+
     }
 }

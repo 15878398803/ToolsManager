@@ -35,10 +35,15 @@ namespace ToolsManager
         //    }
         //    return "5000毫秒等待后返回结果";
         //}
+        async private void TestStation()
+        {
+            await Server.GetStationList();
 
+        }
         async private void btn_login_Click(object sender, EventArgs e)
         {
-
+            TestStation();
+            return;
 #if DEBUG
             Debug.WriteLine("使用默认账号yyq登录调试");
             tx_username.Text = "yyq";

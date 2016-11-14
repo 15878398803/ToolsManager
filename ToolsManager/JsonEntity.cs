@@ -34,5 +34,21 @@ namespace ToolsManager
             public string role { get; set; }
 
         }
+
+        [DataContract]
+        public class Station
+        {
+
+            [DataMember(Order = 0)]
+            public int station_id { get; set; }
+
+            [DataMember(Order = 1)]
+            public string name { get; set; }
+
+            [DataMember(Order = 2)]
+            public string memo { get; set; }
+            
+        }
+
     }
 }
