@@ -44,7 +44,8 @@ namespace ToolsManager
             //await Server.InsertToolClass(2, "8d9dad5db5c07313a4331466ec461f24", "我的类名", "我的备注");
             //await Server.UpdateToolClass(3, "8d9dad5db5c07313a4331466ec461f24", 26, "我的类名new", "我的备注a");
             //await Server.DeleteToolClass(2, "8d9dad5db5c07313a4331466ec461f24", 26);
-            await Server.DeleteTool(2, "8d9dad5db5c07313a4331466ec461f24", 14);
+            //await Server.DeleteTool(2, "8d9dad5db5c07313a4331466ec461f24", 14);
+            await Server.GetDefectList(1);
 
         }
         async private void btn_login_Click(object sender, EventArgs e)

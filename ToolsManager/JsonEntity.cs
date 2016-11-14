@@ -234,5 +234,29 @@ namespace ToolsManager
         {
             public string msg { get; set; }
         }
+
+        public class Defect
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string defect_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_id { get; set; }
+            /// <summary>
+            /// A1外壳破损
+            /// </summary>
+            public string defect_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_delete { get; set; }
+        }
     }
 }

@@ -436,6 +436,34 @@ namespace ToolsManager
 
         }
 
+        async public static Task<bool> GetDefectList(int ClassID)
+        {
+            StringBuilder builder = new StringBuilder(200);
+            builder.AppendFormat("Http://{0}/defect/defect_list.api?class_id={1}", Global.ServerIp, ClassID);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            var Defects = JsonHelper.parse<List<JsonEntity.Defect>>(jsonString);
+            Global.DefectList = Defects;
+            return true;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
 
 
     }
