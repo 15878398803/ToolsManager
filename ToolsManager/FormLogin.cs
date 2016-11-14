@@ -35,15 +35,16 @@ namespace ToolsManager
         //    }
         //    return "5000毫秒等待后返回结果";
         //}
-        async private void TestStation()
+        async private void Test()
         {
             //await Server.GetToolsList(2, "8d9dad5db5c07313a4331466ec461f24", 1, 2);
             //await Server.GetSensorList(2, "8d9dad5db5c07313a4331466ec461f24", 1, 2);
             //await Server.AddTool(2, "8d9dad5db5c07313a4331466ec461f24", 3, 4, "5", "6", "7", 8, DateTime.Now.AddYears(1), DateTime.Now.AddMonths(1), DateTime.Now.AddDays(1), 9, 10, "11");
+            //await Server.UpdateTool(2, "8d9dad5db5c07313a4331466ec461f24", 10, 3, 4, "5", "6", "7", 8, DateTime.Now.AddYears(1), DateTime.Now.AddMonths(1), DateTime.Now.AddDays(1), 9, 10, "11");
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
-            TestStation();
+            Test();
             return;
 #if DEBUG
             Debug.WriteLine("使用默认账号yyq登录调试");

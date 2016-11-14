@@ -230,7 +230,7 @@ namespace ToolsManager
             public SensorListNum num { get; set; }
         }
 
-        public class AddTool
+        public class AddUpdateTool
         {
             public string msg { get; set; }
         }
