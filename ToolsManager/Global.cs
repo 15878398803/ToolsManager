@@ -168,6 +168,7 @@ namespace ToolsManager
         public static JsonEntity.Login LoginInfo;
         public static List<JsonEntity.Station> StationList;
         public static JsonEntity.AutoLogin AutoLogin;
+        public static JsonEntity.ToolsList ToolsList;
 
 
     }

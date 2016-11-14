@@ -75,14 +75,16 @@ namespace ToolsManager
             //以下代码在上面的Task执行完后会自动回来调用
             var stations = JsonHelper.parse<List<JsonEntity.Station>>(jsonString);
             Global.StationList = stations;
+            return true;
 #if !DEBUG
             }
             catch (Exception)
             {
                 MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 #endif
-            return false;
+
         }
 
         async public static Task<bool> AutoLogin(int StationId, string UserCode)
@@ -102,15 +104,16 @@ namespace ToolsManager
             //以下代码在上面的Task执行完后会自动回来调用
             var autologin = JsonHelper.parse<JsonEntity.AutoLogin>(jsonString);
             Global.AutoLogin = autologin;
-            //Global.StationList = stations;
+            return true;
 #if !DEBUG
             }
             catch (Exception)
             {
                 MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 #endif
-            return false;
+
         }
 
         async public static Task<bool> GetToolsList(int user_id, string UserCode, int page, int num)
@@ -129,7 +132,9 @@ namespace ToolsManager
             });
             //以下代码在上面的Task执行完后会自动回来调用
             JsonEntity.ToolsList ToolsList = JsonHelper.parse<JsonEntity.ToolsList>(jsonString);
-            
+            Global.ToolsList = ToolsList;
+
+            return true;
             //Global.AutoLogin = autologin;
             //Global.StationList = stations;
 #if !DEBUG
@@ -137,9 +142,10 @@ namespace ToolsManager
             catch (Exception)
             {
                 MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 #endif
-            return false;
+            
         }
 
     }
