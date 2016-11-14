@@ -50,7 +50,6 @@ namespace ToolsManager
             public string task_id { get; set; }
         }
 
-
         public class ToolListItem
         {
             /// <summary>
@@ -173,6 +172,62 @@ namespace ToolsManager
             public string class_name { get; set; }
             public string memo { get; set; }
 
+        }
+
+        public class SensorListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string code { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+        }
+
+        public class SensorListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public int page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class SensorList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<SensorListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public SensorListNum num { get; set; }
         }
     }
 }

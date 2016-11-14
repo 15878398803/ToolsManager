@@ -170,6 +170,7 @@ namespace ToolsManager
         public static JsonEntity.AutoLogin AutoLogin;
         public static JsonEntity.ToolsList ToolsList;
         public static List<JsonEntity.Tool> Tools;
+        public static JsonEntity.SensorList SensorList;
 
     }
 }
