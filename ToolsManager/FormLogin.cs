@@ -52,6 +52,9 @@ namespace ToolsManager
             //await Server.GetUserList(2, "8d9dad5db5c07313a4331466ec461f24", 2, 2);
             //await Server.InsertUser(2, "8d9dad5db5c07313a4331466ec461f24", 1, "名", "班", "OPEN", "用户名", "passwd", "7");
             //await Server.UpdateUser(2, "8d9dad5db5c07313a4331466ec461f24", 1, "名", "班", "OPEN", "用户名a", "passwd", "7", 18);
+            //await Server.InsertWork(2, "8d9dad5db5c07313a4331466ec461f24","名",true, "http://www.baidu.com/img/bd_logo1.png", 1);
+            //await Server.UpdateWork(2, "8d9dad5db5c07313a4331466ec461f24", 8,"名a", false, "http://www.baidu.com/img/bd_logo1.png", 2);
+            await Server.DeleteWork(2, "8d9dad5db5c07313a4331466ec461f24", 9);
 
         }
         async private void btn_login_Click(object sender, EventArgs e)

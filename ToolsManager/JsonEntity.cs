@@ -326,5 +326,33 @@ namespace ToolsManager
             /// </summary>
             public UserListNum num { get; set; }
         }
+
+        public class WorkTypeListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string work_id { get; set; }
+            /// <summary>
+            /// 计划工作
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_input { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string work_img { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_delete { get; set; }
+        }
     }
 }

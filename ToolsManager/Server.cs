@@ -227,7 +227,7 @@ namespace ToolsManager
             {
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -266,7 +266,7 @@ namespace ToolsManager
             {
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -305,7 +305,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -342,7 +342,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -378,7 +378,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -414,7 +414,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -479,7 +479,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -515,7 +515,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -551,7 +551,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -618,7 +618,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -654,7 +654,7 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
 
-            if (jsonString == "true")
+            if (jsonString.ToLower() == "true")
                 return true;
             else
             {
@@ -676,7 +676,145 @@ namespace ToolsManager
 
         }
 
+        async public static Task<bool> GetWorkTypeList()
+        {
+            StringBuilder builder = new StringBuilder(200);
+            builder.AppendFormat("Http://{0}/work/work_type_list.api", Global.ServerIp);
+#if !DEBUG
+            try
+            {
+#endif
 
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            var WorkTypeList = JsonHelper.parse<List<JsonEntity.WorkTypeListItem>>(jsonString);
+            Global.WorkTypeList = WorkTypeList;
+            return true;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> InsertWork(int user_id, string UserCode, string name, bool IsInput, string WorkImg, int Type)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/work/insert_work.api?user_id={1}&user_code={2}&name={3}&is_input={4}&type={6}&work_img={5}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type);
+#if !DEBUG
+            try
+            {
+#endif
+            //Debug.WriteLine(builder.ToString());
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateWork(int user_id, string UserCode, int WorkID, string name, bool IsInput, string WorkImg, int Type)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/work/update_work.api?user_id={1}&user_code={2}&work_id={7}&name={3}&is_input={4}&type={6}&work_img={5}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type, WorkID);
+#if !DEBUG
+            try
+            {
+#endif
+            //Debug.WriteLine(builder.ToString());
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> DeleteWork(int user_id, string UserCode, int WorkID)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/work/delete_work.api?user_id={1}&user_code={2}&work_id={3}", Global.ServerIp, user_id, UserCode, WorkID);
+#if !DEBUG
+            try
+            {
+#endif
+            //Debug.WriteLine(builder.ToString());
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
 
     }
 }
