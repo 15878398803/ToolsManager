@@ -603,6 +603,80 @@ namespace ToolsManager
 #endif
 
         }
+        async public static Task<bool> InsertUser(int user_id, string UserCode, int station_id, string name, string Team, string OpenId, string UserName, string UserPwd, string role)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/user/insert_user.api?user_id={1}&user_code={2}&station_id={3}&name={4}&team={5}&openid={6}&username={7}&userpwd={8}&role={9}", Global.ServerIp, user_id, UserCode, station_id, name, Team, OpenId, UserName, UserPwd, role);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateUser(int user_id, string UserCode, int station_id, string name, string Team, string OpenId, string UserName, string UserPwd, string role, int UpdateUserID)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/user/update_user.api?user_id={1}&user_code={2}&station_id={3}&name={4}&team={5}&openid={6}&username={7}&userpwd={8}&role={9}&updateuser_id={10}", Global.ServerIp, user_id, UserCode, station_id, name, Team, OpenId, UserName, UserPwd, role, UpdateUserID);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+
+
 
     }
 }
