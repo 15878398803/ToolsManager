@@ -183,6 +183,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -215,6 +216,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="desktop.ico" />
+    <None Include="Resources\登录-副本_0000s_0005_登录矩形框.png" />
+    <None Include="Resources\登录-副本_0000s_0004_登录矩形框-移动反馈.png" />
+    <None Include="Resources\登录-副本_0000s_0003_登录矩形框-点击反馈.png" />
+    <None Include="Resources\登录-副本_0000s_0002_-退-出-.png" />
+    <None Include="Resources\登录-副本_0000s_0001_-退-出--移动反馈.png" />
+    <None Include="Resources\登录-副本_0000s_0000_-退-出---点击反馈.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
