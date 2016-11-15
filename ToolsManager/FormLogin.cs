@@ -50,12 +50,18 @@ namespace ToolsManager
             //await Server.InsertWork(2, "8d9dad5db5c07313a4331466ec461f24","名",true, "http://www.baidu.com/img/bd_logo1.png", 1);
             //await Server.UpdateWork(2, "8d9dad5db5c07313a4331466ec461f24", 8,"名a", false, "http://www.baidu.com/img/bd_logo1.png", 2);
             //await Server.DeleteWork(2, "8d9dad5db5c07313a4331466ec461f24", 9);
+            //await Server.GetTaskList(2, "befdf52430eb27e3b87cfe03a24f4b70",1, 2);
+            //await Server.UpdateTask(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2,"t1","Team",1,"mem");
+            //await Server.GetDoorList("a");
+            //await Server.InsertDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 3, "yyqdoor", "T213", "memo");
+            //await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
+            await Server.GetOpenDoorList(2, "befdf52430eb27e3b87cfe03a24f4b70",1,2);
 
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
-            //Test();
-            //return;
+            Test();
+            return;
 #if DEBUG
             Debug.WriteLine("使用默认账号yyq登录调试");
             tx_username.Text = "yyq";

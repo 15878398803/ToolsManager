@@ -815,6 +815,326 @@ namespace ToolsManager
 #endif
 
         }
+        async public static Task<bool> InsertStation(int user_id, string UserCode, string name, string memo)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/station/insert_station.api?user_id={1}&user_code={2}&name={3}&memo={4}", Global.ServerIp, user_id, UserCode, name, memo);
+#if !DEBUG
+            try
+            {
+#endif
+            //Debug.WriteLine(builder.ToString());
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateStation(int user_id, string UserCode, int StationId, string name, string memo)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/station/update_station.api?user_id={1}&user_code={2}&station_id={5}&name={3}&memo={4}", Global.ServerIp, user_id, UserCode, name, memo, StationId);
+#if !DEBUG
+            try
+            {
+#endif
+            //Debug.WriteLine(builder.ToString());
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetTaskList(int user_id, string UserCode, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/task/task_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.TaskList TaskList = JsonHelper.parse<JsonEntity.TaskList>(jsonString);
+            Global.TaskList = TaskList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateTask(int user_id, string UserCode, int TaskId, int WorkId, string task_num, string team, int TypeComplete, string memo)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/task/update_task.api?user_id={1}&user_code={2}&task_id={3}&work_id={4}&task_num={5}&team={6}&type_complete={7}&memo={8}", Global.ServerIp, user_id, UserCode, TaskId, WorkId, task_num, team, TypeComplete, memo);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        /// <summary>
+        /// 获取门列表
+        /// </summary>
+        /// <param name="StationId">0为获取所有站的门</param>
+        /// <returns></returns>
+        async public static Task<bool> GetDoorList(int StationId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/door/door_list.api?station_id={1}", Global.ServerIp, StationId);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            List<JsonEntity.Door> Door = JsonHelper.parse<List<JsonEntity.Door>>(jsonString);
+            Global.DoorList = Door;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> InsertDoor(int user_id, string UserCode, int StationId, string name, string code, string memo)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/door/insert_door.api?user_id={1}&user_code={2}&station_id={3}&name={4}&code={5}&memo={6}", Global.ServerIp, user_id, UserCode, StationId, name, code, memo);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateDoor(int user_id, string UserCode, int doorId, int StationId, string name, string code, string memo)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/door/insert_door.api?user_id={1}&user_code={2}&door_id={7}&station_id={3}&name={4}&code={5}&memo={6}", Global.ServerIp, user_id, UserCode, StationId, name, code, memo, doorId);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> DeleteDoor(int user_id, string UserCode, int doorId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/door/delete_door.api?user_id={1}&user_code={2}&door_id={3}", Global.ServerIp, user_id, UserCode, doorId);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetOpenDoorList(int user_id, string UserCode, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            //builder.AppendFormat("http://{0}/door/opendoor_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+            builder.AppendFormat("http://{0}/door/opendoor_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+#if !DEBUG
+            try
+            {
+#endif
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.OpenDoorList OpenDoorList = JsonHelper.parse<JsonEntity.OpenDoorList>(jsonString);
+            Global.OpenDoorList = OpenDoorList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
 
     }
 }

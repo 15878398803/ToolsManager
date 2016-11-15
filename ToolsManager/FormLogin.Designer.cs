@@ -78,23 +78,22 @@
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.21766F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.05954F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel2.Controls.Add(this.tx_username, 2, 1);
             tableLayoutPanel2.Controls.Add(this.tx_password, 2, 2);
-            tableLayoutPanel2.Controls.Add(this.pictureBox2, 3, 4);
+            tableLayoutPanel2.Controls.Add(this.pictureBox2, 3, 3);
             tableLayoutPanel2.Controls.Add(this.label1, 1, 1);
             tableLayoutPanel2.Controls.Add(this.label2, 1, 2);
-            tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 4);
+            tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 3);
             tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel2.Location = new System.Drawing.Point(664, 218);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 6;
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.28528F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.07973F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.28532F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.546856F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.27134F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.53147F));
+            tableLayoutPanel2.RowCount = 5;
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.20403F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.67672F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.85454F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.22532F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.03939F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new System.Drawing.Size(354, 254);
             tableLayoutPanel2.TabIndex = 0;
             // 
@@ -103,7 +102,7 @@
             this.tx_username.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tx_username.Font = new System.Drawing.Font("新宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tx_username.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.tx_username.Location = new System.Drawing.Point(165, 76);
+            this.tx_username.Location = new System.Drawing.Point(165, 79);
             this.tx_username.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tx_username.MaxLength = 100;
             this.tx_username.Name = "tx_username";
@@ -115,7 +114,7 @@
             this.tx_password.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tx_password.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tx_password.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.tx_password.Location = new System.Drawing.Point(165, 119);
+            this.tx_password.Location = new System.Drawing.Point(165, 123);
             this.tx_password.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tx_password.MaxLength = 100;
             this.tx_password.Name = "tx_password";
@@ -129,7 +128,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox2.Location = new System.Drawing.Point(271, 185);
+            this.pictureBox2.Location = new System.Drawing.Point(271, 183);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(66, 27);
             this.pictureBox2.TabIndex = 7;
@@ -146,9 +145,9 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Location = new System.Drawing.Point(16, 109);
+            this.label2.Location = new System.Drawing.Point(16, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 41);
+            this.label2.Size = new System.Drawing.Size(143, 42);
             this.label2.TabIndex = 5;
             // 
             // label1
@@ -157,9 +156,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(16, 66);
+            this.label1.Location = new System.Drawing.Point(16, 69);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 43);
+            this.label1.Size = new System.Drawing.Size(143, 44);
             this.label1.TabIndex = 4;
             // 
             // pictureBox1
@@ -168,9 +167,9 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             tableLayoutPanel2.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 172);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 158);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(249, 52);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.btn_login_Click);

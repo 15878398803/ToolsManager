@@ -354,5 +354,162 @@ namespace ToolsManager
             /// </summary>
             public string is_delete { get; set; }
         }
+        public class TaskListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string work_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string insert_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string team { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type_complete { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_delete { get; set; }
+        }
+
+        public class TaskListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public int page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class TaskList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<TaskListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public TaskListNum num { get; set; }
+        }
+        public class Door
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string door_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string code { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+        }
+        public class OpenDoorListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string opendoor_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string door_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string open_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type { get; set; }
+        }
+
+        public class OpenDoorListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public int page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class OpenDoorList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<OpenDoorListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public OpenDoorListNum num { get; set; }
+        }
     }
 }
