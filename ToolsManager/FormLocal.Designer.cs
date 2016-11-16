@@ -33,6 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tx_password = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -79,11 +81,37 @@
             this.comboBox1.Size = new System.Drawing.Size(158, 20);
             this.comboBox1.TabIndex = 5;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(5, 74);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(84, 16);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "设新密码：";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // tx_password
+            // 
+            this.tx_password.Enabled = false;
+            this.tx_password.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tx_password.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.tx_password.Location = new System.Drawing.Point(83, 68);
+            this.tx_password.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.tx_password.MaxLength = 100;
+            this.tx_password.Name = "tx_password";
+            this.tx_password.PasswordChar = '●';
+            this.tx_password.Size = new System.Drawing.Size(158, 26);
+            this.tx_password.TabIndex = 7;
+            // 
             // FormLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 283);
+            this.Controls.Add(this.tx_password);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -105,5 +133,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox tx_password;
     }
 }

@@ -18,9 +18,18 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
+            if(Properties.Settings.Default.第一次运行)
+            {
+                FormLocal f = new FormLocal();
+                f.TopMost = true;
+                f.Show();
+                this.Hide();
+                return;
+            }
             Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.站点名称 + " - " + "智能物联工器具管理系统";
             label_main.Text = Properties.Settings.Default.供电局名称;
             label_sub.Text = "(" + Properties.Settings.Default.站点名称 + ")";
+
         }
         //async Task<string> test()//模拟异步方法调用
         //{
@@ -71,11 +80,11 @@ namespace ToolsManager
             //tx_username.Text = "yyq";
             //tx_password.Text = "123456";
 #endif
-            if (tx_username.Text == "admin")
+            //if (tx_username.Text == "admin")
             {
-                MD5 md5 = new MD5CryptoServiceProvider();
-                byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
-                if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
+                //MD5 md5 = new MD5CryptoServiceProvider();
+                //byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
+                //if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
                 {
                     FormLocal f = new FormLocal();
                     f.TopMost = true;

@@ -8,11 +8,14 @@
     <Setting Name="站点名称" Type="System.String" Scope="User">
       <Value Profile="(Default)">简易训练场</Value>
     </Setting>
-    <Setting Name="pwd" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">	06A8647723D4D285AEFDB02ED285220B</Value>
+    <Setting Name="pwd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">06A8647723D4D285AEFDB02ED285220B</Value>
     </Setting>
-    <Setting Name="站点ID" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="站点ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="第一次运行" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

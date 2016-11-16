@@ -47,24 +47,39 @@ namespace ToolsManager.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\t06A8647723D4D285AEFDB02ED285220B")]
+        [global::System.Configuration.DefaultSettingValueAttribute("06A8647723D4D285AEFDB02ED285220B")]
         public string pwd {
             get {
                 return ((string)(this["pwd"]));
+            }
+            set {
+                this["pwd"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int 站点ID {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string 站点ID {
             get {
-                return ((int)(this["站点ID"]));
+                return ((string)(this["站点ID"]));
             }
             set {
                 this["站点ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool 第一次运行 {
+            get {
+                return ((bool)(this["第一次运行"]));
+            }
+            set {
+                this["第一次运行"] = value;
             }
         }
     }
