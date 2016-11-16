@@ -83,7 +83,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.85338F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.21766F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.05954F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
             tableLayoutPanel2.Controls.Add(this.tx_username, 2, 1);
             tableLayoutPanel2.Controls.Add(this.tx_password, 2, 2);
             tableLayoutPanel2.Controls.Add(this.pictureBox2, 3, 3);
@@ -108,11 +108,11 @@
             this.tx_username.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tx_username.Font = new System.Drawing.Font("新宋体", 12F);
             this.tx_username.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.tx_username.Location = new System.Drawing.Point(165, 84);
+            this.tx_username.Location = new System.Drawing.Point(161, 84);
             this.tx_username.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tx_username.MaxLength = 100;
             this.tx_username.Name = "tx_username";
-            this.tx_username.Size = new System.Drawing.Size(100, 26);
+            this.tx_username.Size = new System.Drawing.Size(98, 26);
             this.tx_username.TabIndex = 0;
             // 
             // tx_password
@@ -120,13 +120,14 @@
             this.tx_password.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tx_password.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tx_password.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.tx_password.Location = new System.Drawing.Point(165, 126);
+            this.tx_password.Location = new System.Drawing.Point(161, 126);
             this.tx_password.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tx_password.MaxLength = 100;
             this.tx_password.Name = "tx_password";
             this.tx_password.PasswordChar = '●';
-            this.tx_password.Size = new System.Drawing.Size(100, 26);
+            this.tx_password.Size = new System.Drawing.Size(98, 26);
             this.tx_password.TabIndex = 1;
+            this.tx_password.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tx_password_KeyUp);
             // 
             // pictureBox2
             // 
@@ -134,9 +135,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox2.Location = new System.Drawing.Point(271, 183);
+            this.pictureBox2.Location = new System.Drawing.Point(265, 183);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(65, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(64, 27);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -151,9 +152,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(16, 69);
+            this.label1.Location = new System.Drawing.Point(15, 69);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 44);
+            this.label1.Size = new System.Drawing.Size(140, 44);
             this.label1.TabIndex = 4;
             // 
             // label2
@@ -162,9 +163,9 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Location = new System.Drawing.Point(16, 113);
+            this.label2.Location = new System.Drawing.Point(15, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 42);
+            this.label2.Size = new System.Drawing.Size(140, 42);
             this.label2.TabIndex = 5;
             // 
             // pictureBox1
@@ -173,9 +174,9 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             tableLayoutPanel2.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 158);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 158);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 52);
+            this.pictureBox1.Size = new System.Drawing.Size(244, 52);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.btn_login_Click);
@@ -205,32 +206,36 @@
             // 
             this.label_main.AutoSize = true;
             this.label_main.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_main.Font = new System.Drawing.Font("幼圆", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_main.Location = new System.Drawing.Point(3, 79);
+            this.label_main.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_main.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(33)))), ((int)(((byte)(93)))));
+            this.label_main.Location = new System.Drawing.Point(3, 63);
             this.label_main.Name = "label_main";
-            this.label_main.Size = new System.Drawing.Size(321, 48);
+            this.label_main.Size = new System.Drawing.Size(321, 64);
             this.label_main.TabIndex = 0;
             this.label_main.Text = "怀集供电局";
-            this.label_main.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_main.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // label_sub
             // 
             this.label_sub.AutoSize = true;
             this.label_sub.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_sub.Font = new System.Drawing.Font("幼圆", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_sub.Location = new System.Drawing.Point(330, 0);
+            this.label_sub.Font = new System.Drawing.Font("微软雅黑", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_sub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(33)))), ((int)(((byte)(93)))));
+            this.label_sub.Location = new System.Drawing.Point(327, 0);
+            this.label_sub.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.label_sub.Name = "label_sub";
-            this.label_sub.Size = new System.Drawing.Size(322, 127);
+            this.label_sub.Size = new System.Drawing.Size(325, 127);
             this.label_sub.TabIndex = 1;
             this.label_sub.Text = "（简易实训场）";
-            this.label_sub.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label_sub.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.label5, 2);
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("幼圆", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(33)))), ((int)(((byte)(93)))));
             this.label5.Location = new System.Drawing.Point(3, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(649, 127);

@@ -9,7 +9,7 @@ namespace ToolsManager
 {
     public static class Global
     {
-        
+        public static bool isLocalSuper;
         private static FormMain formMain;
         private static FormLogin formLogin;
         private static FormMaintain formMaintain;

@@ -23,21 +23,36 @@ namespace ToolsManager.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("怀集供电局")]
         public string 供电局名称 {
             get {
                 return ((string)(this["供电局名称"]));
             }
+            set {
+                this["供电局名称"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("简易训练场")]
+        public string 站点名称 {
+            get {
+                return ((string)(this["站点名称"]));
+            }
+            set {
+                this["站点名称"] = value;
+            }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("（简易训练场）")]
-        public string 副名称 {
+        [global::System.Configuration.DefaultSettingValueAttribute("\t06A8647723D4D285AEFDB02ED285220B")]
+        public string pwd {
             get {
-                return ((string)(this["副名称"]));
+                return ((string)(this["pwd"]));
             }
         }
     }

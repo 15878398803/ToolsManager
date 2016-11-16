@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,9 +18,9 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
-            Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.副名称 + " - " + "智能物联工器具管理系统";
+            Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.站点名称 + " - " + "智能物联工器具管理系统";
             label_main.Text = Properties.Settings.Default.供电局名称;
-            label_sub.Text = Properties.Settings.Default.副名称;
+            label_sub.Text = "(" + Properties.Settings.Default.站点名称 + ")";
         }
         //async Task<string> test()//模拟异步方法调用
         //{
@@ -57,20 +58,32 @@ namespace ToolsManager
             //await Server.UpdateTask(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2,"t1","Team",1,"mem");
             //await Server.GetDoorList("a");
             //await Server.InsertDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 3, "yyqdoor", "T213", "memo");
-            //await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
-            await Server.GetOpenDoorList(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2);
+            await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
+            //await Server.GetOpenDoorList(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2);
 
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
-            Test();
-            return;
+            //Test();
+            //return;
 #if DEBUG
-            Debug.WriteLine("使用默认账号yyq登录调试");
-            tx_username.Text = "yyq";
-            tx_password.Text = "123456";
+            //Debug.WriteLine("使用默认账号yyq登录调试");
+            //tx_username.Text = "yyq";
+            //tx_password.Text = "123456";
 #endif
-
+            if (tx_username.Text == "admin")
+            {
+                MD5 md5 = new MD5CryptoServiceProvider();
+                byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
+                if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
+                {
+                    FormLocal f = new FormLocal();
+                    f.TopMost = true;
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
             Global.FormLoading.Show();
             var result = await Server.Login(tx_username.Text, tx_password.Text);
 
@@ -145,6 +158,14 @@ namespace ToolsManager
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tx_password_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_login_Click(null, null);
+            }
         }
     }
 }
