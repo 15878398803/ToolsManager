@@ -11,11 +11,14 @@
     <Setting Name="pwd" Type="System.String" Scope="User">
       <Value Profile="(Default)">06A8647723D4D285AEFDB02ED285220B</Value>
     </Setting>
-    <Setting Name="站点ID" Type="System.String" Scope="User">
+    <Setting Name="站点ID" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="第一次运行" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="单页容量" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

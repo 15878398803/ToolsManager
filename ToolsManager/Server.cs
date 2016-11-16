@@ -120,7 +120,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/tools/tools_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+            builder.AppendFormat("http://{0}/tools/tools_list.api?user_id={1}&user_code={2}&station_id={5}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num, ( Global.LoginInfo.role == 3 ) ? 0 : Global.StationId);
 #if !DEBUG
             try
             {
@@ -184,7 +184,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/sensor/sensor_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+            builder.AppendFormat("http://{0}/sensor/sensor_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
 #if !DEBUG
             try
             {
@@ -576,7 +576,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/user/user_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+            builder.AppendFormat("http://{0}/user/user_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
 #if !DEBUG
             try
             {
@@ -893,7 +893,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/task/task_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+            builder.AppendFormat("http://{0}/task/task_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
 #if !DEBUG
             try
             {
@@ -1108,7 +1108,7 @@ namespace ToolsManager
             StringBuilder builder = new StringBuilder(200);
 
             //builder.AppendFormat("http://{0}/door/opendoor_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
-            builder.AppendFormat("http://{0}/door/opendoor_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+            builder.AppendFormat("http://{0}/door/opendoor_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
 #if !DEBUG
             try
             {

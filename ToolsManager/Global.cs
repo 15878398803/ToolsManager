@@ -10,6 +10,7 @@ namespace ToolsManager
     public static class Global
     {
         public static bool isLocalSuper;
+
         private static FormMain formMain;
         private static FormLogin formLogin;
         private static FormMaintain formMaintain;
@@ -166,6 +167,7 @@ namespace ToolsManager
         #endregion
 
         public static string ServerIp = "120.76.121.79";
+        public static int StationId = Properties.Settings.Default.站点ID;
         public static JsonEntity.Login LoginInfo;
         public static List<JsonEntity.Station> StationList;
         public static JsonEntity.AutoLogin AutoLogin;

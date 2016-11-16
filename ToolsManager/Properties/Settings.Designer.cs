@@ -62,9 +62,9 @@ namespace ToolsManager.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public string 站点ID {
+        public int 站点ID {
             get {
-                return ((string)(this["站点ID"]));
+                return ((int)(this["站点ID"]));
             }
             set {
                 this["站点ID"] = value;
@@ -80,6 +80,18 @@ namespace ToolsManager.Properties {
             }
             set {
                 this["第一次运行"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int 单页容量 {
+            get {
+                return ((int)(this["单页容量"]));
+            }
+            set {
+                this["单页容量"] = value;
             }
         }
     }

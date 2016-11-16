@@ -31,7 +31,7 @@ namespace ToolsManager
             public string station_id { get; set; }
 
             [DataMember(Order = 6)]
-            public string role { get; set; }
+            public int role { get; set; }
 
         }
 

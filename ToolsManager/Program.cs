@@ -15,7 +15,7 @@ namespace ToolsManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(Global.FormLogin);
+            Application.Run(Global.FormMaintain);
             //Application.Run(Global.FormMaintain);
         }
     }

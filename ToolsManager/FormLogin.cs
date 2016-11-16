@@ -67,7 +67,7 @@ namespace ToolsManager
             //await Server.UpdateTask(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2,"t1","Team",1,"mem");
             //await Server.GetDoorList("a");
             //await Server.InsertDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 3, "yyqdoor", "T213", "memo");
-            await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
+            //await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
             //await Server.GetOpenDoorList(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2);
 
         }

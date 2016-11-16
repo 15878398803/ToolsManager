@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("上一页");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("下一页");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("台账报表");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("综合管理");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("预送检表");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("预报废表");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("定期检查");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("送检反馈");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("逾期记录");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("增购申请");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("上一页");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("下一页");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("台账报表");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("综合管理");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("预送检表");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("预报废表");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("定期检查");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("送检反馈");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("逾期记录");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("增购申请");
             this.listViewTop = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -64,12 +64,12 @@
             // 
             this.listViewTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewTop.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
+            listViewItem1,
+            listViewItem2});
             this.listViewTop.LargeImageList = this.imageList1;
             this.listViewTop.Location = new System.Drawing.Point(3, 3);
             this.listViewTop.Name = "listViewTop";
-            this.listViewTop.Size = new System.Drawing.Size(629, 81);
+            this.listViewTop.Size = new System.Drawing.Size(833, 96);
             this.listViewTop.TabIndex = 1;
             this.listViewTop.UseCompatibleStateImageBehavior = false;
             // 
@@ -93,7 +93,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.85442F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.14558F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(635, 462);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(839, 545);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -105,12 +105,12 @@
             this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 90);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 105);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(629, 369);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(833, 437);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // listViewLeft
@@ -118,19 +118,19 @@
             this.listViewLeft.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem3,
+            listViewItem4,
             listViewItem5,
             listViewItem6,
             listViewItem7,
             listViewItem8,
             listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12});
+            listViewItem10});
             this.listViewLeft.Location = new System.Drawing.Point(3, 3);
             this.listViewLeft.MultiSelect = false;
             this.listViewLeft.Name = "listViewLeft";
             this.tableLayoutPanel2.SetRowSpan(this.listViewLeft, 2);
-            this.listViewLeft.Size = new System.Drawing.Size(122, 363);
+            this.listViewLeft.Size = new System.Drawing.Size(163, 431);
             this.listViewLeft.SmallImageList = this.imageList1;
             this.listViewLeft.TabIndex = 0;
             this.listViewLeft.UseCompatibleStateImageBehavior = false;
@@ -141,10 +141,10 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(131, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(172, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(495, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(658, 401);
             this.dataGridView1.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -159,9 +159,9 @@
             this.flowLayoutPanel1.Controls.Add(this.lb_sum);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(131, 342);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(172, 410);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(495, 24);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(658, 24);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // ll_Next
@@ -169,7 +169,7 @@
             this.ll_Next.AutoSize = true;
             this.ll_Next.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ll_Next.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ll_Next.Location = new System.Drawing.Point(410, 0);
+            this.ll_Next.Location = new System.Drawing.Point(573, 0);
             this.ll_Next.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_Next.Name = "ll_Next";
             this.ll_Next.Size = new System.Drawing.Size(41, 26);
@@ -182,7 +182,7 @@
             // 
             this.ll_Last.AutoSize = true;
             this.ll_Last.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_Last.Location = new System.Drawing.Point(288, 0);
+            this.ll_Last.Location = new System.Drawing.Point(451, 0);
             this.ll_Last.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_Last.Name = "ll_Last";
             this.ll_Last.Size = new System.Drawing.Size(41, 26);
@@ -195,7 +195,7 @@
             // 
             this.ll_First.AutoSize = true;
             this.ll_First.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_First.Location = new System.Drawing.Point(237, 0);
+            this.ll_First.Location = new System.Drawing.Point(400, 0);
             this.ll_First.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_First.Name = "ll_First";
             this.ll_First.Size = new System.Drawing.Size(41, 26);
@@ -208,7 +208,7 @@
             // 
             this.ll_End.AutoSize = true;
             this.ll_End.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_End.Location = new System.Drawing.Point(461, 0);
+            this.ll_End.Location = new System.Drawing.Point(624, 0);
             this.ll_End.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_End.Name = "ll_End";
             this.ll_End.Size = new System.Drawing.Size(29, 26);
@@ -220,7 +220,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("宋体", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(368, 3);
+            this.textBox1.Location = new System.Drawing.Point(531, 3);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0, 3, 5, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(32, 20);
@@ -231,7 +231,7 @@
             // 
             this.ll_Goto.AutoSize = true;
             this.ll_Goto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_Goto.Location = new System.Drawing.Point(339, 0);
+            this.ll_Goto.Location = new System.Drawing.Point(502, 0);
             this.ll_Goto.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.ll_Goto.Name = "ll_Goto";
             this.ll_Goto.Size = new System.Drawing.Size(29, 26);
@@ -244,7 +244,7 @@
             // 
             this.lb_sum.AutoSize = true;
             this.lb_sum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_sum.Location = new System.Drawing.Point(123, 0);
+            this.lb_sum.Location = new System.Drawing.Point(286, 0);
             this.lb_sum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lb_sum.Name = "lb_sum";
             this.lb_sum.Size = new System.Drawing.Size(35, 26);
@@ -256,7 +256,7 @@
             // 
             this.lb_cur.AutoSize = true;
             this.lb_cur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_cur.Location = new System.Drawing.Point(168, 0);
+            this.lb_cur.Location = new System.Drawing.Point(331, 0);
             this.lb_cur.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lb_cur.Name = "lb_cur";
             this.lb_cur.Size = new System.Drawing.Size(59, 26);
@@ -268,7 +268,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 462);
+            this.ClientSize = new System.Drawing.Size(839, 545);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormMaintain";
             this.Text = "维护管理";
