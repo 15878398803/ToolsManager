@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ToolsManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="供电局名称" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">怀集供电局</Value>
+    </Setting>
+    <Setting Name="副名称" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">（简易训练场）</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

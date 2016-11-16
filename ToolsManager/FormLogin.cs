@@ -17,6 +17,9 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
+            Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.副名称 + " - " + "智能物联工器具管理系统";
+            label_main.Text = Properties.Settings.Default.供电局名称;
+            label_sub.Text = Properties.Settings.Default.副名称;
         }
         //async Task<string> test()//模拟异步方法调用
         //{
@@ -55,7 +58,7 @@ namespace ToolsManager
             //await Server.GetDoorList("a");
             //await Server.InsertDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 3, "yyqdoor", "T213", "memo");
             //await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
-            await Server.GetOpenDoorList(2, "befdf52430eb27e3b87cfe03a24f4b70",1,2);
+            await Server.GetOpenDoorList(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2);
 
         }
         async private void btn_login_Click(object sender, EventArgs e)
@@ -99,7 +102,7 @@ namespace ToolsManager
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
             pictureBox1.BackgroundImage = Properties.Resources.登录_副本_0000s_0004_登录矩形框_移动反馈;
-            
+
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)

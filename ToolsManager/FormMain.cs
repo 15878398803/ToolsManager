@@ -14,6 +14,7 @@ namespace ToolsManager
         public FormMain()
         {
             InitializeComponent();
+            Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.副名称 + " - " + "智能物联工器具管理系统";
         }
         /// <summary>
         /// 打开各个功能窗口
