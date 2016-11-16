@@ -55,5 +55,17 @@ namespace ToolsManager.Properties {
                 return ((string)(this["pwd"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int 站点ID {
+            get {
+                return ((int)(this["站点ID"]));
+            }
+            set {
+                this["站点ID"] = value;
+            }
+        }
     }
 }
