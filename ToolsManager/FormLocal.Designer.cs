@@ -35,6 +35,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tx_password = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tx_num = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -105,11 +107,29 @@
             this.tx_password.Size = new System.Drawing.Size(158, 26);
             this.tx_password.TabIndex = 7;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(0, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 12);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "单页显示行数：";
+            // 
+            // tx_num
+            // 
+            this.tx_num.Location = new System.Drawing.Point(83, 104);
+            this.tx_num.Name = "tx_num";
+            this.tx_num.Size = new System.Drawing.Size(158, 21);
+            this.tx_num.TabIndex = 9;
+            // 
             // FormLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 283);
+            this.Controls.Add(this.tx_num);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.tx_password);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
@@ -135,5 +155,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox tx_password;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tx_num;
     }
 }

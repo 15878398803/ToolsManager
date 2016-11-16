@@ -44,7 +44,7 @@ namespace ToolsManager
                         Global.LoginInfo = null;
                         break;
                     case "true":
-                        MessageBox.Show("您好，" + login.name + "，欢迎您使用本系统。", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("您好，" + login.name + "，欢迎您使用本系统。", "欢迎", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Global.LoginInfo = login;
                         return true;
                 }
@@ -1144,12 +1144,13 @@ namespace ToolsManager
             try
             {
 #endif
-
+            
             //异步执行GET请求，不影响UI主线程
             string jsonString = await Task.Factory.StartNew(() =>
             {
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
+            Debug.WriteLine(builder.ToString());
             //以下代码在上面的Task执行完后会自动回来调用
             JsonEntity.ReceiveList ReceiveList = JsonHelper.parse<JsonEntity.ReceiveList>(jsonString);
             Global.ReceiveList = ReceiveList;

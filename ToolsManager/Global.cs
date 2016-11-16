@@ -165,9 +165,28 @@ namespace ToolsManager
         }
 
         #endregion
+        /// <summary>
+        /// 向下拉框中添加一串顺序数字，用于选择页数
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="num"></param>
+        public static void AddComboxNum(ComboBox c, int num)
+        {
+            c.Items.Clear();
+            for (int i = 0; i < num; i++)
+            {
+                c.Items.Add(i + 1);
+            }
+            if (num > 0)
+            {
+                c.SelectedIndex = 0;
+            }
+        }
 
         public static string ServerIp = "120.76.121.79";
         public static int StationId = Properties.Settings.Default.站点ID;
+        public static int PageNum = Properties.Settings.Default.单页容量;
+
         public static JsonEntity.Login LoginInfo;
         public static List<JsonEntity.Station> StationList;
         public static JsonEntity.AutoLogin AutoLogin;
