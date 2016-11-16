@@ -1107,12 +1107,12 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            //builder.AppendFormat("http://{0}/door/opendoor_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
             builder.AppendFormat("http://{0}/door/opendoor_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
 #if !DEBUG
             try
             {
 #endif
+
             //异步执行GET请求，不影响UI主线程
             string jsonString = await Task.Factory.StartNew(() =>
             {
@@ -1121,6 +1121,102 @@ namespace ToolsManager
             //以下代码在上面的Task执行完后会自动回来调用
             JsonEntity.OpenDoorList OpenDoorList = JsonHelper.parse<JsonEntity.OpenDoorList>(jsonString);
             Global.OpenDoorList = OpenDoorList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetReceiveList(int user_id, string UserCode, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/receive/receive_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.ReceiveList ReceiveList = JsonHelper.parse<JsonEntity.ReceiveList>(jsonString);
+            Global.ReceiveList = ReceiveList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetUserReceiveList(int user_id, string UserCode, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/receive/user_receive_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.ReceiveList ReceiveList = JsonHelper.parse<JsonEntity.ReceiveList>(jsonString);
+            Global.ReceiveList = ReceiveList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetTaskReceiveList(int user_id, string UserCode, int task_id)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/receive/task_receive_list.api?user_id={1}&user_code={2}&task_id={3}", Global.ServerIp, user_id, task_id);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.TaskReceiveList TaskReceiveList = JsonHelper.parse<JsonEntity.TaskReceiveList>(jsonString);
+            Global.TaskReceiveList = TaskReceiveList;
 
             return true;
             //Global.AutoLogin = autologin;

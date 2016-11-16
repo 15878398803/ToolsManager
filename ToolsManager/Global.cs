@@ -180,6 +180,8 @@ namespace ToolsManager
         public static JsonEntity.TaskList TaskList;
         public static List<JsonEntity.Door> DoorList;
         public static JsonEntity.OpenDoorList OpenDoorList;
-
+        public static JsonEntity.ReceiveList ReceiveList;
+        public static JsonEntity.ReceiveList UserReceiveList;
+        public static JsonEntity.TaskReceiveList TaskReceiveList;
     }
 }

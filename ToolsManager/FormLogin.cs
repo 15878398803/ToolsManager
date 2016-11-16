@@ -68,36 +68,40 @@ namespace ToolsManager
             //await Server.GetDoorList("a");
             //await Server.InsertDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 3, "yyqdoor", "T213", "memo");
             //await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
-            //await Server.GetOpenDoorList(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2);
+            //await Server.GetOpenDoorList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 1);
+            await Server.GetReceiveList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
+            
 
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
-            //Test();
-            //return;
-#if DEBUG
-            //Debug.WriteLine("使用默认账号yyq登录调试");
-            //tx_username.Text = "yyq";
-            //tx_password.Text = "123456";
-#endif
+
+
             //if (tx_username.Text == "admin")
             {
                 //MD5 md5 = new MD5CryptoServiceProvider();
                 //byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
                 //if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
                 {
-                    FormLocal f = new FormLocal();
-                    f.TopMost = true;
-                    f.Show();
-                    this.Hide();
-                    return;
+                    //FormLocal f = new FormLocal();
+                    //f.TopMost = true;
+                    //f.Show();
+                    //this.Hide();
+                    //return;
                 }
             }
-            Global.FormLoading.Show();
+            //Global.FormLoading.Show();
+#if DEBUG
+            //Debug.WriteLine("使用默认账号yyq登录调试");
+            tx_username.Text = "yyq";
+            tx_password.Text = "123456";
+#endif
             var result = await Server.Login(tx_username.Text, tx_password.Text);
 
             if (result)
             {
+                Test();
+                return;
                 //登录成功
                 Global.FormMain.Show();
                 Global.FormLogin.Hide();

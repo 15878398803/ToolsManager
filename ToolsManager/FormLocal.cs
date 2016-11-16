@@ -13,6 +13,7 @@ namespace ToolsManager
 {
     public partial class FormLocal : Form
     {
+
         public FormLocal()
         {
             InitializeComponent();
@@ -48,20 +49,21 @@ namespace ToolsManager
             var s = stationName.Split('|');
             if (s.Length == 2)
             {
-                Properties.Settings.Default.站点ID = s[0];
+                Properties.Settings.Default.站点ID = Convert.ToInt32(s[0]);
                 Properties.Settings.Default.站点名称 = s[1];
-                
-            }else
+
+            }
+            else
             {
                 MessageBox.Show("站点名称修改失败。");
             }
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 MD5 md5 = new MD5CryptoServiceProvider();
                 byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
                 Properties.Settings.Default.pwd = BitConverter.ToString(output).Replace("-", "").ToUpper();
             }
-            if(Properties.Settings.Default.第一次运行)
+            if (Properties.Settings.Default.第一次运行)
             {
                 Properties.Settings.Default.第一次运行 = false;
             }
@@ -79,11 +81,12 @@ namespace ToolsManager
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 tx_password.Enabled = true;
                 tx_password.Text = "";
-            }else
+            }
+            else
             {
                 tx_password.Enabled = false;
                 tx_password.Text = "";
