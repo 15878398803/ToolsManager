@@ -1144,7 +1144,7 @@ namespace ToolsManager
             try
             {
 #endif
-            
+
             //异步执行GET请求，不影响UI主线程
             string jsonString = await Task.Factory.StartNew(() =>
             {
@@ -1173,6 +1173,7 @@ namespace ToolsManager
             StringBuilder builder = new StringBuilder(200);
 
             builder.AppendFormat("http://{0}/receive/user_receive_list.api?user_id={1}&user_code={2}&page={3}&num={4}", Global.ServerIp, user_id, UserCode, page, num);
+            //builder.AppendFormat("http://{0}/receive/user_receive_list.api?user_id={1}&user_code={2}&TaskId={3}&DoorID={4}", Global.ServerIp, user_id, UserCode, TaskId, DoorId);
 #if !DEBUG
             try
             {
@@ -1185,7 +1186,7 @@ namespace ToolsManager
             });
             //以下代码在上面的Task执行完后会自动回来调用
             JsonEntity.ReceiveList ReceiveList = JsonHelper.parse<JsonEntity.ReceiveList>(jsonString);
-            Global.ReceiveList = ReceiveList;
+            Global.UserReceiveList = ReceiveList;
 
             return true;
             //Global.AutoLogin = autologin;
@@ -1218,6 +1219,70 @@ namespace ToolsManager
             //以下代码在上面的Task执行完后会自动回来调用
             JsonEntity.TaskReceiveList TaskReceiveList = JsonHelper.parse<JsonEntity.TaskReceiveList>(jsonString);
             Global.TaskReceiveList = TaskReceiveList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetReadyTestTools(int user_id, string UserCode, int StationId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/tools/ready_test_tools.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            List<JsonEntity.ReadyToolsItem> ReadyTestToolsItem = JsonHelper.parse<List<JsonEntity.ReadyToolsItem>>(jsonString);
+            Global.ReadyTestTools = ReadyTestToolsItem;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetReadyDeathTools(int user_id, string UserCode, int StationId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/tools/ready_death_list.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            List<JsonEntity.ReadyToolsItem> ReadyDeathTools = JsonHelper.parse<List<JsonEntity.ReadyToolsItem>>(jsonString);
+            Global.ReadyDeathTools = ReadyDeathTools;
 
             return true;
             //Global.AutoLogin = autologin;

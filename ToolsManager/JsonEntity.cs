@@ -292,7 +292,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string role { get; set; }
+            public int role { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -612,5 +612,97 @@ namespace ToolsManager
             public string tool_tset_time { get; set; }
             public string tool_death_time { get; set; }
         }
+        public class ReadyToolsItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string model { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string subject { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string factory_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string buy_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string life_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string vender { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_delete { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_name { get; set; }
+            /// <summary>
+            /// 接地线
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string naxt_test { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string death_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string in_depot { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_name { get; set; }
+        }
+
     }
 }

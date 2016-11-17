@@ -13,7 +13,7 @@ namespace ToolsManager
 {
     public partial class FormLocal : Form
     {
-
+        private bool isDisconnected = false;
         public FormLocal()
         {
             InitializeComponent();
@@ -34,44 +34,53 @@ namespace ToolsManager
             }
             else
             {
+                isDisconnected = true;
                 MessageBox.Show("无法获取站点列表，请检查网络连接后再试。");
                 Global.FormLogin.Show();
-                this.Close();
+                //this.Close();
             }
             tx_num.Text = Properties.Settings.Default.单页容量.ToString();
+            tx_ip.Text = Properties.Settings.Default.ServerIp;
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.供电局名称 = textBox1.Text;
-
-            var stationName = comboBox1.Items[comboBox1.SelectedIndex] as string;
-            var s = stationName.Split('|');
-            if (s.Length == 2)
+            Properties.Settings.Default.ServerIp = tx_ip.Text.Trim();
+            if (isDisconnected)
             {
-                Properties.Settings.Default.站点ID = Convert.ToInt32(s[0]);
-                Properties.Settings.Default.站点名称 = s[1];
-
+                Properties.Settings.Default.Save();
+                MessageBox.Show("修改完成。程序将自动关闭，请重新运行本程序即可生效。");
+                Application.Exit();
             }
             else
             {
-                MessageBox.Show("站点名称修改失败。");
-            }
-            if (checkBox1.Checked)
-            {
-                MD5 md5 = new MD5CryptoServiceProvider();
-                byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
-                Properties.Settings.Default.pwd = BitConverter.ToString(output).Replace("-", "").ToUpper();
-            }
+                var stationName = comboBox1.Items[comboBox1.SelectedIndex] as string;
+                var s = stationName.Split('|');
+                if (s.Length == 2)
+                {
+                    Properties.Settings.Default.站点ID = Convert.ToInt32(s[0]);
+                    Properties.Settings.Default.站点名称 = s[1];
 
-            Properties.Settings.Default.单页容量 = Convert.ToInt32(tx_num.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("站点名称修改失败。");
+                }
+                if (checkBox1.Checked)
+                {
+                    MD5 md5 = new MD5CryptoServiceProvider();
+                    byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
+                    Properties.Settings.Default.pwd = BitConverter.ToString(output).Replace("-", "").ToUpper();
+                }
 
+                Properties.Settings.Default.单页容量 = Convert.ToInt32(tx_num.Text.Trim());
 
-
-            if (Properties.Settings.Default.第一次运行)
-            {
-                Properties.Settings.Default.第一次运行 = false;
+                if (Properties.Settings.Default.第一次运行)
+                {
+                    Properties.Settings.Default.第一次运行 = false;
+                }
             }
             Properties.Settings.Default.Save();
             MessageBox.Show("修改完成。程序将自动关闭，请重新运行本程序即可生效。");

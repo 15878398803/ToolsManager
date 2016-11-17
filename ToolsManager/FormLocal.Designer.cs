@@ -37,6 +37,8 @@
             this.tx_password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tx_num = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tx_ip = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -123,11 +125,29 @@
             this.tx_num.Size = new System.Drawing.Size(158, 21);
             this.tx_num.TabIndex = 9;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 139);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 12);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "服务器地址：";
+            // 
+            // tx_ip
+            // 
+            this.tx_ip.Location = new System.Drawing.Point(83, 136);
+            this.tx_ip.Name = "tx_ip";
+            this.tx_ip.Size = new System.Drawing.Size(158, 21);
+            this.tx_ip.TabIndex = 11;
+            // 
             // FormLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 283);
+            this.Controls.Add(this.tx_ip);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tx_num);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tx_password);
@@ -157,5 +177,7 @@
         private System.Windows.Forms.TextBox tx_password;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tx_num;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tx_ip;
     }
 }
