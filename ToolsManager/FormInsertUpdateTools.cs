@@ -23,6 +23,8 @@ namespace ToolsManager
         {
             if (isUpdateTool)
             {
+                Text = "修改工具";
+                button1.Text = "修改";
                 if (updateTool != null)
                 {
                     textBox6.Text = updateTool.sensor_id;
@@ -31,9 +33,9 @@ namespace ToolsManager
                     textBox2.Text = updateTool.model;
                     textBox4.Text = updateTool.number;
                     textBox3.Text = updateTool.subject;
-                    dateTimePicker1.Value = updateTool.factory_time;
-                    dateTimePicker2.Value = updateTool.buy_time;
-                    dateTimePicker4.Value = updateTool.test_time;
+                    dateTimePicker1.Value = DateTime.Parse(updateTool.factory_time);
+                    dateTimePicker2.Value = DateTime.Parse(updateTool.buy_time);
+                    dateTimePicker4.Value = DateTime.Parse(updateTool.test_time);
                     textBox7.Text = updateTool.test_cycle;
                     textBox8.Text = updateTool.life_cycle;
                     textBox9.Text = updateTool.vender;
@@ -62,6 +64,11 @@ namespace ToolsManager
                 }
 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

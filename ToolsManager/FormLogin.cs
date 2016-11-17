@@ -108,12 +108,12 @@ namespace ToolsManager
                 //登录成功
                 //Global.FormRecord.Show();
 
-                var f = new FormInsertUpdateTools();
-                await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
+                //var f = new FormInsertUpdateTools();
+                //await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
 
-                f.isUpdateTool = true;
-                f.updateTool = Global.ToolsList.list[16];
-                f.Show();
+                //f.isUpdateTool = true;
+                //f.updateTool = Global.ToolsList.list[15];
+                //f.Show();
 
 
 
