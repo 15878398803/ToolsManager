@@ -292,7 +292,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string role { get; set; }
+            public int role { get; set; }
             /// <summary>
             /// 
             /// </summary>

@@ -107,7 +107,10 @@ namespace ToolsManager
                 //return;
                 //登录成功
                 //Global.FormRecord.Show();
-                var f = new FormInsertUser();
+                var f = new FormInsertUpdateUser();
+                await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
+                f.updateUserItems = Global.UserList.list[9];
+                f.UpdateUser = true;
                 f.Show();
 
                 //Global.FormMain.Show();
