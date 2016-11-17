@@ -106,7 +106,7 @@ namespace ToolsManager
                 //Test();
                 //return;
                 //登录成功
-                Global.FormRecord.Show();
+                Global.FormMaintain.Show();
 
                 //Global.FormMain.Show();
                 Global.FormLogin.Hide();
