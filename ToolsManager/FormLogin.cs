@@ -18,7 +18,7 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
-            if(Properties.Settings.Default.第一次运行)
+            if (Properties.Settings.Default.第一次运行)
             {
                 FormLocal f = new FormLocal();
                 f.TopMost = true;
@@ -100,13 +100,15 @@ namespace ToolsManager
             tx_password.Text = "123456";
 #endif
             var result = await Server.Login(tx_username.Text, tx_password.Text);
-            
+
             if (result)
             {
                 //Test();
                 //return;
                 //登录成功
-                Global.FormRecord.Show();
+                //Global.FormRecord.Show();
+                var f = new FormInsertUser();
+                f.Show();
 
                 //Global.FormMain.Show();
                 Global.FormLogin.Hide();
