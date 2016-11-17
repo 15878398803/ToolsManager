@@ -71,8 +71,8 @@ namespace ToolsManager
             //await Server.GetOpenDoorList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 1);
 
             //await Server.GetReceiveList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
-            await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 3);
-            await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 2, 3);
+            //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 3);
+            //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 2, 3);
 
 
         }
@@ -103,8 +103,8 @@ namespace ToolsManager
 
             if (result)
             {
-                //Test();
-                //return;
+                Test();
+                return;
                 //登录成功
                 //Global.FormRecord.Show();
                 var f = new FormInsertUpdateUser();
