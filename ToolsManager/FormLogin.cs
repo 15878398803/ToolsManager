@@ -98,13 +98,16 @@ namespace ToolsManager
             //f.UpdateUser = true;
             //f.Show();
 
-            var f = new FormUpdateInsertDefect();
+            //var f = new FormUpdateInsertDefect();
+            //f.IsUpdate = true;
+            //await Server.GetDefectList(2);
+            //f.Defect = Global.DefectList[0];
+            //f.Show();
+
+            var f = new FormWorkType();
+            await Server.GetWorkTypeList();
             f.IsUpdate = true;
-            await Server.GetDefectList(2);
-            f.Defect = Global.DefectList[0];
-            //await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
-            //f.updateUserItems = Global.UserList.list[9];
-            //f.UpdateUser = true;
+            f.WorkType = Global.WorkTypeList[0];
             f.Show();
 
         }
