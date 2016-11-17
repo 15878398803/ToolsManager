@@ -191,7 +191,7 @@ namespace ToolsManager
         public static List<JsonEntity.Station> StationList;
         public static JsonEntity.AutoLogin AutoLogin;
         public static JsonEntity.ToolsList ToolsList;
-        public static List<JsonEntity.Tool> Tools;
+        public static List<JsonEntity.ToolClass> ToolClass;
         public static JsonEntity.SensorList SensorList;
         public static List<JsonEntity.Defect> DefectList;
         public static JsonEntity.UserList UserList;

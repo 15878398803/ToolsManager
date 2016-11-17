@@ -148,7 +148,7 @@ namespace ToolsManager
 
         }
 
-        async public static Task<bool> GetTools()
+        async public static Task<bool> GetToolClasses()
         {
             StringBuilder builder = new StringBuilder(200);
 
@@ -163,8 +163,8 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
             //以下代码在上面的Task执行完后会自动回来调用
-            List<JsonEntity.Tool> Tools = JsonHelper.parse<List<JsonEntity.Tool>>(jsonString);
-            Global.Tools = Tools;
+            List<JsonEntity.ToolClass> Tools = JsonHelper.parse<List<JsonEntity.ToolClass>>(jsonString);
+            Global.ToolClass = Tools;
 
             return true;
             //Global.AutoLogin = autologin;
