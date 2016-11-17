@@ -13,6 +13,7 @@ namespace ToolsManager
 {
     public partial class FormLocal : Form
     {
+
         public FormLocal()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace ToolsManager
                 Global.FormLogin.Show();
                 this.Close();
             }
+            tx_num.Text = Properties.Settings.Default.单页容量.ToString();
 
         }
 
@@ -50,23 +52,27 @@ namespace ToolsManager
             {
                 Properties.Settings.Default.站点ID = Convert.ToInt32(s[0]);
                 Properties.Settings.Default.站点名称 = s[1];
-                
-            }else
+
+            }
+            else
             {
                 MessageBox.Show("站点名称修改失败。");
             }
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 MD5 md5 = new MD5CryptoServiceProvider();
                 byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
                 Properties.Settings.Default.pwd = BitConverter.ToString(output).Replace("-", "").ToUpper();
             }
-            if(Properties.Settings.Default.第一次运行)
+
+            Properties.Settings.Default.单页容量 = Convert.ToInt32(tx_num.Text.Trim());
+
+
+
+            if (Properties.Settings.Default.第一次运行)
             {
                 Properties.Settings.Default.第一次运行 = false;
             }
-
-
             Properties.Settings.Default.Save();
             MessageBox.Show("修改完成。程序将自动关闭，请重新运行本程序即可生效。");
             Application.Exit();
@@ -79,11 +85,12 @@ namespace ToolsManager
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 tx_password.Enabled = true;
                 tx_password.Text = "";
-            }else
+            }
+            else
             {
                 tx_password.Enabled = false;
                 tx_password.Text = "";

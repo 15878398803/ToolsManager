@@ -19,7 +19,7 @@ namespace ToolsManager
             public string user_code { get; set; }
 
             [DataMember(Order = 2)]
-            public string user_id { get; set; }
+            public int user_id { get; set; }
 
             [DataMember(Order = 3)]
             public string name { get; set; }
@@ -510,6 +510,107 @@ namespace ToolsManager
             /// 
             /// </summary>
             public OpenDoorListNum num { get; set; }
+        }
+        public class ReceiveListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string receive_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string receive_user_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string return_user_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string receive_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string return_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string receive_gob { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string return_gob { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string receive_user_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string return_user_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_num { get; set; }
+        }
+
+        public class ReceiveListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public int page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class ReceiveList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<ReceiveListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public ReceiveListNum num { get; set; }
+        }
+
+        public class TaskReceiveList : ReceiveListItem
+        {
+            public string tool_tset_time { get; set; }
+            public string tool_death_time { get; set; }
         }
     }
 }
