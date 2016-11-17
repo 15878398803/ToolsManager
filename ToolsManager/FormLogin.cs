@@ -73,13 +73,13 @@ namespace ToolsManager
             //await Server.GetReceiveList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
             //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 3);
             //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 2, 3);
-            await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Global.StationId);
-
+            //await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Global.StationId);
+            //await Server.GetReadyDeathTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Global.StationId);
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
 
-
+            //超级密码为123465
             if (tx_username.Text == "admin")
             {
                 MD5 md5 = new MD5CryptoServiceProvider();
@@ -103,17 +103,17 @@ namespace ToolsManager
 
             if (result)
             {
-                Test();
-                return;
+                //Test();
+                //return;
                 //登录成功
                 //Global.FormRecord.Show();
-                var f = new FormInsertUpdateUser();
-                await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
-                f.updateUserItems = Global.UserList.list[9];
-                f.UpdateUser = true;
-                f.Show();
+                //var f = new FormInsertUpdateUser();
+                //await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
+                //f.updateUserItems = Global.UserList.list[9];
+                //f.UpdateUser = true;
+                //f.Show();
 
-                //Global.FormMain.Show();
+                Global.FormMain.Show();
                 Global.FormLogin.Hide();
             }
             else

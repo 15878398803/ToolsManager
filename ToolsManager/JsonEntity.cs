@@ -612,7 +612,7 @@ namespace ToolsManager
             public DateTime tool_tset_time { get; set; }
             public DateTime tool_death_time { get; set; }
         }
-        public class ReadyTestToolsItem
+        public class ReadyToolsItem
         {
             /// <summary>
             /// 
@@ -703,5 +703,6 @@ namespace ToolsManager
             /// </summary>
             public string user_name { get; set; }
         }
+
     }
 }
