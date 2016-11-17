@@ -75,6 +75,31 @@ namespace ToolsManager
             //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 2, 3);
             //await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Global.StationId);
             //await Server.GetReadyDeathTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Global.StationId);
+
+            //var f = new FormInsertUpdateToolClass();
+            //await Server.GetToolClasses();
+            //f.isUpdate = true;
+            //f.toolclass = Global.ToolClass[22];
+            //f.Show();
+
+
+            //var f = new FormInsertUpdateTools();
+            //await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
+            //await Server.GetToolClasses();
+            ////f.isUpdateTool = true;
+            //f.updateTool = Global.ToolsList.list[0];
+            //f.Show();
+
+
+
+            //var f = new FormInsertUpdateUser();
+            //await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
+            //f.updateUserItems = Global.UserList.list[9];
+            //f.UpdateUser = true;
+            //f.Show();
+
+        
+
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
@@ -103,25 +128,11 @@ namespace ToolsManager
 
             if (result)
             {
-                //Test();
-                //return;
+                Test();
+
                 //登录成功
                 //Global.FormRecord.Show();
-
-                var f = new FormInsertUpdateTools();
-                await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
-                await Server.GetToolClasses();
-                //f.isUpdateTool = true;
-                f.updateTool = Global.ToolsList.list[0];
-                f.Show();
-
-
-
-                //var f = new FormInsertUpdateUser();
-                //await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
-                //f.updateUserItems = Global.UserList.list[9];
-                //f.UpdateUser = true;
-                //f.Show();
+                
 
                 Global.FormMain.Show();
                 Global.FormLogin.Hide();

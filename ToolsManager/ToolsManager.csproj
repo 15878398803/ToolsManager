@@ -96,6 +96,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormInsertUpdateToolClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertUpdateToolClass.Designer.cs">
+      <DependentUpon>FormInsertUpdateToolClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInsertUpdateTools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="FormInsertUpdateToolClass.resx">
+      <DependentUpon>FormInsertUpdateToolClass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInsertUpdateTools.resx">
       <DependentUpon>FormInsertUpdateTools.cs</DependentUpon>
     </EmbeddedResource>
