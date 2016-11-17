@@ -91,15 +91,15 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string factory_time { get; set; }
+            public DateTime factory_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string buy_time { get; set; }
+            public DateTime buy_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string test_time { get; set; }
+            public DateTime test_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -127,7 +127,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string death_time { get; set; }
+            public DateTime death_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -375,7 +375,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string insert_time { get; set; }
+            public DateTime insert_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -477,7 +477,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string open_time { get; set; }
+            public DateTime open_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -540,11 +540,11 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string receive_time { get; set; }
+            public DateTime receive_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string return_time { get; set; }
+            public DateTime return_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -609,8 +609,99 @@ namespace ToolsManager
 
         public class TaskReceiveList : ReceiveListItem
         {
-            public string tool_tset_time { get; set; }
-            public string tool_death_time { get; set; }
+            public DateTime tool_tset_time { get; set; }
+            public DateTime tool_death_time { get; set; }
+        }
+        public class ReadyTestToolsItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string model { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string subject { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public DateTime factory_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public DateTime buy_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public DateTime test_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string life_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string vender { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_delete { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_name { get; set; }
+            /// <summary>
+            /// 接地线
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public DateTime naxt_test { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public DateTime death_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string in_depot { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string user_name { get; set; }
         }
     }
 }

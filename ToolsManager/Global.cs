@@ -202,5 +202,6 @@ namespace ToolsManager
         public static JsonEntity.ReceiveList ReceiveList;
         public static JsonEntity.ReceiveList UserReceiveList;
         public static JsonEntity.TaskReceiveList TaskReceiveList;
+        public static List<JsonEntity.ReadyTestToolsItem> ReadyTestTools;
     }
 }

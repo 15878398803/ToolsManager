@@ -1144,7 +1144,7 @@ namespace ToolsManager
             try
             {
 #endif
-            
+
             //异步执行GET请求，不影响UI主线程
             string jsonString = await Task.Factory.StartNew(() =>
             {
@@ -1218,6 +1218,38 @@ namespace ToolsManager
             //以下代码在上面的Task执行完后会自动回来调用
             JsonEntity.TaskReceiveList TaskReceiveList = JsonHelper.parse<JsonEntity.TaskReceiveList>(jsonString);
             Global.TaskReceiveList = TaskReceiveList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetReadyTestTools(int user_id, string UserCode, int StationId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/tools/ready_test_tools.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            List<JsonEntity.ReadyTestToolsItem> ReadyTestToolsItem = JsonHelper.parse<List<JsonEntity.ReadyTestToolsItem>>(jsonString);
+            Global.ReadyTestTools = ReadyTestToolsItem;
 
             return true;
             //Global.AutoLogin = autologin;
