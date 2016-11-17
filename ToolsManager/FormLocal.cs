@@ -48,7 +48,7 @@ namespace ToolsManager
             var s = stationName.Split('|');
             if (s.Length == 2)
             {
-                Properties.Settings.Default.站点ID = s[0];
+                Properties.Settings.Default.站点ID = Convert.ToInt32(s[0]);
                 Properties.Settings.Default.站点名称 = s[1];
                 
             }else

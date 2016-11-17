@@ -46,14 +46,14 @@
             this.listViewLeft = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.ll_Next = new System.Windows.Forms.LinkLabel();
-            this.ll_Last = new System.Windows.Forms.LinkLabel();
-            this.ll_First = new System.Windows.Forms.LinkLabel();
             this.ll_End = new System.Windows.Forms.LinkLabel();
+            this.ll_Next = new System.Windows.Forms.LinkLabel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.ll_Goto = new System.Windows.Forms.LinkLabel();
-            this.lb_sum = new System.Windows.Forms.Label();
+            this.ll_Last = new System.Windows.Forms.LinkLabel();
+            this.ll_First = new System.Windows.Forms.LinkLabel();
             this.lb_cur = new System.Windows.Forms.Label();
+            this.lb_sum = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -164,6 +164,19 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(658, 24);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
+            // ll_End
+            // 
+            this.ll_End.AutoSize = true;
+            this.ll_End.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ll_End.Location = new System.Drawing.Point(624, 0);
+            this.ll_End.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.ll_End.Name = "ll_End";
+            this.ll_End.Size = new System.Drawing.Size(29, 26);
+            this.ll_End.TabIndex = 3;
+            this.ll_End.TabStop = true;
+            this.ll_End.Text = "末页";
+            this.ll_End.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ll_Next
             // 
             this.ll_Next.AutoSize = true;
@@ -177,45 +190,7 @@
             this.ll_Next.TabStop = true;
             this.ll_Next.Text = "下一页";
             this.ll_Next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ll_Last
-            // 
-            this.ll_Last.AutoSize = true;
-            this.ll_Last.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_Last.Location = new System.Drawing.Point(451, 0);
-            this.ll_Last.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.ll_Last.Name = "ll_Last";
-            this.ll_Last.Size = new System.Drawing.Size(41, 26);
-            this.ll_Last.TabIndex = 1;
-            this.ll_Last.TabStop = true;
-            this.ll_Last.Text = "上一页";
-            this.ll_Last.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ll_First
-            // 
-            this.ll_First.AutoSize = true;
-            this.ll_First.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_First.Location = new System.Drawing.Point(400, 0);
-            this.ll_First.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.ll_First.Name = "ll_First";
-            this.ll_First.Size = new System.Drawing.Size(41, 26);
-            this.ll_First.TabIndex = 2;
-            this.ll_First.TabStop = true;
-            this.ll_First.Text = "第一页";
-            this.ll_First.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ll_End
-            // 
-            this.ll_End.AutoSize = true;
-            this.ll_End.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_End.Location = new System.Drawing.Point(624, 0);
-            this.ll_End.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.ll_End.Name = "ll_End";
-            this.ll_End.Size = new System.Drawing.Size(29, 26);
-            this.ll_End.TabIndex = 3;
-            this.ll_End.TabStop = true;
-            this.ll_End.Text = "末页";
-            this.ll_End.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_Next.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Next_MouseClick);
             // 
             // textBox1
             // 
@@ -240,17 +215,32 @@
             this.ll_Goto.Text = "跳至";
             this.ll_Goto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lb_sum
+            // ll_Last
             // 
-            this.lb_sum.AutoSize = true;
-            this.lb_sum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_sum.Location = new System.Drawing.Point(286, 0);
-            this.lb_sum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lb_sum.Name = "lb_sum";
-            this.lb_sum.Size = new System.Drawing.Size(35, 26);
-            this.lb_sum.TabIndex = 6;
-            this.lb_sum.Text = "共0页";
-            this.lb_sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_Last.AutoSize = true;
+            this.ll_Last.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ll_Last.Location = new System.Drawing.Point(451, 0);
+            this.ll_Last.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.ll_Last.Name = "ll_Last";
+            this.ll_Last.Size = new System.Drawing.Size(41, 26);
+            this.ll_Last.TabIndex = 1;
+            this.ll_Last.TabStop = true;
+            this.ll_Last.Text = "上一页";
+            this.ll_Last.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_Last.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Last_MouseClick);
+            // 
+            // ll_First
+            // 
+            this.ll_First.AutoSize = true;
+            this.ll_First.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ll_First.Location = new System.Drawing.Point(400, 0);
+            this.ll_First.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.ll_First.Name = "ll_First";
+            this.ll_First.Size = new System.Drawing.Size(41, 26);
+            this.ll_First.TabIndex = 2;
+            this.ll_First.TabStop = true;
+            this.ll_First.Text = "第一页";
+            this.ll_First.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb_cur
             // 
@@ -263,6 +253,18 @@
             this.lb_cur.TabIndex = 7;
             this.lb_cur.Text = "当前第0页";
             this.lb_cur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lb_sum
+            // 
+            this.lb_sum.AutoSize = true;
+            this.lb_sum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_sum.Location = new System.Drawing.Point(286, 0);
+            this.lb_sum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lb_sum.Name = "lb_sum";
+            this.lb_sum.Size = new System.Drawing.Size(35, 26);
+            this.lb_sum.TabIndex = 6;
+            this.lb_sum.Text = "共0页";
+            this.lb_sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormMaintain
             // 

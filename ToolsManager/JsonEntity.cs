@@ -123,7 +123,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string naxt_test { get; set; }
+            public string next_test { get; set; }
             /// <summary>
             /// 
             /// </summary>
