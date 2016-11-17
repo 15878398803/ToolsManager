@@ -168,6 +168,12 @@
     <Compile Include="FormSubsystem.Designer.cs">
       <DependentUpon>FormSubsystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdateInsertDefect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateInsertDefect.Designer.cs">
+      <DependentUpon>FormUpdateInsertDefect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="JsonEntity.cs" />
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSubsystem.resx">
       <DependentUpon>FormSubsystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateInsertDefect.resx">
+      <DependentUpon>FormUpdateInsertDefect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
