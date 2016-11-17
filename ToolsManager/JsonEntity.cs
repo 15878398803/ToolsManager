@@ -91,15 +91,15 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public DateTime factory_time { get; set; }
+            public string factory_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public DateTime buy_time { get; set; }
+            public string buy_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public DateTime test_time { get; set; }
+            public string test_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -127,7 +127,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public DateTime death_time { get; set; }
+            public string death_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -375,7 +375,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public DateTime insert_time { get; set; }
+            public string insert_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -477,7 +477,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public DateTime open_time { get; set; }
+            public string open_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -540,11 +540,11 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public DateTime receive_time { get; set; }
+            public string receive_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public DateTime return_time { get; set; }
+            public string return_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -609,8 +609,8 @@ namespace ToolsManager
 
         public class TaskReceiveList : ReceiveListItem
         {
-            public DateTime tool_tset_time { get; set; }
-            public DateTime tool_death_time { get; set; }
+            public string tool_tset_time { get; set; }
+            public string tool_death_time { get; set; }
         }
         public class ReadyToolsItem
         {
@@ -653,15 +653,15 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public DateTime factory_time { get; set; }
+            public string factory_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public DateTime buy_time { get; set; }
+            public string buy_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public DateTime test_time { get; set; }
+            public string test_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -689,11 +689,11 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public DateTime naxt_test { get; set; }
+            public string naxt_test { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public DateTime death_time { get; set; }
+            public string death_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
