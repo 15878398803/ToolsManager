@@ -127,10 +127,10 @@ namespace ToolsManager
             //f.door = Global.DoorList[0];
             //f.Show();
 
-            //YYYQYYQYQYQYQYQYQYYQYQYQYQYQYQYQYQYQY
+            //YYYQYYQYQYQYQYQYQYYQYQYQYQYyjmyjm
             //hello world
             //hhhh
-            ////////////////1111111111111111111111111111/////////////////////
+            //
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
