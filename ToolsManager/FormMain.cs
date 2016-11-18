@@ -28,26 +28,30 @@ namespace ToolsManager
                 case "领还记录":
 
                     Global.FormRecord.Show();
-
+                    Global.FormRecord.Focus();
                     break;
                 case "维护管理":
 
                     Global.FormMaintain.Show();
+                    Global.FormMaintain.Focus();
 
                     break;
                 case "业务报表":
 
                     Global.FormReport.Show();
+                    Global.FormReport.Focus();
 
                     break;
                 case "子系统":
 
                     Global.FormSubsystem.Show();
+                    Global.FormSubsystem.Focus();
 
                     break;
                 case "个人设置":
 
                     Global.FormSettings.Show();
+                    Global.FormSettings.Focus();
 
                     break;
             }
