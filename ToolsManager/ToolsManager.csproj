@@ -96,6 +96,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormInsertUpdateDoor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertUpdateDoor.Designer.cs">
+      <DependentUpon>FormInsertUpdateDoor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInsertUpdateStations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertUpdateStations.Designer.cs">
+      <DependentUpon>FormInsertUpdateStations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInsertUpdateToolClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertUpdateToolClass.Designer.cs">
+      <DependentUpon>FormInsertUpdateToolClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInsertUpdateTools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +180,24 @@
     <Compile Include="FormSubsystem.Designer.cs">
       <DependentUpon>FormSubsystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdateInsertDefect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateInsertDefect.Designer.cs">
+      <DependentUpon>FormUpdateInsertDefect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateTask.Designer.cs">
+      <DependentUpon>FormUpdateTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWorkType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWorkType.Designer.cs">
+      <DependentUpon>FormWorkType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="JsonEntity.cs" />
@@ -170,6 +206,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="FormInsertUpdateDoor.resx">
+      <DependentUpon>FormInsertUpdateDoor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInsertUpdateStations.resx">
+      <DependentUpon>FormInsertUpdateStations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInsertUpdateToolClass.resx">
+      <DependentUpon>FormInsertUpdateToolClass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInsertUpdateTools.resx">
       <DependentUpon>FormInsertUpdateTools.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +247,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSubsystem.resx">
       <DependentUpon>FormSubsystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateInsertDefect.resx">
+      <DependentUpon>FormUpdateInsertDefect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateTask.resx">
+      <DependentUpon>FormUpdateTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWorkType.resx">
+      <DependentUpon>FormWorkType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

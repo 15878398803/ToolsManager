@@ -38,9 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,6 +52,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
+            this.comboBoxClass = new System.Windows.Forms.ComboBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button2
@@ -140,13 +140,6 @@
             this.label4.TabIndex = 22;
             this.label4.Text = "工具编号";
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(113, 147);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 29;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -155,13 +148,6 @@
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 28;
             this.label5.Text = "科目ID";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(113, 120);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 21);
-            this.textBox6.TabIndex = 27;
             // 
             // label6
             // 
@@ -268,11 +254,28 @@
             this.textBox9.Size = new System.Drawing.Size(100, 21);
             this.textBox9.TabIndex = 41;
             // 
+            // comboBoxClass
+            // 
+            this.comboBoxClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxClass.FormattingEnabled = true;
+            this.comboBoxClass.Location = new System.Drawing.Point(113, 148);
+            this.comboBoxClass.Name = "comboBoxClass";
+            this.comboBoxClass.Size = new System.Drawing.Size(100, 20);
+            this.comboBoxClass.TabIndex = 43;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(113, 120);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 21);
+            this.textBox6.TabIndex = 27;
+            // 
             // FormInsertUpdateTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 397);
+            this.Controls.Add(this.comboBoxClass);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label11);
@@ -285,7 +288,6 @@
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
@@ -320,9 +322,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label7;
@@ -336,5 +336,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.ComboBox comboBoxClass;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }

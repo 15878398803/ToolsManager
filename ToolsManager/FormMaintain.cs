@@ -15,6 +15,7 @@ namespace ToolsManager
     {
 
         int page = 1;
+   //     bool flag = false;
         private int curPage, maxPageNum;
         public FormMaintain()
         {
@@ -33,61 +34,7 @@ namespace ToolsManager
             {
                 case "台账报表":
                     await TableToolsList(page);
-                    //if (Global.ToolsList!=null)
-                    //{
-
-                    //    datatable.Columns.Add("工具标识", typeof(string));
-                    //    datatable.Columns.Add("传感器标识", typeof(string));
-                    //    datatable.Columns.Add("站点id标识", typeof(string));
-                    //    datatable.Columns.Add("科目id标识", typeof(string));
-                    //    datatable.Columns.Add("领用人id标识", typeof(string));
-                    //    datatable.Columns.Add("工具名称", typeof(string));
-                    //    datatable.Columns.Add("工具型号", typeof(string));
-                    //    datatable.Columns.Add("工具编号", typeof(string));
-                    //    datatable.Columns.Add("工具类别", typeof(string));
-                    //    datatable.Columns.Add("出厂日期", typeof(string));
-                    //    datatable.Columns.Add("购买日期", typeof(string));
-                    //    datatable.Columns.Add("试验日期", typeof(string));
-                    //    datatable.Columns.Add("试验周期", typeof(string));
-                    //    datatable.Columns.Add("生命周期", typeof(string));
-                    //    datatable.Columns.Add("生产厂商", typeof(string));
-                    //    datatable.Columns.Add("传感器名称", typeof(string));
-                    //    datatable.Columns.Add("科目名称", typeof(string));
-                    //    datatable.Columns.Add("下次试验日期", typeof(string));
-                    //    datatable.Columns.Add("报废日期", typeof(string));
-                    //    datatable.Columns.Add("是否在库", typeof(string));
-                    //    datatable.Columns.Add("用户", typeof(string));
-
-                    //    foreach (var tool in Global.ToolsList.list)
-                    //    {
-                    //        DataRow row = datatable.NewRow();
-                    //        row["工具标识"] = tool.tool_id;
-                    //        row["传感器标识"] = tool.sensor_id;
-                    //        row["站点id标识"] = tool.station_id;
-                    //        row["科目id标识"] = tool.class_id;
-                    //        row["领用人id标识"] = tool.user_id;
-                    //        row["工具名称"] = tool.name;
-                    //        row["工具型号"] = tool.model;
-                    //        row["工具编号"] = tool.number;
-                    //        row["工具类别"] = tool.subject;
-                    //        row["出厂日期"] = tool.factory_time;
-                    //        row["购买日期"] = tool.buy_time;
-                    //        row["试验日期"] = tool.test_time;
-                    //        row["试验周期"] = tool.test_cycle;
-                    //        row["生命周期"] = tool.life_cycle;
-                    //        row["生产厂商"] = tool.vender;
-                    //        row["传感器名称"] = tool.sensor_name;
-                    //        row["科目名称"] = tool.class_name;
-                    //        row["下次试验日期"] = tool.next_test;
-                    //        row["报废日期"] = tool.death_time;
-                    //        row["是否在库"] = tool.in_depot;
-                    //        row["用户"] = tool.user_name;
-                    //        datatable.Rows.Add(row);
-                    //    }
-                    //    dataGridView1.DataSource = datatable;
-                    //    dataGridView1.RowHeadersVisible = false;
-                    //    }
-                        break;
+                    break;
                 case "综合管理":
                     break;
                 case "预送检表":
@@ -133,38 +80,101 @@ namespace ToolsManager
             listViewLeft_DoubleClick(null, null);
         }
 
+        private void ll_End_MouseClick(object sender, MouseEventArgs e)
+        {
+            page = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
+            listViewLeft_DoubleClick(null, null);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            page = Convert.ToInt32(comboBox1.Text);
+            listViewLeft_DoubleClick(null, null);
+        }
+
         async public Task<bool> TableToolsList(int cur)
         {
+            
             if (cur <= 0)
                 cur = 1;
             if (await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
             {
+                maxPageNum = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
                 lb_cur.Text = "第" + Global.ToolsList.num.page + "页";
-                var sum = Global.ToolsList.num.list_num / Global.PageNum;
-                maxPageNum = sum == 0 ? 1 : sum;
+  //              var sum = Global.ToolsList.num.list_num / Global.PageNum;
+   //             maxPageNum = sum == 0 ? 1 : sum;
                 lb_sum.Text = "共" + maxPageNum + "页";
                 curPage = cur;
-                Global.AddComboxNum(comboBox1, maxPageNum);
+                if(maxPageNum!=comboBox1.Items.Count)
+                {
+                    Global.AddComboxNum(comboBox1, maxPageNum);
+                }               
                 dataGridView1.DataSource = Global.ToolsList.list;
                 dataGridView1.RowHeadersVisible = false;
+                dataGridView1.Columns[0].HeaderText = "工具标识";
+                dataGridView1.Columns[1].HeaderText = "传感器标识";
+                dataGridView1.Columns[2].HeaderText = "站点id标识";
+                dataGridView1.Columns[3].HeaderText = "科目id标识";
+                dataGridView1.Columns[4].HeaderText = "领用人id标识";
+                dataGridView1.Columns[5].HeaderText = "工具名称";
+                dataGridView1.Columns[6].HeaderText = "工具型号";
+                dataGridView1.Columns[7].HeaderText = "工具编号";
+                dataGridView1.Columns[8].HeaderText = "工具类别";
+                dataGridView1.Columns[9].HeaderText = "出厂日期";
+                dataGridView1.Columns[10].HeaderText = "购买日期";
+                dataGridView1.Columns[11].HeaderText = "试验日期";
+                dataGridView1.Columns[12].HeaderText = "试验周期";
+                dataGridView1.Columns[13].HeaderText = "生命周期";
+                dataGridView1.Columns[14].HeaderText = "生产厂商";
+                dataGridView1.Columns[15].HeaderText = "传感器名称";
+                dataGridView1.Columns[16].HeaderText = "科目名称";
+                dataGridView1.Columns[17].HeaderText = "下次试验日期";
+                dataGridView1.Columns[18].HeaderText = "报废日期";
+                dataGridView1.Columns[19].HeaderText = "是否在库";
+                dataGridView1.Columns[20].HeaderText = "用户";
             }
             return true;
         }
-
-        async public Task<bool> TableToolsLis(int cur)
+        
+        async public Task<bool> ReadyTestToolsList()
         {
-            if (cur <= 0)
-                cur = 1;
-            if (await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
+            if (await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1)) 
             {
+                //               maxPageNum = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
+                int list_num = Global.ReadyTestTools.Count;
+                maxPageNum = (list_num / 5)+1;
                 lb_cur.Text = "第" + Global.ToolsList.num.page + "页";
-                var sum = Global.ToolsList.num.list_num / Global.PageNum;
-                maxPageNum = sum == 0 ? 1 : sum;
+                //              var sum = Global.ToolsList.num.list_num / Global.PageNum;
+                //             maxPageNum = sum == 0 ? 1 : sum;
                 lb_sum.Text = "共" + maxPageNum + "页";
                 curPage = cur;
-                Global.AddComboxNum(comboBox1, maxPageNum);
+                if (maxPageNum != comboBox1.Items.Count)
+                {
+                    Global.AddComboxNum(comboBox1, maxPageNum);
+                }
                 dataGridView1.DataSource = Global.ToolsList.list;
                 dataGridView1.RowHeadersVisible = false;
+                dataGridView1.Columns[0].HeaderText = "工具标识";
+                dataGridView1.Columns[1].HeaderText = "传感器标识";
+                dataGridView1.Columns[2].HeaderText = "站点id标识";
+                dataGridView1.Columns[3].HeaderText = "科目id标识";
+                dataGridView1.Columns[4].HeaderText = "领用人id标识";
+                dataGridView1.Columns[5].HeaderText = "工具名称";
+                dataGridView1.Columns[6].HeaderText = "工具型号";
+                dataGridView1.Columns[7].HeaderText = "工具编号";
+                dataGridView1.Columns[8].HeaderText = "工具类别";
+                dataGridView1.Columns[9].HeaderText = "出厂日期";
+                dataGridView1.Columns[10].HeaderText = "购买日期";
+                dataGridView1.Columns[11].HeaderText = "试验日期";
+                dataGridView1.Columns[12].HeaderText = "试验周期";
+                dataGridView1.Columns[13].HeaderText = "生命周期";
+                dataGridView1.Columns[14].HeaderText = "生产厂商";
+                dataGridView1.Columns[15].HeaderText = "传感器名称";
+                dataGridView1.Columns[16].HeaderText = "科目名称";
+                dataGridView1.Columns[17].HeaderText = "下次试验日期";
+                dataGridView1.Columns[18].HeaderText = "报废日期";
+                dataGridView1.Columns[19].HeaderText = "是否在库";
+                dataGridView1.Columns[20].HeaderText = "用户";
             }
             return true;
         }

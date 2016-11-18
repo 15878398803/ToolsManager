@@ -166,7 +166,7 @@ namespace ToolsManager
             public ToolListNum num { get; set; }
         }
 
-        public class Tool
+        public class ToolClass
         {
             public string class_id { get; set; }
             public string class_name { get; set; }

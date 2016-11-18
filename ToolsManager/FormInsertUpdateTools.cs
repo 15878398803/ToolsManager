@@ -19,8 +19,17 @@ namespace ToolsManager
             InitializeComponent();
         }
 
-        private void FormInsertUpdateTools_Load(object sender, EventArgs e)
+        async private void FormInsertUpdateTools_Load(object sender, EventArgs e)
         {
+            await Server.GetToolClasses();
+
+            foreach (var i in Global.ToolClass)
+            {
+                comboBoxClass.Items.Add(i.class_id + "|" + i.class_name);
+            }
+            if (comboBoxClass.Items.Count > 0)
+                comboBoxClass.SelectedIndex = 0;
+
             if (isUpdateTool)
             {
                 Text = "修改工具";
@@ -28,7 +37,7 @@ namespace ToolsManager
                 if (updateTool != null)
                 {
                     textBox6.Text = updateTool.sensor_id;
-                    textBox5.Text = updateTool.class_id;
+                    //textBox5.Text = updateTool.class_id;
                     textBox1.Text = updateTool.name;
                     textBox2.Text = updateTool.model;
                     textBox4.Text = updateTool.number;
@@ -49,16 +58,18 @@ namespace ToolsManager
 
         async private void button1_Click(object sender, EventArgs e)
         {
+            var stationName = comboBoxClass.Items[comboBoxClass.SelectedIndex] as string;
+            var s = stationName.Split('|');
             if (isUpdateTool)
             {
-                if (await Server.UpdateTool(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(updateTool.tool_id.Trim()), Convert.ToInt32(textBox6.Text.Trim()), Convert.ToInt32(textBox5.Text.Trim()), textBox1.Text, textBox2.Text, textBox4.Text, Convert.ToInt32(textBox3.Text.Trim()), dateTimePicker1.Value, dateTimePicker2.Value, dateTimePicker4.Value, Convert.ToInt32(textBox7.Text.Trim()), Convert.ToInt32(textBox8.Text.Trim()), textBox9.Text))
+                if (await Server.UpdateTool(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(updateTool.tool_id.Trim()), Convert.ToInt32(textBox6.Text.Trim()), Convert.ToInt32(s[0]), textBox1.Text, textBox2.Text, textBox4.Text, Convert.ToInt32(textBox3.Text.Trim()), dateTimePicker1.Value, dateTimePicker2.Value, dateTimePicker4.Value, Convert.ToInt32(textBox7.Text.Trim()), Convert.ToInt32(textBox8.Text.Trim()), textBox9.Text))
                 {
                     MessageBox.Show("修改工具成功");
                 }
             }
             else
             {
-                if (await Server.AddTool(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(textBox6.Text.Trim()), Convert.ToInt32(textBox5.Text.Trim()), textBox1.Text, textBox2.Text, textBox4.Text, Convert.ToInt32(textBox3.Text.Trim()), dateTimePicker1.Value, dateTimePicker2.Value, dateTimePicker4.Value, Convert.ToInt32(textBox7.Text.Trim()), Convert.ToInt32(textBox8.Text.Trim()), textBox9.Text))
+                if (await Server.AddTool(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(textBox6.Text.Trim()), Convert.ToInt32(s[0]), textBox1.Text, textBox2.Text, textBox4.Text, Convert.ToInt32(textBox3.Text.Trim()), dateTimePicker1.Value, dateTimePicker2.Value, dateTimePicker4.Value, Convert.ToInt32(textBox7.Text.Trim()), Convert.ToInt32(textBox8.Text.Trim()), textBox9.Text))
                 {
                     MessageBox.Show("添加工具成功");
                 }

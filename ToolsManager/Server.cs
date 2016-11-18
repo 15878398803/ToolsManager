@@ -148,7 +148,7 @@ namespace ToolsManager
 
         }
 
-        async public static Task<bool> GetTools()
+        async public static Task<bool> GetToolClasses()
         {
             StringBuilder builder = new StringBuilder(200);
 
@@ -163,8 +163,8 @@ namespace ToolsManager
                 return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
             });
             //以下代码在上面的Task执行完后会自动回来调用
-            List<JsonEntity.Tool> Tools = JsonHelper.parse<List<JsonEntity.Tool>>(jsonString);
-            Global.Tools = Tools;
+            List<JsonEntity.ToolClass> Tools = JsonHelper.parse<List<JsonEntity.ToolClass>>(jsonString);
+            Global.ToolClass = Tools;
 
             return true;
             //Global.AutoLogin = autologin;
@@ -1033,7 +1033,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/door/insert_door.api?user_id={1}&user_code={2}&door_id={7}&station_id={3}&name={4}&code={5}&memo={6}", Global.ServerIp, user_id, UserCode, StationId, name, code, memo, doorId);
+            builder.AppendFormat("http://{0}/door/update_door.api?user_id={1}&user_code={2}&door_id={7}&station_id={3}&name={4}&code={5}&memo={6}", Global.ServerIp, user_id, UserCode, StationId, name, code, memo, doorId);
 #if !DEBUG
             try
             {
@@ -1238,7 +1238,7 @@ namespace ToolsManager
             StringBuilder builder = new StringBuilder(200);
 
             builder.AppendFormat("http://{0}/tools/ready_test_tools.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
-#if !DEBUG
+#if !DEBUG                        
             try
             {
 #endif

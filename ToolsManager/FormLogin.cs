@@ -18,7 +18,7 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
-            if(Properties.Settings.Default.第一次运行)
+            if (Properties.Settings.Default.第一次运行)
             {
                 FormLocal f = new FormLocal();
                 f.TopMost = true;
@@ -65,21 +65,74 @@ namespace ToolsManager
             //await Server.DeleteWork(2, "8d9dad5db5c07313a4331466ec461f24", 9);
             //await Server.GetTaskList(2, "befdf52430eb27e3b87cfe03a24f4b70",1, 2);
             //await Server.UpdateTask(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2,"t1","Team",1,"mem");
-            //await Server.GetDoorList("a");
+            //await Server.GetDoorL0ist("a");
             //await Server.InsertDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 3, "yyqdoor", "T213", "memo");
             //await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
             //await Server.GetOpenDoorList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 1);
 
             //await Server.GetReceiveList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
-            await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 3);
-            await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 2, 3);
+            //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 3);
+            //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 2, 3);
+            //await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Global.StationId);
+            //await Server.GetReadyDeathTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Global.StationId);
+
+            //var f = new FormInsertUpdateToolClass();
+            //await Server.GetToolClasses();
+            //f.isUpdate = true;
+            //f.toolclass = Global.ToolClass[22];
+            //f.Show();
+            //await Server.UpdateStation(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 4, "YYQ", "123");
+
+            //var f = new FormInsertUpdateTools();
+            //await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
+            //await Server.GetToolClasses();
+            ////f.isUpdateTool = true;
+            //f.updateTool = Global.ToolsList.list[0];
+            //f.Show();
+
+
+
+            //var f = new FormInsertUpdateUser();
+            //await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 10);
+            //f.updateUserItems = Global.UserList.list[9];
+            //f.UpdateUser = true;
+            //f.Show();
+
+            //var f = new FormUpdateInsertDefect();
+            //f.IsUpdate = true;
+            //await Server.GetDefectList(2);
+            //f.Defect = Global.DefectList[0];
+            //f.Show();
+
+            //var f = new FormWorkType();
+            //await Server.GetWorkTypeList();
+            ////f.IsUpdate = true;
+            ////f.WorkType = Global.WorkTypeList[0];
+            //f.Show();
+
+            //var f = new FormInsertUpdateStations();
+
+            //await Server.GetStationList();
+            //f.isUpdate = true;
+            //f.station = Global.StationList[0];
+            ////f.WorkType = Global.WorkTypeList[0];
+            //f.Show();
+            //var f = new FormUpdateTask();
+            //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
+            //f.tasklist = Global.TaskList.list[0];
+            //f.Show();
+            await Server.GetDoorList(0);
+            var f = new FormInsertUpdateDoor();
+            f.isUpdate = true;
+            f.door = Global.DoorList[0];
+            f.Show();
 
 
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
 
-
+            //超级密码为123465
             if (tx_username.Text == "admin")
             {
                 MD5 md5 = new MD5CryptoServiceProvider();
@@ -100,15 +153,16 @@ namespace ToolsManager
             tx_password.Text = "123456";
 #endif
             var result = await Server.Login(tx_username.Text, tx_password.Text);
-            
+
             if (result)
             {
-                //Test();
-                //return;
-                //登录成功
-                Global.FormMaintain.Show();
+                Test();
 
-                //Global.FormMain.Show();
+                //登录成功
+                //Global.FormRecord.Show();
+
+
+                Global.FormMaintain.Show();
                 Global.FormLogin.Hide();
             }
             else

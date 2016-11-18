@@ -33,12 +33,12 @@
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("下一页");
             System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("台账报表");
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("综合管理");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("预送检表");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("预报废表");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("定期检查");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("送检反馈");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("逾期记录");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("增购申请");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("预送检表");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("预报废表");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("定期检查");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("送检反馈");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("逾期记录");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("增购申请");
             this.listViewTop = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,12 +48,12 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ll_End = new System.Windows.Forms.LinkLabel();
             this.ll_Next = new System.Windows.Forms.LinkLabel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ll_Goto = new System.Windows.Forms.LinkLabel();
             this.ll_Last = new System.Windows.Forms.LinkLabel();
             this.ll_First = new System.Windows.Forms.LinkLabel();
             this.lb_cur = new System.Windows.Forms.Label();
             this.lb_sum = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -120,12 +120,12 @@
             this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem5,
             listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12});
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18});
             this.listViewLeft.Location = new System.Drawing.Point(3, 3);
             this.listViewLeft.MultiSelect = false;
             this.listViewLeft.Name = "listViewLeft";
@@ -176,6 +176,7 @@
             this.ll_End.TabStop = true;
             this.ll_End.Text = "末页";
             this.ll_End.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_End.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ll_End_MouseClick);
             // 
             // ll_Next
             // 
@@ -192,10 +193,21 @@
             this.ll_Next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ll_Next.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Next_MouseClick);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(517, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(48, 20);
+            this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // ll_Goto
             // 
             this.ll_Goto.AutoSize = true;
             this.ll_Goto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ll_Goto.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.ll_Goto.Location = new System.Drawing.Point(485, 0);
             this.ll_Goto.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.ll_Goto.Name = "ll_Goto";
@@ -256,14 +268,6 @@
             this.lb_sum.TabIndex = 6;
             this.lb_sum.Text = "共0页";
             this.lb_sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(517, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(48, 20);
-            this.comboBox1.TabIndex = 8;
             // 
             // FormMaintain
             // 
