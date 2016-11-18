@@ -1033,7 +1033,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/door/insert_door.api?user_id={1}&user_code={2}&door_id={7}&station_id={3}&name={4}&code={5}&memo={6}", Global.ServerIp, user_id, UserCode, StationId, name, code, memo, doorId);
+            builder.AppendFormat("http://{0}/door/update_door.api?user_id={1}&user_code={2}&door_id={7}&station_id={3}&name={4}&code={5}&memo={6}", Global.ServerIp, user_id, UserCode, StationId, name, code, memo, doorId);
 #if !DEBUG
             try
             {
