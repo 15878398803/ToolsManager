@@ -177,9 +177,9 @@ namespace ToolsManager
             {
                 c.Items.Add(i + 1);
             }
-            if (num > 0)
+            if (num > 0 && c.Items.Count>0)
             {
-                c.SelectedIndex = 0;
+                //c.SelectedIndex = 0;
             }
         }
 

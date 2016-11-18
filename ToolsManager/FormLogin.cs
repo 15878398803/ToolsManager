@@ -156,7 +156,7 @@ namespace ToolsManager
 
             if (result)
             {
-                Test();
+               //Test();
 
                 //登录成功
                 //Global.FormRecord.Show();

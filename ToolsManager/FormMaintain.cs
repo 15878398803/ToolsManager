@@ -15,7 +15,7 @@ namespace ToolsManager
     {
 
         int page = 1;
-   //     bool flag = false;
+        bool flag = false;
         private int curPage, maxPageNum;
         public FormMaintain()
         {
@@ -38,6 +38,7 @@ namespace ToolsManager
                 case "综合管理":
                     break;
                 case "预送检表":
+                    await ReadyTestToolsList();
                     break;
                 case "预报废表":
                     break;
@@ -123,15 +124,16 @@ namespace ToolsManager
                 dataGridView1.Columns[9].HeaderText = "出厂日期";
                 dataGridView1.Columns[10].HeaderText = "购买日期";
                 dataGridView1.Columns[11].HeaderText = "试验日期";
-                dataGridView1.Columns[12].HeaderText = "试验周期";
-                dataGridView1.Columns[13].HeaderText = "生命周期";
+                dataGridView1.Columns[12].HeaderText = "试验周期(月)";
+                dataGridView1.Columns[13].HeaderText = "生命周期(月)";
                 dataGridView1.Columns[14].HeaderText = "生产厂商";
-                dataGridView1.Columns[15].HeaderText = "传感器名称";
-                dataGridView1.Columns[16].HeaderText = "科目名称";
-                dataGridView1.Columns[17].HeaderText = "下次试验日期";
-                dataGridView1.Columns[18].HeaderText = "报废日期";
+              //dataGridView1.Columns[15].HeaderText = "是否删除";
+                dataGridView1.Columns[16].HeaderText = "传感器名称";
+                dataGridView1.Columns[17].HeaderText = "科目名称";
+                dataGridView1.Columns[18].HeaderText = "下次试验日期";
                 dataGridView1.Columns[19].HeaderText = "是否在库";
-                dataGridView1.Columns[20].HeaderText = "用户";
+                dataGridView1.Columns[20].HeaderText = "报废日期";
+                dataGridView1.Columns[21].HeaderText = "去向";
             }
             return true;
         }
@@ -142,17 +144,26 @@ namespace ToolsManager
             {
                 //               maxPageNum = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
                 int list_num = Global.ReadyTestTools.Count;
+                page = 1;
                 maxPageNum = (list_num / 5)+1;
-                lb_cur.Text = "第" + Global.ToolsList.num.page + "页";
+                lb_cur.Text = "第" + page + "页";
                 //              var sum = Global.ToolsList.num.list_num / Global.PageNum;
                 //             maxPageNum = sum == 0 ? 1 : sum;
                 lb_sum.Text = "共" + maxPageNum + "页";
-                curPage = cur;
+               // curPage = cur;
                 if (maxPageNum != comboBox1.Items.Count)
                 {
                     Global.AddComboxNum(comboBox1, maxPageNum);
                 }
-                dataGridView1.DataSource = Global.ToolsList.list;
+                //foreach(var tool in Global.ReadyTestTools)
+                //{
+                //    if(String.Compare(tool.user_id,Convert.ToString('0'))==0)
+                //    {
+                //        tool.user_id = "无人领用";
+                //    }
+                    
+                //}
+                dataGridView1.DataSource = Global.ReadyTestTools;
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.Columns[0].HeaderText = "工具标识";
                 dataGridView1.Columns[1].HeaderText = "传感器标识";
@@ -166,15 +177,16 @@ namespace ToolsManager
                 dataGridView1.Columns[9].HeaderText = "出厂日期";
                 dataGridView1.Columns[10].HeaderText = "购买日期";
                 dataGridView1.Columns[11].HeaderText = "试验日期";
-                dataGridView1.Columns[12].HeaderText = "试验周期";
-                dataGridView1.Columns[13].HeaderText = "生命周期";
+                dataGridView1.Columns[12].HeaderText = "试验周期(月)";
+                dataGridView1.Columns[13].HeaderText = "生命周期(月)";
                 dataGridView1.Columns[14].HeaderText = "生产厂商";
+//               dataGridView1.Columns[15].HeaderText = "是否删除";
                 dataGridView1.Columns[15].HeaderText = "传感器名称";
                 dataGridView1.Columns[16].HeaderText = "科目名称";
                 dataGridView1.Columns[17].HeaderText = "下次试验日期";
-                dataGridView1.Columns[18].HeaderText = "报废日期";
-                dataGridView1.Columns[19].HeaderText = "是否在库";
-                dataGridView1.Columns[20].HeaderText = "用户";
+                dataGridView1.Columns[18].HeaderText = "是否在库";
+                dataGridView1.Columns[19].HeaderText = "报废日期";
+                dataGridView1.Columns[20].HeaderText = "去向";
             }
             return true;
         }
