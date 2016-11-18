@@ -1238,7 +1238,7 @@ namespace ToolsManager
             StringBuilder builder = new StringBuilder(200);
 
             builder.AppendFormat("http://{0}/tools/ready_test_tools.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
-#if !DEBUG
+#if !DEBUG                        
             try
             {
 #endif

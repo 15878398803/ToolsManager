@@ -123,7 +123,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string naxt_test { get; set; }
+            public string next_test { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -677,7 +677,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string is_delete { get; set; }
+ //           public string is_delete { get; set; }
             /// <summary>
             /// 
             /// </summary>
