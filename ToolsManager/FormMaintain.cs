@@ -15,7 +15,7 @@ namespace ToolsManager
     {
 
         int page = 1;
-        bool flag = false;
+ //       bool flag = false;
         private int curPage, maxPageNum;
         public FormMaintain()
         {
