@@ -65,7 +65,7 @@ namespace ToolsManager
             //await Server.DeleteWork(2, "8d9dad5db5c07313a4331466ec461f24", 9);
             //await Server.GetTaskList(2, "befdf52430eb27e3b87cfe03a24f4b70",1, 2);
             //await Server.UpdateTask(2, "befdf52430eb27e3b87cfe03a24f4b70", 1, 2,"t1","Team",1,"mem");
-            //await Server.GetDoorList("a");
+            //await Server.GetDoorL0ist("a");
             //await Server.InsertDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 3, "yyqdoor", "T213", "memo");
             //await Server.DeleteDoor(2, "befdf52430eb27e3b87cfe03a24f4b70", 1011);
             //await Server.GetOpenDoorList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 1);
@@ -81,7 +81,7 @@ namespace ToolsManager
             //f.isUpdate = true;
             //f.toolclass = Global.ToolClass[22];
             //f.Show();
-
+            //await Server.UpdateStation(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 4, "YYQ", "123");
 
             //var f = new FormInsertUpdateTools();
             //await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
@@ -104,10 +104,18 @@ namespace ToolsManager
             //f.Defect = Global.DefectList[0];
             //f.Show();
 
-            var f = new FormWorkType();
-            await Server.GetWorkTypeList();
-            f.IsUpdate = true;
-            f.WorkType = Global.WorkTypeList[0];
+            //var f = new FormWorkType();
+            //await Server.GetWorkTypeList();
+            ////f.IsUpdate = true;
+            ////f.WorkType = Global.WorkTypeList[0];
+            //f.Show();
+
+            var f = new FormInsertUpdateStations();
+
+            await Server.GetStationList();
+            f.isUpdate = true;
+            f.station = Global.StationList[0];
+            //f.WorkType = Global.WorkTypeList[0];
             f.Show();
 
         }
@@ -142,7 +150,7 @@ namespace ToolsManager
 
                 //登录成功
                 //Global.FormRecord.Show();
-                
+
 
                 Global.FormMain.Show();
                 Global.FormLogin.Hide();

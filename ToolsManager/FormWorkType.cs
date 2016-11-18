@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -74,7 +76,36 @@ namespace ToolsManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //openFileDialog1.Filter = "图片文件(*.jpg)|*.jpg";
+            //openFileDialog1.FileName = "";
+            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    if (openFileDialog1.FileName != "")
+            //    {
+            //        Debug.WriteLine(openFileDialog1.FileName);
+            //        FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open);
+            //        if (fs.Length <= 1 * 1024 * 1024)
+            //        {
+            //            Byte[] buf = new byte[1024 * 1024 * 2];
+            //            fs.Read(buf, 0, 1024 * 1024 * 2);
+            //            //Debug.WriteLine(HttpHelper.GetResponseString(HttpHelper.CreatePostHttpResponseFile("http://120.76.121.79/file/picture.api", buf)));
+            //            Debug.WriteLine(HttpHelper.GetResponseString(HttpHelper.CreatePostHttpResponseFile("http://120.76.121.79/file/picture.api", buf)));
+
+            //            fs.Close();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("图片超过1MB，请重新选择。");
+            //        }
+
+            //    }
+            //}
+
         }
     }
 }
