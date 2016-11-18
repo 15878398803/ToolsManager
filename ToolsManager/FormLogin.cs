@@ -121,13 +121,13 @@ namespace ToolsManager
             //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
             //f.tasklist = Global.TaskList.list[0];
             //f.Show();
-            await Server.GetDoorList(0);
-            var f = new FormInsertUpdateDoor();
-            f.isUpdate = true;
-            f.door = Global.DoorList[0];
-            f.Show();
+            //await Server.GetDoorList(0);
+            //var f = new FormInsertUpdateDoor();
+            //f.isUpdate = true;
+            //f.door = Global.DoorList[0];
+            //f.Show();
 
-
+            //YYYQYYQYQYQYQYQYQYYQYQYQYQYQYQYQYQYQY
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
