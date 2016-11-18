@@ -181,6 +181,12 @@
     <Compile Include="FormUpdateInsertDefect.Designer.cs">
       <DependentUpon>FormUpdateInsertDefect.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdateTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateTask.Designer.cs">
+      <DependentUpon>FormUpdateTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormWorkType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpdateInsertDefect.resx">
       <DependentUpon>FormUpdateInsertDefect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateTask.resx">
+      <DependentUpon>FormUpdateTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWorkType.resx">
       <DependentUpon>FormWorkType.cs</DependentUpon>

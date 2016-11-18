@@ -110,12 +110,16 @@ namespace ToolsManager
             ////f.WorkType = Global.WorkTypeList[0];
             //f.Show();
 
-            var f = new FormInsertUpdateStations();
+            //var f = new FormInsertUpdateStations();
 
-            await Server.GetStationList();
-            f.isUpdate = true;
-            f.station = Global.StationList[0];
-            //f.WorkType = Global.WorkTypeList[0];
+            //await Server.GetStationList();
+            //f.isUpdate = true;
+            //f.station = Global.StationList[0];
+            ////f.WorkType = Global.WorkTypeList[0];
+            //f.Show();
+            var f = new FormUpdateTask();
+            await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 20);
+            f.tasklist = Global.TaskList.list[0];
             f.Show();
 
         }
