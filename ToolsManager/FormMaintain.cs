@@ -146,7 +146,18 @@ namespace ToolsManager
             }
             return true;
         }
-        
+
+        private void ll_Goto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void 刷新ToolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (listViewLeft.SelectedItems.Count > 0)
+                listViewLeft_DoubleClick(null, null);
+        }
+
         async public Task<bool> ReadyTestToolsList()
         {
             if (await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1)) 

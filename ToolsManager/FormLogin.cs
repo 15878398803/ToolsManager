@@ -127,6 +127,10 @@ namespace ToolsManager
             //f.door = Global.DoorList[0];
             //f.Show();
 
+            //
+            //hello world
+            //hhhh
+            /////////////111111111111111/////////////
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
@@ -148,7 +152,7 @@ namespace ToolsManager
             //Global.FormLoading.Show();
 #if DEBUG
             //Debug.WriteLine("使用默认账号yyq登录调试");
-            tx_username.Text = "yyqq";
+            tx_username.Text = "yyq";
             tx_password.Text = "123456";
 #endif
             var result = await Server.Login(tx_username.Text, tx_password.Text);
@@ -160,9 +164,8 @@ namespace ToolsManager
                 //登录成功
                 //Global.FormRecord.Show();
 
-
-                //Global.FormMain.Show();
-                Global.FormMaintain.Show();
+                Global.FormReport.Show();
+                //Global.FormRecord.Show();
                 Global.FormLogin.Hide();
             }
             else
