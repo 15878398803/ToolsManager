@@ -210,5 +210,11 @@ namespace ToolsManager
                 MessageBox.Show("请先选择要修改的数据");
             }
         }
+
+        private void 刷新toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (listViewLeft.SelectedItems.Count > 0)
+                listViewLeft_DoubleClick(null, null);
+        }
     }
 }

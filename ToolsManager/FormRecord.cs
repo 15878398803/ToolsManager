@@ -378,5 +378,11 @@ namespace ToolsManager
                 }
             }
         }
+
+        private void 刷新ToolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (listViewLeft.SelectedItems.Count > 0)
+                listViewLeft_DoubleClick(null, null);
+        }
     }
 }

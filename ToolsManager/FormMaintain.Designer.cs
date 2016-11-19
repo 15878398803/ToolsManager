@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("台账报表");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("综合管理");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("预送检表");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("预报废表");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("定期检查");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("送检反馈");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("逾期记录");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("增购申请");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("台账报表");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("综合管理");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("预送检表");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("预报废表");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("定期检查");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("送检反馈");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("逾期记录");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("增购申请");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMaintain));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.listViewLeft = new System.Windows.Forms.ListView();
@@ -59,6 +59,7 @@
             this.lb_cur = new System.Windows.Forms.Label();
             this.lb_sum = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.刷新ToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -75,14 +76,14 @@
             // 
             this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.listViewLeft.Location = new System.Drawing.Point(3, 3);
             this.listViewLeft.MultiSelect = false;
             this.listViewLeft.Name = "listViewLeft";
@@ -180,6 +181,7 @@
             this.添加NToolStripButton,
             this.修改OToolStripButton,
             this.删除DToolStripButton1,
+            this.刷新ToolStripButton1,
             this.保存SToolStripButton,
             this.打印PToolStripButton,
             this.帮助LToolStripButton});
@@ -330,6 +332,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(508, 297);
             this.dataGridView1.TabIndex = 1;
             // 
+            // 刷新ToolStripButton1
+            // 
+            this.刷新ToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("刷新ToolStripButton1.Image")));
+            this.刷新ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.刷新ToolStripButton1.Name = "刷新ToolStripButton1";
+            this.刷新ToolStripButton1.Size = new System.Drawing.Size(36, 47);
+            this.刷新ToolStripButton1.Text = "刷新";
+            this.刷新ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.刷新ToolStripButton1.Click += new System.EventHandler(this.刷新ToolStripButton1_Click);
+            // 
             // FormMaintain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -375,5 +387,6 @@
         private System.Windows.Forms.Label lb_cur;
         private System.Windows.Forms.Label lb_sum;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripButton 刷新ToolStripButton1;
     }
 }
