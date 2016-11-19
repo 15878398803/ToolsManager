@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -41,8 +42,71 @@ namespace ToolsManager
                 lb_sum.Text = "共" + maxPageNum + "页";
                 curPage = cur;
 
+                //此处不应该改全局变量里的List来改变显示内容
+                //for (int i = 0; i < Global.ReceiveList.list.Count; i++)
+                //{
+                //    if (Global.ReceiveList.list[i].type == "1")
+                //    {
+                //        Global.ReceiveList.list[i].return_time = "";
+                //        Global.ReceiveList.list[i].return_user_id = "";
+                //        Global.ReceiveList.list[i].return_user_name = "";
+                //        Global.ReceiveList.list[i].type = "未归还";
+                //    }
+                //    else
+                //    {
+                //        Global.ReceiveList.list[i].type = "已归还";
+                //    }
+                //}
 
                 dataGridView1.DataSource = Global.ReceiveList.list;
+                
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    var t = dataGridView1.Rows[i].Cells;
+                    if (t[10].Value as string == "1")
+                    {
+                        var c = new DataGridViewCellStyle(t[10].Style);
+                        c.BackColor = Color.Red;
+                        c.ForeColor = Color.White;
+                        t[10].Style = c;
+                        //对value的修改会影响绑定的List，务必注意
+                        t[9].Value = t[7].Value = t[14].Value = t[5].Value = "";
+                        t[10].Value = "未归还";
+                        
+                    }
+                    else
+                    {
+                        //对value的修改会影响绑定的List，务必注意
+                        t[10].Value = "已归还";
+                    }
+                }
+                dataGridView1.Columns[0].HeaderText = "记录id";
+                dataGridView1.Columns[1].HeaderText = "工具id";
+                dataGridView1.Columns[2].HeaderText = "站点id";
+                dataGridView1.Columns[3].HeaderText = "工作票号id";
+                dataGridView1.Columns[4].HeaderText = "领用人id";
+                dataGridView1.Columns[5].HeaderText = "归还人id";
+                dataGridView1.Columns[6].HeaderText = "领用时间";
+                dataGridView1.Columns[7].HeaderText = "归还时间";
+                dataGridView1.Columns[8].HeaderText = "领用时是否完好";
+                dataGridView1.Columns[9].HeaderText = "归还时是否完好";
+                dataGridView1.Columns[10].HeaderText = "是否归还";
+                dataGridView1.Columns[11].HeaderText = "工具名称";
+                dataGridView1.Columns[12].HeaderText = "工具编号";
+                dataGridView1.Columns[13].HeaderText = "领用人名称";
+                dataGridView1.Columns[14].HeaderText = "归还人名称";
+                dataGridView1.Columns[15].HeaderText = "工作票号";
+
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    //全部列不可修改
+                    dataGridView1.Columns[i].ReadOnly = true;
+                    //拉伸列宽来填满表格
+                    dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                }
+
+
             }
             return true;
         }

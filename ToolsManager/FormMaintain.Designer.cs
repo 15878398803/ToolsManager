@@ -49,11 +49,11 @@
             this.ll_End = new System.Windows.Forms.LinkLabel();
             this.ll_Next = new System.Windows.Forms.LinkLabel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.ll_Goto = new System.Windows.Forms.LinkLabel();
             this.ll_Last = new System.Windows.Forms.LinkLabel();
             this.ll_First = new System.Windows.Forms.LinkLabel();
             this.lb_cur = new System.Windows.Forms.Label();
             this.lb_sum = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -152,7 +152,7 @@
             this.flowLayoutPanel1.Controls.Add(this.ll_End);
             this.flowLayoutPanel1.Controls.Add(this.ll_Next);
             this.flowLayoutPanel1.Controls.Add(this.comboBox1);
-            this.flowLayoutPanel1.Controls.Add(this.ll_Goto);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.ll_Last);
             this.flowLayoutPanel1.Controls.Add(this.ll_First);
             this.flowLayoutPanel1.Controls.Add(this.lb_cur);
@@ -203,26 +203,11 @@
             this.comboBox1.TabIndex = 8;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // ll_Goto
-            // 
-            this.ll_Goto.AutoSize = true;
-            this.ll_Goto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_Goto.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.ll_Goto.Location = new System.Drawing.Point(485, 0);
-            this.ll_Goto.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.ll_Goto.Name = "ll_Goto";
-            this.ll_Goto.Size = new System.Drawing.Size(29, 26);
-            this.ll_Goto.TabIndex = 5;
-            this.ll_Goto.TabStop = true;
-            this.ll_Goto.Text = "跳至";
-            this.ll_Goto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ll_Goto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_Goto_LinkClicked);
-            // 
             // ll_Last
             // 
             this.ll_Last.AutoSize = true;
             this.ll_Last.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_Last.Location = new System.Drawing.Point(434, 0);
+            this.ll_Last.Location = new System.Drawing.Point(433, 0);
             this.ll_Last.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_Last.Name = "ll_Last";
             this.ll_Last.Size = new System.Drawing.Size(41, 26);
@@ -236,7 +221,7 @@
             // 
             this.ll_First.AutoSize = true;
             this.ll_First.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ll_First.Location = new System.Drawing.Point(383, 0);
+            this.ll_First.Location = new System.Drawing.Point(382, 0);
             this.ll_First.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_First.Name = "ll_First";
             this.ll_First.Size = new System.Drawing.Size(41, 26);
@@ -250,7 +235,7 @@
             // 
             this.lb_cur.AutoSize = true;
             this.lb_cur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_cur.Location = new System.Drawing.Point(314, 0);
+            this.lb_cur.Location = new System.Drawing.Point(313, 0);
             this.lb_cur.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lb_cur.Name = "lb_cur";
             this.lb_cur.Size = new System.Drawing.Size(59, 26);
@@ -262,13 +247,24 @@
             // 
             this.lb_sum.AutoSize = true;
             this.lb_sum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_sum.Location = new System.Drawing.Point(269, 0);
+            this.lb_sum.Location = new System.Drawing.Point(268, 0);
             this.lb_sum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lb_sum.Name = "lb_sum";
             this.lb_sum.Size = new System.Drawing.Size(35, 26);
             this.lb_sum.TabIndex = 6;
             this.lb_sum.Text = "共0页";
             this.lb_sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(482, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 26);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "跳至";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormMaintain
             // 
@@ -301,11 +297,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.LinkLabel ll_End;
         private System.Windows.Forms.LinkLabel ll_Next;
-        private System.Windows.Forms.LinkLabel ll_Goto;
         private System.Windows.Forms.LinkLabel ll_Last;
         private System.Windows.Forms.LinkLabel ll_First;
         private System.Windows.Forms.Label lb_sum;
         private System.Windows.Forms.Label lb_cur;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
