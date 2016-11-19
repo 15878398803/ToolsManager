@@ -49,6 +49,7 @@
             this.修改OToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.添加NToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.刷新ToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ll_End = new System.Windows.Forms.LinkLabel();
@@ -59,7 +60,6 @@
             this.lb_cur = new System.Windows.Forms.Label();
             this.lb_sum = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.刷新ToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -190,6 +190,16 @@
             this.toolStrip1.Size = new System.Drawing.Size(514, 50);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // 刷新ToolStripButton1
+            // 
+            this.刷新ToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("刷新ToolStripButton1.Image")));
+            this.刷新ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.刷新ToolStripButton1.Name = "刷新ToolStripButton1";
+            this.刷新ToolStripButton1.Size = new System.Drawing.Size(36, 47);
+            this.刷新ToolStripButton1.Text = "刷新";
+            this.刷新ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.刷新ToolStripButton1.Click += new System.EventHandler(this.刷新ToolStripButton1_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -329,18 +339,9 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(508, 297);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // 刷新ToolStripButton1
-            // 
-            this.刷新ToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("刷新ToolStripButton1.Image")));
-            this.刷新ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.刷新ToolStripButton1.Name = "刷新ToolStripButton1";
-            this.刷新ToolStripButton1.Size = new System.Drawing.Size(36, 47);
-            this.刷新ToolStripButton1.Text = "刷新";
-            this.刷新ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.刷新ToolStripButton1.Click += new System.EventHandler(this.刷新ToolStripButton1_Click);
             // 
             // FormMaintain
             // 

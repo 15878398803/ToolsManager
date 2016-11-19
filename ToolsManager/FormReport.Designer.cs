@@ -30,16 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReport));
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("申购计划");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("局申购汇总");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("报废记录");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("局报废汇总");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("工作类别");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("缺陷类别");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("员工权限");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("申购计划");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("局申购汇总");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("报废记录");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("局报废汇总");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("工作类别");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("缺陷类别");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("员工权限");
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ll_End = new System.Windows.Forms.LinkLabel();
             this.ll_Next = new System.Windows.Forms.LinkLabel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.ll_Last = new System.Windows.Forms.LinkLabel();
             this.ll_First = new System.Windows.Forms.LinkLabel();
             this.lb_cur = new System.Windows.Forms.Label();
@@ -47,18 +49,16 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.listViewLeft = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.添加NToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.修改OToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.删除DToolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.刷新toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.保存SToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.打印PToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.删除DToolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.listViewLeft = new System.Windows.Forms.ListView();
-            this.刷新toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -108,6 +108,26 @@
             this.ll_Next.TabStop = true;
             this.ll_Next.Text = "下一页";
             this.ll_Next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(382, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(48, 20);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(347, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 26);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "跳至";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ll_Last
             // 
@@ -176,6 +196,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(523, 350);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -200,6 +221,29 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(649, 465);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // listViewLeft
+            // 
+            this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewLeft.HideSelection = false;
+            this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7});
+            this.listViewLeft.Location = new System.Drawing.Point(3, 3);
+            this.listViewLeft.MultiSelect = false;
+            this.listViewLeft.Name = "listViewLeft";
+            this.tableLayoutPanel2.SetRowSpan(this.listViewLeft, 4);
+            this.listViewLeft.Size = new System.Drawing.Size(114, 459);
+            this.listViewLeft.SmallImageList = this.imageList1;
+            this.listViewLeft.TabIndex = 0;
+            this.listViewLeft.UseCompatibleStateImageBehavior = false;
+            this.listViewLeft.View = System.Windows.Forms.View.SmallIcon;
+            this.listViewLeft.DoubleClick += new System.EventHandler(this.listViewLeft_DoubleClick);
             // 
             // toolStrip1
             // 
@@ -240,6 +284,26 @@
             this.修改OToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.修改OToolStripButton.Click += new System.EventHandler(this.修改OToolStripButton_Click);
             // 
+            // 删除DToolStripButton1
+            // 
+            this.删除DToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("删除DToolStripButton1.Image")));
+            this.删除DToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.删除DToolStripButton1.Name = "删除DToolStripButton1";
+            this.删除DToolStripButton1.Size = new System.Drawing.Size(53, 47);
+            this.删除DToolStripButton1.Text = "删除(&D)";
+            this.删除DToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.删除DToolStripButton1.Click += new System.EventHandler(this.删除DToolStripButton1_Click);
+            // 
+            // 刷新toolStripButton1
+            // 
+            this.刷新toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("刷新toolStripButton1.Image")));
+            this.刷新toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.刷新toolStripButton1.Name = "刷新toolStripButton1";
+            this.刷新toolStripButton1.Size = new System.Drawing.Size(36, 47);
+            this.刷新toolStripButton1.Text = "刷新";
+            this.刷新toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.刷新toolStripButton1.Click += new System.EventHandler(this.刷新toolStripButton1_Click);
+            // 
             // 保存SToolStripButton
             // 
             this.保存SToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("保存SToolStripButton.Image")));
@@ -278,69 +342,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "表格名称";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // 删除DToolStripButton1
-            // 
-            this.删除DToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("删除DToolStripButton1.Image")));
-            this.删除DToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.删除DToolStripButton1.Name = "删除DToolStripButton1";
-            this.删除DToolStripButton1.Size = new System.Drawing.Size(53, 47);
-            this.删除DToolStripButton1.Text = "删除(&D)";
-            this.删除DToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.删除DToolStripButton1.Click += new System.EventHandler(this.删除DToolStripButton1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(382, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(48, 20);
-            this.comboBox1.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(347, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 26);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "跳至";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listViewLeft
-            // 
-            this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewLeft.HideSelection = false;
-            this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14});
-            this.listViewLeft.Location = new System.Drawing.Point(3, 3);
-            this.listViewLeft.MultiSelect = false;
-            this.listViewLeft.Name = "listViewLeft";
-            this.tableLayoutPanel2.SetRowSpan(this.listViewLeft, 4);
-            this.listViewLeft.Size = new System.Drawing.Size(114, 459);
-            this.listViewLeft.SmallImageList = this.imageList1;
-            this.listViewLeft.TabIndex = 0;
-            this.listViewLeft.UseCompatibleStateImageBehavior = false;
-            this.listViewLeft.View = System.Windows.Forms.View.SmallIcon;
-            this.listViewLeft.DoubleClick += new System.EventHandler(this.listViewLeft_DoubleClick);
-            // 
-            // 刷新toolStripButton1
-            // 
-            this.刷新toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("刷新toolStripButton1.Image")));
-            this.刷新toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.刷新toolStripButton1.Name = "刷新toolStripButton1";
-            this.刷新toolStripButton1.Size = new System.Drawing.Size(36, 47);
-            this.刷新toolStripButton1.Text = "刷新";
-            this.刷新toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.刷新toolStripButton1.Click += new System.EventHandler(this.刷新toolStripButton1_Click);
             // 
             // FormReport
             // 
