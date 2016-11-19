@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("领还明细");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("现存库存");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("我的领用");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("单号事件记录表");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("领还明细");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("现存库存");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("我的领用");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("单号事件记录表");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRecord));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.listViewLeft = new System.Windows.Forms.ListView();
@@ -70,15 +70,15 @@
             // listViewLeft
             // 
             this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewItem1.Tag = "Details";
-            listViewItem2.Tag = "inventory";
-            listViewItem3.Tag = "mine";
-            listViewItem4.Tag = "event";
+            listViewItem5.Tag = "Details";
+            listViewItem6.Tag = "inventory";
+            listViewItem7.Tag = "mine";
+            listViewItem8.Tag = "event";
             this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.listViewLeft.Location = new System.Drawing.Point(3, 3);
             this.listViewLeft.MultiSelect = false;
             this.listViewLeft.Name = "listViewLeft";
@@ -330,6 +330,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 437);
             this.Controls.Add(this.tableLayoutPanel3);
+            this.MinimumSize = new System.Drawing.Size(545, 417);
             this.Name = "FormRecord";
             this.Text = "领还记录";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRecord_FormClosing);

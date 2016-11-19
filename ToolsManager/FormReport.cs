@@ -85,19 +85,26 @@ namespace ToolsManager
             switch (listViewLeft.SelectedItems[0].Text)
             {
                 case "申购计划":
+                    lastTable = "申购计划";
                     break;
                 case "局申购汇总":
+                    lastTable = "局申购汇总";
                     break;
                 case "报废记录":
+                    lastTable = "报废记录";
                     break;
                 case "局报废汇总":
+                    lastTable = "局报废汇总";
                     break;
                 case "工作类别":
+                    lastTable = "工作类别";
                     await WorkTypeList();
                     break;
                 case "缺陷类别":
+                    lastTable = "缺陷类别";
                     break;
                 case "员工权限":
+                    lastTable = "员工权限";
                     break;
             }
         }
@@ -107,9 +114,9 @@ namespace ToolsManager
 
         }
 
-        private void 添加NToolStripButton_Click(object sender, EventArgs e)
+        async private void 添加NToolStripButton_Click(object sender, EventArgs e)
         {
-            switch (listViewLeft.SelectedItems[0].Text)
+            switch (lastTable)
             {
                 case "申购计划":
                     break;
@@ -122,6 +129,7 @@ namespace ToolsManager
                 case "工作类别":
                     var f = new FormWorkType();
                     f.ShowDialog();
+                    await WorkTypeList();
                     break;
                 case "缺陷类别":
                     break;
@@ -134,7 +142,7 @@ namespace ToolsManager
         {
             if (dataGridView1.SelectedCells.Count == 1)
             {
-                switch (listViewLeft.SelectedItems[0].Text)
+                switch (lastTable)
                 {
                     case "申购计划":
                         break;
@@ -163,9 +171,44 @@ namespace ToolsManager
             }
         }
 
-        private void 删除DToolStripButton1_Click(object sender, EventArgs e)
+        async private void 删除DToolStripButton1_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedCells.Count == 1)
+            {
+                switch (lastTable)
+                {
+                    case "申购计划":
+                        break;
+                    case "局申购汇总":
+                        break;
+                    case "报废记录":
+                        break;
+                    case "局报废汇总":
+                        break;
+                    case "工作类别":
 
+                        var worktype = Global.WorkTypeList.Find(t => t.work_id == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value as string);
+
+                        if (MessageBox.Show("您确定要删除工作类别 " + worktype.name + " 吗？", "删除确认", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (await Server.DeleteWork(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(worktype.work_id)))
+                            {
+                                MessageBox.Show("删除工作类别 " + worktype.name + " 成功");
+                                await WorkTypeList();
+                            }
+
+                        }
+                        break;
+                    case "缺陷类别":
+                        break;
+                    case "员工权限":
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先选择要修改的数据");
+            }
         }
     }
 }
