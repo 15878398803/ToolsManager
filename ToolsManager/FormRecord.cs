@@ -14,7 +14,7 @@ namespace ToolsManager
     {
         private string lastTable;
         private int curPage, maxPageNum;
-
+        private bool isInit;
         public FormRecord()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace ToolsManager
                 maxPageNum = sum == 0 ? 1 : sum;
                 lb_sum.Text = "共" + maxPageNum + "页";
                 curPage = cur;
-                Global.AddComboxNum(comboBox1, maxPageNum);
+
 
                 dataGridView1.DataSource = Global.ReceiveList.list;
             }
@@ -52,7 +52,15 @@ namespace ToolsManager
             {
                 case "领还明细":
                     lastTable = "领还明细";
+                    //comboBox1.SelectedIndex = 0;
                     await TableReceiveList(1);
+                    isInit = true;
+                    if (comboBox1.Items.Count != maxPageNum)
+                    {
+                        Global.AddComboxNum(comboBox1, maxPageNum);
+                        comboBox1.SelectedIndex = 0;
+                    }
+                    isInit = false;
                     break;
                 case "现存库存":
                     lastTable = "现存库存";
@@ -151,24 +159,32 @@ namespace ToolsManager
             }
         }
 
-        async private void ll_Goto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        async private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (lastTable)
+            if (!isInit)
             {
-                case "领还明细":
-                    lastTable = "领还明细";
-                    await TableReceiveList(comboBox1.SelectedIndex + 1);
-                    break;
-                case "现存库存":
-                    lastTable = "现存库存";
-                    break;
-                case "我的领用":
-                    lastTable = "我的领用";
-                    break;
-                case "单号事件记录表":
-                    lastTable = "单号事件记录表";
-                    break;
+                switch (lastTable)
+                {
+                    case "领还明细":
+                        lastTable = "领还明细";
+                        await TableReceiveList(comboBox1.SelectedIndex + 1);
+                        break;
+                    case "现存库存":
+                        lastTable = "现存库存";
+                        break;
+                    case "我的领用":
+                        lastTable = "我的领用";
+                        break;
+                    case "单号事件记录表":
+                        lastTable = "单号事件记录表";
+                        break;
+                }
             }
+        }
+
+        private void ll_Goto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

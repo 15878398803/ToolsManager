@@ -137,7 +137,12 @@ namespace ToolsManager
             }
             return true;
         }
-        
+
+        private void ll_Goto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
         async public Task<bool> ReadyTestToolsList()
         {
             if (await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1)) 
