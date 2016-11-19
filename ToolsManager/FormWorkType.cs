@@ -35,8 +35,10 @@ namespace ToolsManager
                 button1.Text = "修改";
                 textBox1.Text = WorkType.name;
                 textBox2.Text = WorkType.work_img;
-                comboBox1.SelectedIndex = Convert.ToInt32(WorkType.is_input);
-                comboBox2.SelectedIndex = Convert.ToInt32(WorkType.type);
+                var a = Convert.ToInt32(WorkType.is_input);
+                comboBox1.SelectedIndex = a > 1 ? 1 : a;
+                a = Convert.ToInt32(WorkType.type);
+                comboBox2.SelectedIndex = a > 1 ? 1 : a;
                 pictureBox1.ImageLocation = textBox2.Text;
 
             }

@@ -159,13 +159,13 @@ namespace ToolsManager
 
             if (result)
             {
-               //Test();
+                //Test();
 
                 //登录成功
                 //Global.FormRecord.Show();
 
-
-                Global.FormRecord.Show();
+                Global.FormReport.Show();
+                //Global.FormRecord.Show();
                 Global.FormLogin.Hide();
             }
             else
