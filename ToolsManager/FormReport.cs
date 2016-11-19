@@ -107,84 +107,65 @@ namespace ToolsManager
 
         }
 
-        async private void listView1_DoubleClick(object sender, EventArgs e)
+        private void 添加NToolStripButton_Click(object sender, EventArgs e)
         {
-            switch ("")//listView1.SelectedItems[0].Text
+            switch (listViewLeft.SelectedItems[0].Text)
             {
-                case "添加":
-                    switch (listViewLeft.SelectedItems[0].Text)
-                    {
-                        case "申购计划":
-                            break;
-                        case "局申购汇总":
-                            break;
-                        case "报废记录":
-                            break;
-                        case "局报废汇总":
-                            break;
-                        case "工作类别":
-                            var f = new FormWorkType();
-                            f.ShowDialog();
-                            break;
-                        case "缺陷类别":
-                            break;
-                        case "员工权限":
-                            break;
-                    }
+                case "申购计划":
                     break;
-                case "修改":
-                    if (dataGridView1.SelectedCells.Count == 1)
-                    {
-                        switch (listViewLeft.SelectedItems[0].Text)
-                        {
-                            case "申购计划":
-                                break;
-                            case "局申购汇总":
-                                break;
-                            case "报废记录":
-                                break;
-                            case "局报废汇总":
-                                break;
-                            case "工作类别":
-                                var f = new FormWorkType();
-                                f.IsUpdate = true;
-                                f.WorkType = Global.WorkTypeList.Find(t => t.work_id == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value as string);
-                                f.ShowDialog();
-                                await WorkTypeList();
-                                break;
-                            case "缺陷类别":
-                                break;
-                            case "员工权限":
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("请先选择要修改的数据");
-                    }
-
+                case "局申购汇总":
                     break;
-                case "删除":
-                    switch (listViewLeft.SelectedItems[0].Text)
-                    {
-                        case "申购计划":
-                            break;
-                        case "局申购汇总":
-                            break;
-                        case "报废记录":
-                            break;
-                        case "局报废汇总":
-                            break;
-                        case "工作类别":
-
-                            break;
-                        case "缺陷类别":
-                            break;
-                        case "员工权限":
-                            break;
-                    }
+                case "报废记录":
+                    break;
+                case "局报废汇总":
+                    break;
+                case "工作类别":
+                    var f = new FormWorkType();
+                    f.ShowDialog();
+                    break;
+                case "缺陷类别":
+                    break;
+                case "员工权限":
                     break;
             }
+        }
+
+        async private void 修改OToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count == 1)
+            {
+                switch (listViewLeft.SelectedItems[0].Text)
+                {
+                    case "申购计划":
+                        break;
+                    case "局申购汇总":
+                        break;
+                    case "报废记录":
+                        break;
+                    case "局报废汇总":
+                        break;
+                    case "工作类别":
+                        var f = new FormWorkType();
+                        f.IsUpdate = true;
+                        f.WorkType = Global.WorkTypeList.Find(t => t.work_id == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value as string);
+                        f.ShowDialog();
+                        await WorkTypeList();
+                        break;
+                    case "缺陷类别":
+                        break;
+                    case "员工权限":
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先选择要修改的数据");
+            }
+        }
+
+        private void 删除DToolStripButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

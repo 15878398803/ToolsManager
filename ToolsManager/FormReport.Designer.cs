@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("申购计划");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("局申购汇总");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("报废记录");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("局报废汇总");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("工作类别");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("缺陷类别");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("员工权限");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReport));
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("申购计划");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("局申购汇总");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("报废记录");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("局报废汇总");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("工作类别");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("缺陷类别");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("员工权限");
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ll_End = new System.Windows.Forms.LinkLabel();
             this.ll_Next = new System.Windows.Forms.LinkLabel();
@@ -44,7 +44,6 @@
             this.ll_First = new System.Windows.Forms.LinkLabel();
             this.lb_cur = new System.Windows.Forms.Label();
             this.lb_sum = new System.Windows.Forms.Label();
-            this.listViewLeft = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,6 +57,7 @@
             this.删除DToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.listViewLeft = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -158,30 +158,6 @@
             this.lb_sum.Text = "共0页";
             this.lb_sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listViewLeft
-            // 
-            this.listViewLeft.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewLeft.HideSelection = false;
-            this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7});
-            this.listViewLeft.Location = new System.Drawing.Point(3, 3);
-            this.listViewLeft.MultiSelect = false;
-            this.listViewLeft.Name = "listViewLeft";
-            this.tableLayoutPanel2.SetRowSpan(this.listViewLeft, 4);
-            this.listViewLeft.Size = new System.Drawing.Size(114, 459);
-            this.listViewLeft.SmallImageList = this.imageList1;
-            this.listViewLeft.TabIndex = 0;
-            this.listViewLeft.UseCompatibleStateImageBehavior = false;
-            this.listViewLeft.View = System.Windows.Forms.View.SmallIcon;
-            this.listViewLeft.DoubleClick += new System.EventHandler(this.listViewLeft_DoubleClick);
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -249,6 +225,7 @@
             this.添加NToolStripButton.Text = "添加(&N)";
             this.添加NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.添加NToolStripButton.ToolTipText = "添加(N)";
+            this.添加NToolStripButton.Click += new System.EventHandler(this.添加NToolStripButton_Click);
             // 
             // 修改OToolStripButton
             // 
@@ -258,6 +235,7 @@
             this.修改OToolStripButton.Size = new System.Drawing.Size(54, 47);
             this.修改OToolStripButton.Text = "修改(&O)";
             this.修改OToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.修改OToolStripButton.Click += new System.EventHandler(this.修改OToolStripButton_Click);
             // 
             // 保存SToolStripButton
             // 
@@ -306,6 +284,7 @@
             this.删除DToolStripButton1.Size = new System.Drawing.Size(53, 47);
             this.删除DToolStripButton1.Text = "删除(&D)";
             this.删除DToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.删除DToolStripButton1.Click += new System.EventHandler(this.删除DToolStripButton1_Click);
             // 
             // comboBox1
             // 
@@ -326,6 +305,29 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "跳至";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listViewLeft
+            // 
+            this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewLeft.HideSelection = false;
+            this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14});
+            this.listViewLeft.Location = new System.Drawing.Point(3, 3);
+            this.listViewLeft.MultiSelect = false;
+            this.listViewLeft.Name = "listViewLeft";
+            this.tableLayoutPanel2.SetRowSpan(this.listViewLeft, 4);
+            this.listViewLeft.Size = new System.Drawing.Size(114, 459);
+            this.listViewLeft.SmallImageList = this.imageList1;
+            this.listViewLeft.TabIndex = 0;
+            this.listViewLeft.UseCompatibleStateImageBehavior = false;
+            this.listViewLeft.View = System.Windows.Forms.View.SmallIcon;
+            this.listViewLeft.DoubleClick += new System.EventHandler(this.listViewLeft_DoubleClick);
             // 
             // FormReport
             // 
@@ -351,7 +353,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ListView listViewLeft;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.LinkLabel ll_End;
@@ -372,5 +373,6 @@
         private System.Windows.Forms.ToolStripButton 删除DToolStripButton1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListView listViewLeft;
     }
 }
