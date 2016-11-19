@@ -127,10 +127,6 @@ namespace ToolsManager
             //f.door = Global.DoorList[0];
             //f.Show();
 
-            //
-            //hello world
-            //hhhh
-            /////////////111111111111111/////////////
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
@@ -159,12 +155,13 @@ namespace ToolsManager
 
             if (result)
             {
-               //Test();
+                //Test();
 
                 //登录成功
                 //Global.FormRecord.Show();
 
 
+                //Global.FormMain.Show();
                 Global.FormMaintain.Show();
                 Global.FormLogin.Hide();
             }

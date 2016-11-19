@@ -256,7 +256,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string is_delete { get; set; }
+//            public string is_delete { get; set; }
         }
 
         public class UserListItem

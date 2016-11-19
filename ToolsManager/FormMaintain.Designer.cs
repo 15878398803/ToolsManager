@@ -29,19 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("上一页");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("下一页");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("台账报表");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("综合管理");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("预送检表");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("预报废表");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("定期检查");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("送检反馈");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("逾期记录");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("增购申请");
-            this.listViewTop = new System.Windows.Forms.ListView();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("台账报表");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("综合管理");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("预送检表");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("预报废表");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("定期检查");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("送检反馈");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("逾期记录");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("增购申请");
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.listViewLeft = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -54,24 +51,14 @@
             this.ll_First = new System.Windows.Forms.LinkLabel();
             this.lb_cur = new System.Windows.Forms.Label();
             this.lb_sum = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // listViewTop
-            // 
-            this.listViewTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewTop.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
-            this.listViewTop.LargeImageList = this.imageList1;
-            this.listViewTop.Location = new System.Drawing.Point(3, 3);
-            this.listViewTop.Name = "listViewTop";
-            this.listViewTop.Size = new System.Drawing.Size(833, 96);
-            this.listViewTop.TabIndex = 1;
-            this.listViewTop.UseCompatibleStateImageBehavior = false;
             // 
             // imageList1
             // 
@@ -79,22 +66,15 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // tableLayoutPanel1
+            // button5
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listViewTop, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.85442F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.14558F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(839, 545);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.button5.Location = new System.Drawing.Point(3, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -118,14 +98,14 @@
             this.listViewLeft.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
             listViewItem5,
             listViewItem6,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18});
+            listViewItem7,
+            listViewItem8});
             this.listViewLeft.Location = new System.Drawing.Point(3, 3);
             this.listViewLeft.MultiSelect = false;
             this.listViewLeft.Name = "listViewLeft";
@@ -144,6 +124,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(172, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(658, 401);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -157,6 +138,8 @@
             this.flowLayoutPanel1.Controls.Add(this.ll_First);
             this.flowLayoutPanel1.Controls.Add(this.lb_cur);
             this.flowLayoutPanel1.Controls.Add(this.lb_sum);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(172, 410);
@@ -171,7 +154,7 @@
             this.ll_End.Location = new System.Drawing.Point(624, 0);
             this.ll_End.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_End.Name = "ll_End";
-            this.ll_End.Size = new System.Drawing.Size(29, 26);
+            this.ll_End.Size = new System.Drawing.Size(29, 29);
             this.ll_End.TabIndex = 3;
             this.ll_End.TabStop = true;
             this.ll_End.Text = "末页";
@@ -186,7 +169,7 @@
             this.ll_Next.Location = new System.Drawing.Point(573, 0);
             this.ll_Next.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_Next.Name = "ll_Next";
-            this.ll_Next.Size = new System.Drawing.Size(41, 26);
+            this.ll_Next.Size = new System.Drawing.Size(41, 29);
             this.ll_Next.TabIndex = 0;
             this.ll_Next.TabStop = true;
             this.ll_Next.Text = "下一页";
@@ -211,7 +194,7 @@
             this.ll_Goto.Location = new System.Drawing.Point(485, 0);
             this.ll_Goto.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.ll_Goto.Name = "ll_Goto";
-            this.ll_Goto.Size = new System.Drawing.Size(29, 26);
+            this.ll_Goto.Size = new System.Drawing.Size(29, 29);
             this.ll_Goto.TabIndex = 5;
             this.ll_Goto.TabStop = true;
             this.ll_Goto.Text = "跳至";
@@ -224,7 +207,7 @@
             this.ll_Last.Location = new System.Drawing.Point(434, 0);
             this.ll_Last.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_Last.Name = "ll_Last";
-            this.ll_Last.Size = new System.Drawing.Size(41, 26);
+            this.ll_Last.Size = new System.Drawing.Size(41, 29);
             this.ll_Last.TabIndex = 1;
             this.ll_Last.TabStop = true;
             this.ll_Last.Text = "上一页";
@@ -238,7 +221,7 @@
             this.ll_First.Location = new System.Drawing.Point(383, 0);
             this.ll_First.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ll_First.Name = "ll_First";
-            this.ll_First.Size = new System.Drawing.Size(41, 26);
+            this.ll_First.Size = new System.Drawing.Size(41, 29);
             this.ll_First.TabIndex = 2;
             this.ll_First.TabStop = true;
             this.ll_First.Text = "第一页";
@@ -252,7 +235,7 @@
             this.lb_cur.Location = new System.Drawing.Point(314, 0);
             this.lb_cur.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lb_cur.Name = "lb_cur";
-            this.lb_cur.Size = new System.Drawing.Size(59, 26);
+            this.lb_cur.Size = new System.Drawing.Size(59, 29);
             this.lb_cur.TabIndex = 7;
             this.lb_cur.Text = "当前第0页";
             this.lb_cur.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -264,10 +247,47 @@
             this.lb_sum.Location = new System.Drawing.Point(269, 0);
             this.lb_sum.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lb_sum.Name = "lb_sum";
-            this.lb_sum.Size = new System.Drawing.Size(35, 26);
+            this.lb_sum.Size = new System.Drawing.Size(35, 29);
             this.lb_sum.TabIndex = 6;
             this.lb_sum.Text = "共0页";
             this.lb_sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(186, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "删除";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(105, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "修改";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.button5, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.85442F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.14558F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(839, 545);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // FormMaintain
             // 
@@ -280,31 +300,32 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMaintain_FormClosing);
             this.Load += new System.EventHandler(this.FormMaintain_Load);
             this.Shown += new System.EventHandler(this.FormMaintain_Shown);
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listViewTop;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ListView listViewLeft;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.LinkLabel ll_End;
         private System.Windows.Forms.LinkLabel ll_Next;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.LinkLabel ll_Goto;
         private System.Windows.Forms.LinkLabel ll_Last;
         private System.Windows.Forms.LinkLabel ll_First;
-        private System.Windows.Forms.Label lb_sum;
         private System.Windows.Forms.Label lb_cur;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lb_sum;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
