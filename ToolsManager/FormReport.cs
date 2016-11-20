@@ -337,5 +337,10 @@ namespace ToolsManager
             return true;
         }
 
+
+        async public Task<bool> RoleList()
+        {
+
+        }
     }
 }
