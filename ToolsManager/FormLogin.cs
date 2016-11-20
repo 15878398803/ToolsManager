@@ -152,7 +152,7 @@ namespace ToolsManager
             //Global.FormLoading.Show();
 #if DEBUG
             //Debug.WriteLine("使用默认账号yyq登录调试");
-            tx_username.Text = "yyq";
+            tx_username.Text = "yyqq";
             tx_password.Text = "123456";
 #endif
             var result = await Server.Login(tx_username.Text, tx_password.Text);
