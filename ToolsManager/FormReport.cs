@@ -138,7 +138,7 @@ namespace ToolsManager
 
         async private void 修改OToolStripButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedCells.Count == 1)
+            if (dataGridView1.SelectedRows.Count == 1)
             {
                 switch (lastTable)
                 {
@@ -153,7 +153,7 @@ namespace ToolsManager
                     case "工作类别":
                         var f = new FormWorkType();
                         f.IsUpdate = true;
-                        f.WorkType = Global.WorkTypeList.Find(t => t.work_id == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value as string);
+                        f.WorkType = Global.WorkTypeList.Find(t => t.work_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
                         f.ShowDialog();
                         await WorkTypeList();
                         break;

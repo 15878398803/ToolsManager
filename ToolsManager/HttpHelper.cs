@@ -11,23 +11,6 @@ namespace ToolsManager
     public class HttpHelper
     {
         //private static readonly string DefaultUserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
-        /** 下面为 http post 报文格式
-     POST/logsys/home/uploadIspeedLog!doDefault.html HTTP/1.1 
-　　 Accept: text/plain, 
-　　 Accept-Language: zh-cn 
-　　 Host: 192.168.24.56
-　　 Content-Type:multipart/form-data;boundary=-----------------------------7db372eb000e2
-　　 User-Agent: WinHttpClient 
-　　 Content-Length: 3693
-　　 Connection: Keep-Alive   注：上面为报文头
-　　 -------------------------------7db372eb000e2
-　　 Content-Disposition: form-data; name="file"; filename="kn.jpg"
-　　 Content-Type: image/jpeg
-　　 (此处省略jpeg文件二进制数据...）
-　　 -------------------------------7db372eb000e2--
-         * 
-         * */
-
 
         public static HttpWebResponse CreateGetHttpResponse(string url)
         {
@@ -129,67 +112,67 @@ namespace ToolsManager
             string[] values = request.Headers.GetValues("Content-Type");
             return request.GetResponse() as HttpWebResponse;
         }
-
-        /// <summary>
-        /// 以Post 形式提交数据到 uri
-        /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="files"></param>
-        /// <param name="values"></param>
-        /// <returns></returns>
-
-        public static HttpWebResponse CreatePostHttpResponseFile(string url, Byte[] file)
+        public static HttpWebResponse PostImage(string url, string ImagePath)
         {
-            string bund = "-------------------------------7db372eb000e2";
-            string bundF = "\r\n-------------------------------7db372eb000e2--";
+            FileStream fs = new FileStream(ImagePath, FileMode.Open);
+            var r = PostImage(url, fs);
+            fs.Close();
+            return r;
+        }
+        public static HttpWebResponse PostImage(string url, FileStream fs)
+        {
+            string boundary = "----------" + DateTime.Now.Ticks.ToString("x");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("--" + boundary);
+            sb.Append("\r\n");
+            sb.Append("Content-Disposition: form-data; name=\"img\";filename=\"img.jpg\"");
+            sb.Append("\r\n");
+            sb.Append("Content-Type: image/jpeg");
+            sb.Append("\r\n");//在二进制数据前必须有且仅有两个回车，多了会算进二进制数据部分，造成数据错误
+            sb.Append("\r\n");
+            byte[] postHeaderBytes = Encoding.UTF8.GetBytes(sb.ToString());
+            byte[] boundaryBytes = Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");//结尾要多出来的两个--，而且必须放在原来的boundary前面，否则服务器会返回非法访问
 
-            HttpWebRequest request = null;
-            //如果是发送HTTPS请求  
-            //if (url.StartsWith("https", StringComparison.OrdinalIgnoreCase))
-            //{
-            //    //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
-            //    request = WebRequest.Create(url) as HttpWebRequest;
-            //    //request.ProtocolVersion = HttpVersion.Version10;
-            //}
-            //else
-            {
-                request = WebRequest.Create(url) as HttpWebRequest;
-            }
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.ContentType = "multipart/form-data; boundary=" + boundary;
             request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
 
             MemoryStream mStream = new MemoryStream();
-            //设置代理UserAgent和超时
-            //request.UserAgent = userAgent;
-            //request.Timeout = timeout; 
+            //读入内存区域进行缓存，避免中途读文件所需的时间对整体的影响，保证比较连续地写入Request
+            mStream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
+            fs.CopyTo(mStream);
+            mStream.Write(boundaryBytes, 0, boundaryBytes.Length);
+            //切记，MemoryStream 在写完数据进去后，位置会停留在最后写入的地方，下一次读出来时会从最后开始读，也就会造成什么都读不到。读之前把位置归零
+            mStream.Position = 0;
+            mStream.Flush();
 
-            //发送POST数据  
+            //byte[] ttt = new byte[100];
+            //mStream.Read(ttt, 0, 100);
 
-            string fformat = "Content-Disposition: form-data; name=\"img\" Content-Type: image/jpeg\r\n\r\n";
+            //byte[] fsByte = new byte[checked((uint)Math.Min(4096, (int)fs.Length))];
+            //int bytesRead = 0;
+            //while ((bytesRead = fs.Read(fsByte, 0, fsByte.Length)) != 0)
+            //{
+            //    stream.Write(fsByte, 0, bytesRead);
+            //}
+            request.ContentLength = mStream.Length;//postHeaderBytes.Length + fs.Length + boundaryBytes.Length;
 
-            byte[] data = Encoding.UTF8.GetBytes(fformat);
-            byte[] a = Encoding.UTF8.GetBytes(bund);
-            byte[] b = Encoding.UTF8.GetBytes(bundF);
+            var stream = request.GetRequestStream();
+            mStream.CopyTo(stream);
+            mStream.Close();
+            //stream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
+            //fs.CopyTo(stream);
+            //stream.Write(boundaryBytes, 0, boundaryBytes.Length);
 
-            mStream.Write(a, 0, a.Length);
-            mStream.Write(data, 0, data.Length);
-            mStream.Write(file, 0, file.Length);
-            mStream.Write(b, 0, b.Length);
-            request.ContentLength = mStream.Length;
-
-            using (Stream stream = request.GetRequestStream())
-            {
-                mStream.CopyTo(stream);
-                //stream.Write(a, 0, a.Length);
-                //stream.Write(data, 0, data.Length);
-                //stream.Write(file, 0, file.Length);
-                //stream.Write(b, 0, b.Length);
-                //request.ContentLength = mStream.Length;
-            }
-
-            //string[] values = request.Headers.GetValues("Content-Type");
+            stream.Flush();
+            stream.Close();
+            //fs.Close();
             return request.GetResponse() as HttpWebResponse;
+            //var reader = new StreamReader(mStream, Encoding.UTF8);
+            //Debug.WriteLine(reader.ReadToEnd());
         }
+
+
         /// <summary>
         /// 获取请求的数据
         /// </summary>
