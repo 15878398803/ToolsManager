@@ -130,6 +130,7 @@ namespace ToolsManager
                     break;
                 case "缺陷类别":
                     var t = new FormUpdateInsertDefect();
+                    t.ShowDialog();
                     break;
                 case "员工权限":
                     break;
