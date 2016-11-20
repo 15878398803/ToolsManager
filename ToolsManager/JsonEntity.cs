@@ -703,6 +703,10 @@ namespace ToolsManager
             /// </summary>
             public string user_name { get; set; }
         }
-
+        public class UploadImage
+        {
+            public string msg { get; set; }
+            public string img_url { get; set; }
+        }
     }
 }

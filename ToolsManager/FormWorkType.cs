@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ToolsManager
@@ -81,32 +82,48 @@ namespace ToolsManager
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        async private void button3_Click(object sender, EventArgs e)
         {
-            //openFileDialog1.Filter = "图片文件(*.jpg)|*.jpg";
-            //openFileDialog1.FileName = "";
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    if (openFileDialog1.FileName != "")
-            //    {
-            //        Debug.WriteLine(openFileDialog1.FileName);
-            //        FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open);
-            //        if (fs.Length <= 1 * 1024 * 1024)
-            //        {
-            //            Byte[] buf = new byte[1024 * 1024 * 2];
-            //            fs.Read(buf, 0, 1024 * 1024 * 2);
-            //            //Debug.WriteLine(HttpHelper.GetResponseString(HttpHelper.CreatePostHttpResponseFile("http://120.76.121.79/file/picture.api", buf)));
-            //            Debug.WriteLine(HttpHelper.GetResponseString(HttpHelper.CreatePostHttpResponseFile("http://120.76.121.79/file/picture.api", buf)));
+            openFileDialog1.Filter = "图片文件(*.jpg)|*.jpg";
+            openFileDialog1.FileName = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (openFileDialog1.FileName != "")
+                {
+                    Debug.WriteLine(openFileDialog1.FileName);
+                    FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Open);
+                    if (fs.Length <= 1 * 1024 * 1024)
+                    {
+                        button3.Enabled = false;
+                        button3.Text = "上传中...";
+                        string jsonString = await Task.Factory.StartNew(() =>
+                        {
+                            var t = HttpHelper.GetResponseString(HttpHelper.PostImage("http://" + Global.ServerIp + "/file/picture.api", fs));
+                            fs.Close();
+                            return t;
+                        });
+                        button3.Text = "浏览...";
+                        JsonEntity.UploadImage UploadImage = JsonHelper.parse<JsonEntity.UploadImage>(jsonString);
+                        if (string.IsNullOrWhiteSpace(UploadImage.msg))
+                        {
+                            if (!string.IsNullOrWhiteSpace(UploadImage.img_url))
+                            {
+                                textBox2.Text = UploadImage.img_url;
+                                pictureBox1.Load(UploadImage.img_url);
 
-            //            fs.Close();
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("图片超过1MB，请重新选择。");
-            //        }
+                                MessageBox.Show("图片上传完成");
+                                return;
+                            }
+                        }
+                        MessageBox.Show("图片上传失败，可能是网络问题，请重试");
+                    }
+                    else
+                    {
+                        MessageBox.Show("图片超过1MB，请重新选择。");
+                    }
 
-            //    }
-            //}
+                }
+            }
 
         }
     }
