@@ -168,6 +168,7 @@ namespace ToolsManager
 
         public class ToolClass
         {
+            public string page_num { get; set; }
             public string class_id { get; set; }
             public string class_name { get; set; }
             public string memo { get; set; }
@@ -237,9 +238,6 @@ namespace ToolsManager
 
         public class Defect
         {
-            /// <summary>
-            /// 
-            /// </summary>
             public string defect_id { get; set; }
             /// <summary>
             /// 
@@ -256,7 +254,8 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-//            public string is_delete { get; set; }
+            
+            //            public string is_delete { get; set; }
         }
 
         public class UserListItem

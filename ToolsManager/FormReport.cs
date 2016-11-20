@@ -78,6 +78,7 @@ namespace ToolsManager
 
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
+            ll_First.Text = "第一页";
             switch (listViewLeft.SelectedItems[0].Text)
             {
                 case "申购计划":
@@ -131,6 +132,7 @@ namespace ToolsManager
                 case "缺陷类别":
                     var t = new FormUpdateInsertDefect();
                     t.ShowDialog();
+ //                   await ReadDefectsList(page);
                     break;
                 case "员工权限":
                     break;
@@ -159,6 +161,14 @@ namespace ToolsManager
                         await WorkTypeList();
                         break;
                     case "缺陷类别":
+                        var d = new FormUpdateInsertDefect();
+                        if(page!=0)
+                        {
+                            d.Defect = Global.DefectList.Find(t => t.defect_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
+                            d.ShowDialog();
+                        }                        
+                        
+ //                       await ReadDefectsList(page);
                         break;
                     case "员工权限":
                         break;
@@ -243,7 +253,7 @@ namespace ToolsManager
 
         private void ll_First_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            page = 1;
+            page = 0;
             listViewLeft_DoubleClick(null, null);
         }
 
@@ -254,12 +264,20 @@ namespace ToolsManager
         }
 
 
-        async public Task<bool> ReadDefectsList(int classID)
+        async public Task<bool> ReadDefectsList(int page)
         {
-            if (classID == 0)
+            ll_First.Text = "首页";
+            if (page == 0)
             {
+                int x = 1;
                 await Server.GetToolClasses();
-                //                int list_num = Global.ToolClass.Count;
+                foreach (var toolc in Global.ToolClass)
+                {
+                    
+                    toolc.page_num = x.ToString();
+                    x++;
+                }
+
                 lb_cur.Text = "第" + 0 + "页";
                 lb_sum.Text = "共" + Global.ToolClass.Count + "页";
                 if (Global.ToolClass.Count != comboBox1.Items.Count)
@@ -274,9 +292,10 @@ namespace ToolsManager
                 dataGridView1.RowHeadersVisible = false;
                 if (Global.ToolClass.Count > 0)
                 {
-                    dataGridView1.Columns[0].HeaderText = "科目id标识";
-                    dataGridView1.Columns[1].HeaderText = "科目名称";
-                    dataGridView1.Columns[2].HeaderText = "备注";
+                    dataGridView1.Columns[0].HeaderText = "页码";
+                    dataGridView1.Columns[1].HeaderText = "科目id标识";
+                    dataGridView1.Columns[2].HeaderText = "科目名称";
+                    dataGridView1.Columns[3].HeaderText = "备注";
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
                         dataGridView1.Columns[i].ReadOnly = true;
@@ -285,7 +304,7 @@ namespace ToolsManager
                 }
 
             }
-            else if (await Server.GetDefectList(classID))
+           else if (await Server.GetDefectList(Convert.ToInt32(Global.ToolClass.Find(t => t.page_num == page.ToString()).class_id)))
             {
                 int list_num = Global.DefectList.Count;
                 maxPageNum = (list_num / 100) + 1;

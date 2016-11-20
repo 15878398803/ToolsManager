@@ -21,7 +21,8 @@ namespace ToolsManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //   Application.Exit();
+            this.Close();
         }
 
         async private void button1_Click(object sender, EventArgs e)
