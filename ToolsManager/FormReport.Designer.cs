@@ -94,6 +94,7 @@
             this.ll_End.TabStop = true;
             this.ll_End.Text = "末页";
             this.ll_End.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_End.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_End_LinkClicked);
             // 
             // ll_Next
             // 
@@ -108,6 +109,7 @@
             this.ll_Next.TabStop = true;
             this.ll_Next.Text = "下一页";
             this.ll_Next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_Next.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_Next_LinkClicked);
             // 
             // comboBox1
             // 
@@ -117,6 +119,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(48, 20);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -141,6 +144,7 @@
             this.ll_Last.TabStop = true;
             this.ll_Last.Text = "上一页";
             this.ll_Last.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_Last.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_Last_LinkClicked);
             // 
             // ll_First
             // 
@@ -154,6 +158,7 @@
             this.ll_First.TabStop = true;
             this.ll_First.Text = "第一页";
             this.ll_First.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_First.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_First_LinkClicked);
             // 
             // lb_cur
             // 
