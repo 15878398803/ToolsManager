@@ -15,7 +15,6 @@ namespace ToolsManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Global.ServerIp = Properties.Settings.Default.ServerIp;
             Application.Run(Global.FormLogin);
             //Application.Run(Global.FormMaintain);
         }

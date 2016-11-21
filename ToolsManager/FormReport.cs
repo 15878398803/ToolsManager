@@ -132,7 +132,7 @@ namespace ToolsManager
                 case "缺陷类别":
                     var t = new FormUpdateInsertDefect();
                     t.ShowDialog();
- //                   await ReadDefectsList(page);
+                    //                   await ReadDefectsList(page);
                     break;
                 case "员工权限":
                     break;
@@ -162,13 +162,13 @@ namespace ToolsManager
                         break;
                     case "缺陷类别":
                         var d = new FormUpdateInsertDefect();
-                        if(page!=0)
+                        if (page != 0)
                         {
                             d.Defect = Global.DefectList.Find(t => t.defect_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
                             d.ShowDialog();
-                        }                        
-                        
- //                       await ReadDefectsList(page);
+                        }
+
+                        //                       await ReadDefectsList(page);
                         break;
                     case "员工权限":
                         break;
@@ -225,42 +225,159 @@ namespace ToolsManager
             if (listViewLeft.SelectedItems.Count > 0)
                 listViewLeft_DoubleClick(null, null);
         }
-        private void ll_Next_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        async private void ll_Next_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             page++;
-            listViewLeft_DoubleClick(null, null);
+            switch (lastTable)
+            {
+                case "申购计划":
+                    lastTable = "申购计划";
+                    break;
+                case "局申购汇总":
+                    lastTable = "局申购汇总";
+                    break;
+                case "报废记录":
+                    lastTable = "报废记录";
+                    break;
+                case "局报废汇总":
+                    lastTable = "局报废汇总";
+                    break;
+                case "工作类别":
+                    lastTable = "工作类别";
+                    await WorkTypeList();
+                    break;
+                case "缺陷类别":
+                    lastTable = "缺陷类别";
+                    await ReadDefectsList(page);
+                    break;
+                case "员工权限":
+                    lastTable = "员工权限";
+                    break;
+            }
         }
 
-        private void ll_End_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        async private void ll_End_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
+           
+            switch (lastTable)
             {
-                page = Global.ToolClass.Count;
-                listViewLeft_DoubleClick(null, null);
+                case "申购计划":
+                    lastTable = "申购计划";
+                    break;
+                case "局申购汇总":
+                    lastTable = "局申购汇总";
+                    break;
+                case "报废记录":
+                    lastTable = "报废记录";
+                    break;
+                case "局报废汇总":
+                    lastTable = "局报废汇总";
+                    break;
+                case "工作类别":
+                    lastTable = "工作类别";
+                    await WorkTypeList();
+                    break;
+                case "缺陷类别":
+                    lastTable = "缺陷类别"; 
+                    await ReadDefectsList(Global.ToolClass.Count);
+                    break;
+                case "员工权限":
+                    lastTable = "员工权限";
+                    break;
             }
-            catch
-            {
-
-            }
-
         }
 
-        private void ll_Last_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        async private void ll_Last_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             page--;
-            listViewLeft_DoubleClick(null, null);
+            switch (lastTable)
+            {
+                case "申购计划":
+                    lastTable = "申购计划";
+                    break;
+                case "局申购汇总":
+                    lastTable = "局申购汇总";
+                    break;
+                case "报废记录":
+                    lastTable = "报废记录";
+                    break;
+                case "局报废汇总":
+                    lastTable = "局报废汇总";
+                    break;
+                case "工作类别":
+                    lastTable = "工作类别";
+                    await WorkTypeList();
+                    break;
+                case "缺陷类别":
+                    lastTable = "缺陷类别";
+                    await ReadDefectsList(page);
+                    break;
+                case "员工权限":
+                    lastTable = "员工权限";
+                    break;
+            }
         }
 
-        private void ll_First_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        async private void ll_First_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             page = 0;
-            listViewLeft_DoubleClick(null, null);
+            switch (lastTable)
+            {
+                case "申购计划":
+                    lastTable = "申购计划";
+                    break;
+                case "局申购汇总":
+                    lastTable = "局申购汇总";
+                    break;
+                case "报废记录":
+                    lastTable = "报废记录";
+                    break;
+                case "局报废汇总":
+                    lastTable = "局报废汇总";
+                    break;
+                case "工作类别":
+                    lastTable = "工作类别";
+                    await WorkTypeList();
+                    break;
+                case "缺陷类别":
+                    lastTable = "缺陷类别";
+                    await ReadDefectsList(page);
+                    break;
+                case "员工权限":
+                    lastTable = "员工权限";
+                    break;
+            }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        async private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             page = Convert.ToInt32(comboBox1.Text);
-            listViewLeft_DoubleClick(null, null);
+            switch (lastTable)
+            {
+                case "申购计划":
+                    lastTable = "申购计划";
+                    break;
+                case "局申购汇总":
+                    lastTable = "局申购汇总";
+                    break;
+                case "报废记录":
+                    lastTable = "报废记录";
+                    break;
+                case "局报废汇总":
+                    lastTable = "局报废汇总";
+                    break;
+                case "工作类别":
+                    lastTable = "工作类别";
+                    await WorkTypeList();
+                    break;
+                case "缺陷类别":
+                    lastTable = "缺陷类别";
+                    await ReadDefectsList(page);
+                    break;
+                case "员工权限":
+                    lastTable = "员工权限";
+                    break;
+            }
         }
 
 
@@ -269,25 +386,21 @@ namespace ToolsManager
             ll_First.Text = "首页";
             if (page == 0)
             {
-                int x = 1;
                 await Server.GetToolClasses();
-                foreach (var toolc in Global.ToolClass)
+                for (int x = 1; x <= Global.ToolClass.Count; x++)
                 {
-                    
-                    toolc.page_num = x.ToString();
-                    x++;
+                    Global.ToolClass[x - 1].page_num = x;
                 }
 
-                lb_cur.Text = "第" + 0 + "页";
+                lb_cur.Text = "目录页";
                 lb_sum.Text = "共" + Global.ToolClass.Count + "页";
-                if (Global.ToolClass.Count != comboBox1.Items.Count)
+
+                comboBox1.Items.Clear();
+                for (int i = 0; i <= Global.ToolClass.Count; i++)
                 {
-                    comboBox1.Items.Clear();
-                    for (int i = 0; i <= Global.ToolClass.Count; i++)
-                    {
-                        comboBox1.Items.Add(i);
-                    }
+                    comboBox1.Items.Add(i);
                 }
+
                 dataGridView1.DataSource = Global.ToolClass;
                 dataGridView1.RowHeadersVisible = false;
                 if (Global.ToolClass.Count > 0)
@@ -304,20 +417,20 @@ namespace ToolsManager
                 }
 
             }
-           else if (await Server.GetDefectList(Convert.ToInt32(Global.ToolClass.Find(t => t.page_num == page.ToString()).class_id)))
+            else if (await Server.GetDefectList(Convert.ToInt32(Global.ToolClass.Find(t => t.page_num == page).class_id)))
             {
-                int list_num = Global.DefectList.Count;
-                maxPageNum = (list_num / 100) + 1;
-                lb_cur.Text = "第" + page + "页";
-                lb_sum.Text = "共" + Global.ToolClass.Count + "页";
-                if (Global.ToolClass.Count != comboBox1.Items.Count)
-                {
-                    comboBox1.Items.Clear();
-                    for (int i = 0; i <= Global.ToolClass.Count; i++)
-                    {
-                        comboBox1.Items.Add(i);
-                    }
-                }
+                //int list_num = Global.DefectList.Count;
+                //maxPageNum = ( list_num / 100 ) + 1;
+                //lb_cur.Text = "第" + page + "页";
+                //lb_sum.Text = "共" + Global.ToolClass.Count + "页";
+                //if (Global.ToolClass.Count != comboBox1.Items.Count)
+                //{
+                //    comboBox1.Items.Clear();
+                //    for (int i = 0; i <= Global.ToolClass.Count; i++)
+                //    {
+                //        comboBox1.Items.Add(i);
+                //    }
+                //}
                 dataGridView1.DataSource = Global.DefectList;
                 dataGridView1.RowHeadersVisible = false;
                 if (Global.DefectList.Count > 0)
@@ -337,10 +450,5 @@ namespace ToolsManager
             return true;
         }
 
-
-        async public Task<bool> RoleList()
-        {
-
-        }
     }
 }

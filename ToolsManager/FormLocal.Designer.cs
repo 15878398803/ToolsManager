@@ -39,6 +39,7 @@
             this.tx_num = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tx_ip = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(24, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 2;
@@ -128,7 +129,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 139);
+            this.label4.Location = new System.Drawing.Point(12, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 10;
@@ -141,11 +142,22 @@
             this.tx_ip.Size = new System.Drawing.Size(158, 21);
             this.tx_ip.TabIndex = 11;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(5, 173);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(96, 16);
+            this.checkBox2.TabIndex = 13;
+            this.checkBox2.Text = "是否自动登录";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // FormLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 283);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.tx_ip);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tx_num);
@@ -179,5 +191,6 @@
         private System.Windows.Forms.TextBox tx_num;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tx_ip;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

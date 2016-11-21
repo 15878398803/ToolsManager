@@ -92,10 +92,10 @@ namespace ToolsManager
             StringBuilder builder = new StringBuilder(200);
 
             builder.AppendFormat("http://{0}/user/auto_login.api?station_id={1}&user_code={2}", Global.ServerIp, StationId, UserCode);
-#if !DEBUG
+//#if !DEBUG
             try
             {
-#endif
+//#endif
             //异步执行GET请求，不影响UI主线程
             string jsonString = await Task.Factory.StartNew(() =>
             {
@@ -104,15 +104,16 @@ namespace ToolsManager
             //以下代码在上面的Task执行完后会自动回来调用
             var autologin = JsonHelper.parse<JsonEntity.AutoLogin>(jsonString);
             Global.AutoLogin = autologin;
+            //"无开门记录"
             return true;
-#if !DEBUG
+//#if !DEBUG
             }
             catch (Exception)
             {
-                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-#endif
+//#endif
 
         }
 
@@ -1205,7 +1206,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/receive/task_receive_list.api?user_id={1}&user_code={2}&task_id={3}", Global.ServerIp, user_id, task_id);
+            builder.AppendFormat("http://{0}/receive/task_receive_list.api?user_id={1}&user_code={2}&task_id={3}", Global.ServerIp, user_id, UserCode, task_id);
 #if !DEBUG
             try
             {

@@ -10,7 +10,6 @@ namespace ToolsManager
     public static class Global
     {
         public static bool isLocalSuper;
-
         private static FormMain formMain;
         private static FormLogin formLogin;
         private static FormMaintain formMaintain;
@@ -19,18 +18,17 @@ namespace ToolsManager
         private static FormSettings formSettings;
         private static FormSubsystem formSubsystem;
         private static FormLoading formLoading;
+        private static FormTaskReceiveList formTaskReceiveList;
 
         #region 窗体初始化
         public static FormLoading FormLoading
         {
             get
             {
-                if (formLoading == null)
+                if (formLoading == null || FormLogin.IsDisposed)
                 {
                     formLoading = new FormLoading();
-
-                    formLoading.TopMost = true;
-
+                    
                     return formLoading;
                 }
                 else
@@ -43,17 +41,33 @@ namespace ToolsManager
                 formLoading = value;
             }
         }
-
+        public static FormTaskReceiveList FormTaskReceiveList
+        {
+            get
+            {
+                if (formTaskReceiveList == null || formTaskReceiveList.IsDisposed)
+                {
+                    formTaskReceiveList = new FormTaskReceiveList();
+                    
+                    return formTaskReceiveList;
+                }
+                else
+                {
+                    return formTaskReceiveList;
+                }
+            }
+            set
+            {
+                formTaskReceiveList = value;
+            }
+        }
         public static FormMain FormMain
         {
             get
             {
-                if (formMain == null)
+                if (formMain == null || formMain.IsDisposed)
                 {
                     formMain = new FormMain();
-
-                    Global.formMain.TopMost = false;
-                    Global.formMain.FormBorderStyle = FormBorderStyle.FixedDialog;
 
                 }
                 return formMain;
@@ -68,12 +82,9 @@ namespace ToolsManager
         {
             get
             {
-                if (formLogin == null)
+                if (formLogin == null || formLogin.IsDisposed)
                 {
                     formLogin = new FormLogin();
-
-                    formLogin.TopMost = false;
-                    formLogin.FormBorderStyle = FormBorderStyle.FixedDialog;
 
                 }
                 return formLogin;
@@ -88,7 +99,7 @@ namespace ToolsManager
         {
             get
             {
-                if (formMaintain == null)
+                if (formMaintain == null || formMaintain.IsDisposed)
                 {
                     formMaintain = new FormMaintain();
                 }
@@ -104,7 +115,7 @@ namespace ToolsManager
         {
             get
             {
-                if (formRecord == null)
+                if (formRecord == null || formRecord.IsDisposed)
                 {
                     formRecord = new FormRecord();
                 }
@@ -120,7 +131,7 @@ namespace ToolsManager
         {
             get
             {
-                if (formReport == null)
+                if (formReport == null || formReport.IsDisposed)
                 {
                     formReport = new FormReport();
                 }
@@ -136,7 +147,7 @@ namespace ToolsManager
         {
             get
             {
-                if (formSettings == null)
+                if (formSettings == null || formSettings.IsDisposed)
                 {
                     formSettings = new FormSettings();
                 }
@@ -152,7 +163,7 @@ namespace ToolsManager
         {
             get
             {
-                if (formSubsystem == null)
+                if (formSubsystem == null || formSubsystem.IsDisposed)
                 {
                     formSubsystem = new FormSubsystem();
                 }
@@ -177,14 +188,14 @@ namespace ToolsManager
             {
                 c.Items.Add(i + 1);
             }
-//            if (num > 0 && c.Items.Count>0)
-//            {
-                //c.SelectedIndex = 0;
- //           }
+            //            if (num > 0 && c.Items.Count>0)
+            //            {
+            //c.SelectedIndex = 0;
+            //           }
         }
 
-        public static string ServerIp = "120.76.121.79";
-        public static int StationId = Properties.Settings.Default.站点ID;
+        public static string ServerIp = Properties.Settings.Default.ServerIp;
+        public static int StationId = 1;//Properties.Settings.Default.站点ID;
         public static int PageNum = Properties.Settings.Default.单页容量;
 
         public static JsonEntity.Login LoginInfo;

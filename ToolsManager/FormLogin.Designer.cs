@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -41,6 +42,8 @@
             this.label_main = new System.Windows.Forms.Label();
             this.label_sub = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel1.SuspendLayout();
@@ -83,13 +86,14 @@
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.85338F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.21766F));
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.05954F));
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             tableLayoutPanel2.Controls.Add(this.tx_username, 2, 1);
             tableLayoutPanel2.Controls.Add(this.tx_password, 2, 2);
             tableLayoutPanel2.Controls.Add(this.pictureBox2, 3, 3);
             tableLayoutPanel2.Controls.Add(this.label1, 1, 1);
             tableLayoutPanel2.Controls.Add(this.label2, 1, 2);
             tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 3);
+            tableLayoutPanel2.Controls.Add(this.linkLabel1, 1, 0);
             tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel2.Location = new System.Drawing.Point(664, 218);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -108,11 +112,11 @@
             this.tx_username.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tx_username.Font = new System.Drawing.Font("新宋体", 12F);
             this.tx_username.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.tx_username.Location = new System.Drawing.Point(158, 79);
+            this.tx_username.Location = new System.Drawing.Point(152, 79);
             this.tx_username.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tx_username.MaxLength = 100;
             this.tx_username.Name = "tx_username";
-            this.tx_username.Size = new System.Drawing.Size(96, 26);
+            this.tx_username.Size = new System.Drawing.Size(92, 26);
             this.tx_username.TabIndex = 0;
             // 
             // tx_password
@@ -120,12 +124,12 @@
             this.tx_password.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tx_password.Font = new System.Drawing.Font("新宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tx_password.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.tx_password.Location = new System.Drawing.Point(158, 123);
+            this.tx_password.Location = new System.Drawing.Point(152, 123);
             this.tx_password.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tx_password.MaxLength = 100;
             this.tx_password.Name = "tx_password";
             this.tx_password.PasswordChar = '●';
-            this.tx_password.Size = new System.Drawing.Size(96, 26);
+            this.tx_password.Size = new System.Drawing.Size(92, 26);
             this.tx_password.TabIndex = 1;
             this.tx_password.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tx_password_KeyUp);
             // 
@@ -135,9 +139,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox2.Location = new System.Drawing.Point(260, 183);
+            this.pictureBox2.Location = new System.Drawing.Point(250, 183);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(62, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(60, 27);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -154,7 +158,7 @@
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.label1.Location = new System.Drawing.Point(15, 69);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 44);
+            this.label1.Size = new System.Drawing.Size(131, 44);
             this.label1.TabIndex = 4;
             // 
             // label2
@@ -165,7 +169,7 @@
             this.label2.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.label2.Location = new System.Drawing.Point(15, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 42);
+            this.label2.Size = new System.Drawing.Size(131, 42);
             this.label2.TabIndex = 5;
             // 
             // pictureBox1
@@ -176,7 +180,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(15, 158);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(239, 52);
+            this.pictureBox1.Size = new System.Drawing.Size(229, 52);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.btn_login_Click);
@@ -243,6 +247,26 @@
             this.label5.Text = "智能物联工器具管理系统";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            tableLayoutPanel2.SetColumnSpan(this.linkLabel1, 4);
+            this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.linkLabel1.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.linkLabel1.ForeColor = System.Drawing.Color.Red;
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel1.Location = new System.Drawing.Point(15, 48);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(336, 21);
+            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -256,6 +280,7 @@
             this.Text = "登录 —— 广东电网肇庆怀集供电局智能工器具管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.Shown += new System.EventHandler(this.FormLogin_Shown);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
@@ -280,6 +305,8 @@
         private System.Windows.Forms.Label label_main;
         private System.Windows.Forms.Label label_sub;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
