@@ -68,19 +68,26 @@ namespace ToolsManager
                     //Global.FormSettings.Show();
                     //Global.FormSettings.Focus();
                     var pwd = Interaction.InputBox("请输入管理员密码：", "系统设置");
-                    MD5 md5 = new MD5CryptoServiceProvider();
-                    byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(pwd));
-                    if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
+                    //if (ShowDialog(new FormPassword()) == DialogResult.Yes)
+                    if (ShowDialog(new FormPassword()) == DialogResult.Yes)
                     {
-                        FormLocal f = new FormLocal();
-                        f.TopMost = true;
-                        f.Show();
-                        return;
+                        Global.PasswordInput = Global.UserInput = "";
+                        if (Global.UserInput.Trim() == "admin")
+                        {
+                            MD5 md5 = new MD5CryptoServiceProvider();
+                            byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(pwd));
+                            if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
+                            {
+                                FormLocal f = new FormLocal();
+                                f.TopMost = true;
+                                f.Show();
+                                return;
+                            }
+                        }
+                        MessageBox.Show("抱歉，账号密码错误。");
+
                     }
-                    else
-                    {
-                        MessageBox.Show("抱歉，密码错误。");
-                    }
+
                     break;
             }
 
@@ -91,7 +98,6 @@ namespace ToolsManager
             //Global.FormMain = null;
             Global.AutoLogin = null;
             Global.FormLogin.Show();
-            Hide();
             Global.FormLogin.FormLogin_Load(null, null);
             //e.Cancel = true;
             //FormMain_Load(null,null);
@@ -121,13 +127,47 @@ namespace ToolsManager
                     }
                 }
                 //  i.Remove();
-                timer1.Start();
 
+            }
+            else
+            {
+                timer1.Start();
             }
 
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        async private void timer1_Tick(object sender, EventArgs e)
         {
+            label1.Text = Global.LoginInfo.name + Global.LoginInfo.user_code;
+            timer1.Stop();
+
+            if (await Server.AutoLogin(Global.StationId, Properties.Settings.Default.LastUserCode))
+            {
+                //label1.Text = "";
+                if (Global.UserChanged)
+                {
+                    //if (Global.LoginInfo == null)
+                    //{
+                    Close();
+                    Global.FormLogin.Show();
+                    Global.FormLogin.FormLogin_Load(null, null);
+                    return;
+                    //}
+                }
+                //if (Global.AutoLogin.msg == "无开门记录")
+                //{
+                //    Global.LoginInfo = null;
+                //}
+            }
+            else
+            {
+                //linkLabel1.Enabled = true;
+                //label1.Text = "网络中断，正在重新建立连接...";
+                Close();
+                Global.FormLogin.Show();
+                Global.FormLogin.FormLogin_Load(null, null);
+                return;
+            }
+            timer1.Start();
 
         }
     }

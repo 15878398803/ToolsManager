@@ -141,6 +141,11 @@ namespace ToolsManager
             //Global.StationId = 100;
             //return;
             //超级密码为123465
+            //var t = await Server.AutoLogin(1, Properties.Settings.Default.LastUserCode);
+            //var tt = await Server.AutoLogin(1, Global.AutoLogin.user_code);
+
+
+            //return;
             if (tx_username.Text == "admin")
             {
                 MD5 md5 = new MD5CryptoServiceProvider();
@@ -254,7 +259,7 @@ namespace ToolsManager
 
         public void FormLogin_Load(object sender, EventArgs e)
         {
-            
+
             if (Properties.Settings.Default.isAutoLogin)
             {
                 linkLabel1.Text = "正在自动登录...点此取消";
@@ -277,7 +282,8 @@ namespace ToolsManager
             }
             else
             {
-                usercode = Properties.Settings.Default.LastUserCode;
+                usercode = DateTime.Now.Ticks.ToString("x");
+                //usercode = Properties.Settings.Default.LastUserCode;
             }
 
             if (await Server.AutoLogin(Global.StationId, usercode) == false)
@@ -311,7 +317,7 @@ namespace ToolsManager
             }
 
         }
-        
+
         private int reTryDelay = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
