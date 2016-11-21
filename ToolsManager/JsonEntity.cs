@@ -32,7 +32,6 @@ namespace ToolsManager
 
             [DataMember(Order = 6)]
             public int role { get; set; }
-
         }
 
         public class Station

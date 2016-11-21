@@ -197,6 +197,7 @@ namespace ToolsManager
         public static string ServerIp = Properties.Settings.Default.ServerIp;
         public static int StationId = 1;//Properties.Settings.Default.站点ID;
         public static int PageNum = Properties.Settings.Default.单页容量;
+        public static bool UserChanged = false;
 
         public static JsonEntity.Login LoginInfo;
         public static List<JsonEntity.Station> StationList;

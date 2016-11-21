@@ -91,7 +91,6 @@ namespace ToolsManager
             //Global.FormMain = null;
             Global.AutoLogin = null;
             Global.FormLogin.Show();
-            Hide();
             Global.FormLogin.FormLogin_Load(null, null);
             //e.Cancel = true;
             //FormMain_Load(null,null);
@@ -121,13 +120,47 @@ namespace ToolsManager
                     }
                 }
                 //  i.Remove();
-                timer1.Start();
 
+            }
+            else
+            {
+                timer1.Start();
             }
 
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        async private void timer1_Tick(object sender, EventArgs e)
         {
+            label1.Text = Global.LoginInfo.name + Global.LoginInfo.user_code;
+            timer1.Stop();
+
+            if (await Server.AutoLogin(Global.StationId, Properties.Settings.Default.LastUserCode))
+            {
+                //label1.Text = "";
+                if (Global.UserChanged)
+                {
+                    //if (Global.LoginInfo == null)
+                    //{
+                    Close();
+                    Global.FormLogin.Show();
+                    Global.FormLogin.FormLogin_Load(null, null);
+                    return;
+                    //}
+                }
+                //if (Global.AutoLogin.msg == "无开门记录")
+                //{
+                //    Global.LoginInfo = null;
+                //}
+            }
+            else
+            {
+                //linkLabel1.Enabled = true;
+                //label1.Text = "网络中断，正在重新建立连接...";
+                Close();
+                Global.FormLogin.Show();
+                Global.FormLogin.FormLogin_Load(null, null);
+                return;
+            }
+            timer1.Start();
 
         }
     }

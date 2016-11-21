@@ -92,28 +92,48 @@ namespace ToolsManager
             StringBuilder builder = new StringBuilder(200);
 
             builder.AppendFormat("http://{0}/user/auto_login.api?station_id={1}&user_code={2}", Global.ServerIp, StationId, UserCode);
-//#if !DEBUG
+            //#if !DEBUG
             try
             {
-//#endif
-            //异步执行GET请求，不影响UI主线程
-            string jsonString = await Task.Factory.StartNew(() =>
-            {
-                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
-            });
-            //以下代码在上面的Task执行完后会自动回来调用
-            var autologin = JsonHelper.parse<JsonEntity.AutoLogin>(jsonString);
-            Global.AutoLogin = autologin;
-            //"无开门记录"
-            return true;
-//#if !DEBUG
+                //#endif
+                //异步执行GET请求，不影响UI主线程
+                string jsonString = await Task.Factory.StartNew(() =>
+                {
+                    return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+                });
+                //以下代码在上面的Task执行完后会自动回来调用
+                var autologin = JsonHelper.parse<JsonEntity.AutoLogin>(jsonString);
+                if (autologin.msg == "保持登陆")
+                {
+                    Global.UserChanged = false;
+
+                }
+                else if (autologin.msg == "无开门记录")
+                {
+                    Global.UserChanged = true;
+                    Global.LoginInfo = Global.AutoLogin = null;
+
+                }
+                else if (autologin.msg == "true")
+                {
+                    Global.UserChanged = true;
+                    Global.AutoLogin = autologin;
+                    Properties.Settings.Default.LastUserCode = autologin.user_code;
+                    Properties.Settings.Default.Save();
+                }else
+                {
+                    Global.UserChanged = true;
+                }
+
+                return true;
+                //#if !DEBUG
             }
             catch (Exception)
             {
                 //MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-//#endif
+            //#endif
 
         }
 
