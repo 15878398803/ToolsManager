@@ -239,7 +239,7 @@ namespace ToolsManager
             pictureBox2.BackgroundImage = Properties.Resources.登录_副本_0000s_0002__退_出_;
 
         }
-        private bool isChangeIP = false;
+
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             //if (isChangeIP)

@@ -57,8 +57,8 @@ namespace ToolsManager
                     Global.FormSettings.Focus();
 
                     break;
-                case "实时领还记录表":
-
+                case "实时领还表":
+                    //ShowDialog(new FormPassword());
                     Global.FormTaskReceiveList.Show();
                     Global.FormTaskReceiveList.Focus();
 
@@ -69,10 +69,10 @@ namespace ToolsManager
                     //Global.FormSettings.Focus();
                     var pwd = Interaction.InputBox("请输入管理员密码：", "系统设置");
                     //if (ShowDialog(new FormPassword()) == DialogResult.Yes)
-                    if (ShowDialog(new FormPassword()) == DialogResult.Yes)
+                    //if (ShowDialog(new FormPassword()) == DialogResult.Yes)
                     {
                         Global.PasswordInput = Global.UserInput = "";
-                        if (Global.UserInput.Trim() == "admin")
+                        //if (Global.UserInput.Trim() == "admin")
                         {
                             MD5 md5 = new MD5CryptoServiceProvider();
                             byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(pwd));
