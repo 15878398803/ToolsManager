@@ -18,6 +18,11 @@ namespace ToolsManager
         public FormLogin()
         {
             InitializeComponent();
+            initTitle();
+
+        }
+        public void initTitle()
+        {
             if (Properties.Settings.Default.第一次运行)
             {
                 FormLocal f = new FormLocal();
@@ -29,7 +34,6 @@ namespace ToolsManager
             Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.站点名称 + " - " + "智能物联工器具管理系统";
             label_main.Text = Properties.Settings.Default.供电局名称;
             label_sub.Text = "(" + Properties.Settings.Default.站点名称 + ")";
-
         }
         //async Task<string> test()//模拟异步方法调用
         //{
@@ -134,8 +138,14 @@ namespace ToolsManager
         }
         async private void btn_login_Click(object sender, EventArgs e)
         {
-
+            //Global.StationId = 100;
+            //return;
             //超级密码为123465
+            //var t = await Server.AutoLogin(1, Properties.Settings.Default.LastUserCode);
+            //var tt = await Server.AutoLogin(1, Global.AutoLogin.user_code);
+
+
+            //return;
             if (tx_username.Text == "admin")
             {
                 MD5 md5 = new MD5CryptoServiceProvider();
@@ -145,7 +155,6 @@ namespace ToolsManager
                     FormLocal f = new FormLocal();
                     f.TopMost = true;
                     f.Show();
-                    this.Hide();
                     return;
                 }
             }
@@ -159,6 +168,7 @@ namespace ToolsManager
 
             if (result)
             {
+
                 //Test();
 
                 //登录成功
@@ -167,6 +177,7 @@ namespace ToolsManager
                 Global.FormMain.Show();
                 //Global.FormRecord.Show();
                 Global.FormLogin.Hide();
+                timer1.Stop();
             }
             else
             {
@@ -179,7 +190,6 @@ namespace ToolsManager
 
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Global.FormLogin = null;
         }
 
         private void FormLogin_Shown(object sender, EventArgs e)
@@ -232,6 +242,10 @@ namespace ToolsManager
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            //if (isChangeIP)
+            //    Global.ServerIp = "127.0.0.1";
+            //else
+            //    Global.ServerIp = "120.76.121.79";
             Application.Exit();
         }
 
@@ -241,6 +255,94 @@ namespace ToolsManager
             {
                 btn_login_Click(null, null);
             }
+        }
+
+        public void FormLogin_Load(object sender, EventArgs e)
+        {
+
+            if (Properties.Settings.Default.isAutoLogin)
+            {
+                linkLabel1.Text = "正在自动登录...点此取消";
+                linkLabel1.Enabled = true;
+                timer1.Interval = 2000;
+                timer1.Start();
+                tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = false;
+            }
+            else
+            {
+                linkLabel1.Enabled = false;
+            }
+        }
+        async public void autoLogin()
+        {
+            string usercode;
+            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.LastUserCode))
+            {
+                usercode = DateTime.Now.Ticks.ToString("x");
+            }
+            else
+            {
+                usercode = DateTime.Now.Ticks.ToString("x");
+                //usercode = Properties.Settings.Default.LastUserCode;
+            }
+
+            if (await Server.AutoLogin(Global.StationId, usercode) == false)
+            {
+                linkLabel1.Enabled = true;
+                linkLabel1.Text = "自动登录失败，可能网络通讯不畅，正在重试...点此取消";
+                timer1.Start();
+                return;
+            }
+            if (Global.AutoLogin.msg == "无开门记录")
+            {
+                linkLabel1.Enabled = false;
+                linkLabel1.Text = "正在等待开门...";
+                timer1.Start();
+            }
+            else
+            {
+                Properties.Settings.Default.LastUserCode = Global.AutoLogin.user_code;
+                Properties.Settings.Default.Save();
+                Global.LoginInfo = Global.AutoLogin;
+                if (Global.LoginInfo != null)
+                {
+                    Global.FormMain.Show();
+                    Global.FormLogin.Hide();
+                    //linkLabel1.Enabled = true;
+                    linkLabel1.Text = " ";
+                    tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
+
+
+                }
+            }
+
+        }
+
+        private int reTryDelay = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (reTryDelay == 2)
+            {
+                reTryDelay = 0;
+                timer1.Stop();
+                autoLogin();
+                return;
+            }
+            else
+            {
+                reTryDelay++;
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            reTryDelay = 0;
+            timer1.Stop();
+            linkLabel1.Text = "";
+            linkLabel1.Enabled = false;
+            tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
+
+
         }
     }
 }

@@ -23,5 +23,11 @@
     <Setting Name="ServerIp" Type="System.String" Scope="User">
       <Value Profile="(Default)">120.76.121.79</Value>
     </Setting>
+    <Setting Name="isAutoLogin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LastUserCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
