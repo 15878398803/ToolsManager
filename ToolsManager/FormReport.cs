@@ -233,6 +233,7 @@ namespace ToolsManager
             if (listViewLeft.SelectedItems.Count > 0)
                 listViewLeft_DoubleClick(null, null);
         }
+
         private void ll_Next_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (page < maxPageNum)
@@ -320,7 +321,6 @@ namespace ToolsManager
                         dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
 
                     var t = dataGridView1.Rows[i].Cells;
-
                 }
 
                 dataGridView1.Columns[0].HeaderText = "任务类型id标识";
