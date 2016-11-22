@@ -172,6 +172,7 @@ namespace ToolsManager
                 return;
             }
             timer1.Start();
+        }
         private void FormMain_Shown(object sender, EventArgs e)
         {
 

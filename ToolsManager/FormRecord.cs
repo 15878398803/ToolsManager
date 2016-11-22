@@ -27,7 +27,6 @@ namespace ToolsManager
         /// 标记位，防止comboBox1的comboBox1_SelectedIndexChanged误触发
         /// </summary>
         private bool isInit;
-        private int page;
         private DataGridViewCellStyle color_danger = new DataGridViewCellStyle();
 
         public FormRecord()
@@ -251,7 +250,7 @@ namespace ToolsManager
                 lb_cur.Text = "第" + cur + "页";
                 maxPageNum = (Convert.ToInt32(Global.TaskList.num.list_num) / Convert.ToInt32(Global.TaskList.num.page_num)) + 1;
                 lb_sum.Text = "共" + maxPageNum + "页";
-                if (Global.ToolClass.Count != comboBox1.Items.Count)
+                if (maxPageNum != comboBox1.Items.Count)
                 {
                     comboBox1.Items.Clear();
                     for (int i = 1; i <= maxPageNum; i++)
@@ -259,38 +258,43 @@ namespace ToolsManager
                         comboBox1.Items.Add(i);
                     }
                 }
-                dataGridView1.DataSource = Global.DefectList;
+                dataGridView1.DataSource = Global.TaskList.list;
                 dataGridView1.RowHeadersVisible = false;
-                //if (Global.DefectList.Count > 0)
-                //{
-                //    dataGridView1.Columns[0].HeaderText = "缺陷id 标识";
-                //    dataGridView1.Columns[1].HeaderText = "科目id标识";
-                //    dataGridView1.Columns[2].HeaderText = "缺陷名称";
-                //    dataGridView1.Columns[3].HeaderText = "备注";
-                //    for (int i = 0; i < dataGridView1.Columns.Count; i++)
-                //    {
-                //        dataGridView1.Columns[i].ReadOnly = true;
-                //        dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                //    }
-                //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                //    {
-                //        if (i % 2 == 0)
-                //            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
+                if (Global.TaskList.list.Count > 0)
+                {
+                    dataGridView1.Columns[0].HeaderText = "事件编号ID";
+                    dataGridView1.Columns[1].HeaderText = "工作类型";               //
+                    dataGridView1.Columns[2].HeaderText = "作业票单号";
+                    dataGridView1.Columns[3].HeaderText = "生产班组";
+                    dataGridView1.Columns[4].HeaderText = "开门时间";
+                    dataGridView1.Columns[5].HeaderText = "站点";
+                    dataGridView1.Columns[6].HeaderText = "工作是否完成";           //
+                    dataGridView1.Columns[7].HeaderText = "备注";
+                    dataGridView1.Columns[5].Visible = false;
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+                        dataGridView1.Columns[i].ReadOnly = true;
+                        dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    }
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        if (i % 2 == 0)
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
 
-                //        var t = dataGridView1.Rows[i].Cells;
+                        var t = dataGridView1.Rows[i].Cells;
 
-                //    }
-                //}
+                    }
+                }
             }
             return true;
         }
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
             label3.Text = listViewLeft.SelectedItems[0].Text;
-            if (sender!=null)
-            {
-                page = 1;
-            }
+            //if (sender!=null)
+            //{
+            //    curPage = 1;
+            //}
             switch (listViewLeft.SelectedItems[0].Text)
             {
                 case "领还明细":
@@ -305,6 +309,7 @@ namespace ToolsManager
                     await UserReceiveList(1);
                     break;
                 case "单号事件记录表":
+                    await UserTaskList(1);
                     lastTable = "单号事件记录表";
                     break;
             }
@@ -436,9 +441,30 @@ namespace ToolsManager
 
         }
 
-        private void 修改OToolStripButton_Click(object sender, EventArgs e)
+        async private void 修改OToolStripButton_Click(object sender, EventArgs e)
         {
-
+            switch (listViewLeft.SelectedItems[0].Text)
+            {
+                case "领还明细":
+                    lastTable = "领还明细";
+                    
+                    break;
+                case "现存库存":
+                    lastTable = "现存库存";
+                    break;
+                case "我的领用":
+                    lastTable = "我的领用";
+                    
+                    break;
+                case "单号事件记录表":
+                    lastTable = "单号事件记录表";
+                    await UserTaskList(curPage);
+                    var T = new FormUpdateTask();
+                    T.tasklist = Global.TaskList.list.Find(t => t.task_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
+                    T.ShowDialog();
+                    await UserTaskList(curPage);
+                    break;
+            }
         }
 
         private void 保存OToolStripButton_Click(object sender, EventArgs e)

@@ -104,18 +104,7 @@ namespace ToolsManager
                 formTaskReceiveList = value;
             }
         }
-                    return formTaskReceiveList;
-                }
-                else
-                {
-                    return formTaskReceiveList;
-                }
-            }
-            set
-            {
-                formTaskReceiveList = value;
-            }
-        }
+                  
         public static FormMain FormMain
         {
             get
