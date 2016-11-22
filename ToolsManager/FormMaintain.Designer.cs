@@ -62,7 +62,7 @@
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ( (System.ComponentModel.ISupportInitialize)( this.dataGridView1 ) ).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -107,7 +107,7 @@
             // 
             // 删除DToolStripButton1
             // 
-            this.删除DToolStripButton1.Image = ( (System.Drawing.Image)( resources.GetObject("删除DToolStripButton1.Image") ) );
+            this.删除DToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("删除DToolStripButton1.Image")));
             this.删除DToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.删除DToolStripButton1.Name = "删除DToolStripButton1";
             this.删除DToolStripButton1.Size = new System.Drawing.Size(53, 47);
@@ -118,7 +118,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("新宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 134 ) ));
+            this.label1.Font = new System.Drawing.Font("新宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(123, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(508, 29);
@@ -128,7 +128,7 @@
             // 
             // 帮助LToolStripButton
             // 
-            this.帮助LToolStripButton.Image = ( (System.Drawing.Image)( resources.GetObject("帮助LToolStripButton.Image") ) );
+            this.帮助LToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("帮助LToolStripButton.Image")));
             this.帮助LToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.帮助LToolStripButton.Name = "帮助LToolStripButton";
             this.帮助LToolStripButton.Size = new System.Drawing.Size(50, 47);
@@ -137,7 +137,7 @@
             // 
             // 打印PToolStripButton
             // 
-            this.打印PToolStripButton.Image = ( (System.Drawing.Image)( resources.GetObject("打印PToolStripButton.Image") ) );
+            this.打印PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("打印PToolStripButton.Image")));
             this.打印PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.打印PToolStripButton.Name = "打印PToolStripButton";
             this.打印PToolStripButton.Size = new System.Drawing.Size(51, 47);
@@ -146,7 +146,7 @@
             // 
             // 保存SToolStripButton
             // 
-            this.保存SToolStripButton.Image = ( (System.Drawing.Image)( resources.GetObject("保存SToolStripButton.Image") ) );
+            this.保存SToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("保存SToolStripButton.Image")));
             this.保存SToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.保存SToolStripButton.Name = "保存SToolStripButton";
             this.保存SToolStripButton.Size = new System.Drawing.Size(51, 47);
@@ -155,7 +155,7 @@
             // 
             // 修改OToolStripButton
             // 
-            this.修改OToolStripButton.Image = ( (System.Drawing.Image)( resources.GetObject("修改OToolStripButton.Image") ) );
+            this.修改OToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("修改OToolStripButton.Image")));
             this.修改OToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.修改OToolStripButton.Name = "修改OToolStripButton";
             this.修改OToolStripButton.Size = new System.Drawing.Size(54, 47);
@@ -164,7 +164,7 @@
             // 
             // 添加NToolStripButton
             // 
-            this.添加NToolStripButton.Image = ( (System.Drawing.Image)( resources.GetObject("添加NToolStripButton.Image") ) );
+            this.添加NToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("添加NToolStripButton.Image")));
             this.添加NToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.添加NToolStripButton.Name = "添加NToolStripButton";
             this.添加NToolStripButton.Size = new System.Drawing.Size(54, 47);
@@ -200,7 +200,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.listViewLeft, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 134 ) ));
+            this.tableLayoutPanel2.Font = new System.Drawing.Font("新宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
@@ -320,6 +320,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(123, 82);
@@ -347,7 +348,7 @@
             this.tableLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ( (System.ComponentModel.ISupportInitialize)( this.dataGridView1 ) ).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

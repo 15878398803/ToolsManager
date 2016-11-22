@@ -123,7 +123,12 @@ namespace ToolsManager
             }
             else
             {
+
+                
+                Global.FormTaskReceiveList.Show();
+
                 timer1.Start();
+
             }
 
         }
@@ -145,6 +150,14 @@ namespace ToolsManager
                     return;
                     //}
                 }
+
+                //if (Global.FormTaskReceiveList.IsDisposed)
+                //{
+                //Global.FormTaskReceiveList.TopMost = true;
+                //Global.FormTaskReceiveList.Show();
+                //    //Global.FormTaskReceiveList.Focus();
+                //}
+                //Global.FormTaskReceiveList.Focus();
                 //if (Global.AutoLogin.msg == "无开门记录")
                 //{
                 //    Global.LoginInfo = null;
@@ -160,11 +173,6 @@ namespace ToolsManager
                 return;
             }
             timer1.Start();
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
 
         }
     }
