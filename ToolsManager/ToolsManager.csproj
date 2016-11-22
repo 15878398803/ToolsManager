@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Excel.cs" />
     <Compile Include="FormInsertUpdateDoor.cs">
       <SubType>Form</SubType>
     </Compile>

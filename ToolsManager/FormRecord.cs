@@ -388,6 +388,7 @@ namespace ToolsManager
 
         private void 保存SToolStripButton_Click(object sender, EventArgs e)
         {
+            Excel.DataGridViewToExcelCSV(dataGridView1);
 
         }
     }

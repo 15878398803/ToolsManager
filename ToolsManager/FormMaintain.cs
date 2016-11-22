@@ -232,6 +232,11 @@ namespace ToolsManager
 
         }
 
+        private void 保存SToolStripButton_Click(object sender, EventArgs e)
+        {
+            Excel.DataGridViewToExcelCSV(dataGridView1);
+        }
+
         async public Task<bool> ReadyDeathToolsList()
         {
             if (await Server.GetReadyDeathTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1))
