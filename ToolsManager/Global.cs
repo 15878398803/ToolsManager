@@ -197,7 +197,7 @@ namespace ToolsManager
             //c.SelectedIndex = 0;
             //           }
         }
-
+        
         public static string ServerIp = Properties.Settings.Default.ServerIp;
         public static int StationId = Properties.Settings.Default.站点ID;
         public static int PageNum = Properties.Settings.Default.单页容量;
