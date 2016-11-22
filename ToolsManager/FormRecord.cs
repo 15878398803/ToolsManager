@@ -27,6 +27,7 @@ namespace ToolsManager
         /// 标记位，防止comboBox1的comboBox1_SelectedIndexChanged误触发
         /// </summary>
         private bool isInit;
+        private int page;
         private DataGridViewCellStyle color_danger = new DataGridViewCellStyle();
 
         public FormRecord()
@@ -243,8 +244,52 @@ namespace ToolsManager
             }
             return true;
         }
+        async public Task<bool> UserTaskList(int cur)
+        {
+            if (await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
+            {
+                lb_cur.Text = "第" + cur + "页";
+                maxPageNum = (Convert.ToInt32(Global.TaskList.num.list_num) / Convert.ToInt32(Global.TaskList.num.page_num)) + 1;
+                lb_sum.Text = "共" + maxPageNum + "页";
+                if (Global.ToolClass.Count != comboBox1.Items.Count)
+                {
+                    comboBox1.Items.Clear();
+                    for (int i = 1; i <= maxPageNum; i++)
+                    {
+                        comboBox1.Items.Add(i);
+                    }
+                }
+                dataGridView1.DataSource = Global.DefectList;
+                dataGridView1.RowHeadersVisible = false;
+                //if (Global.DefectList.Count > 0)
+                //{
+                //    dataGridView1.Columns[0].HeaderText = "缺陷id 标识";
+                //    dataGridView1.Columns[1].HeaderText = "科目id标识";
+                //    dataGridView1.Columns[2].HeaderText = "缺陷名称";
+                //    dataGridView1.Columns[3].HeaderText = "备注";
+                //    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                //    {
+                //        dataGridView1.Columns[i].ReadOnly = true;
+                //        dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                //    }
+                //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                //    {
+                //        if (i % 2 == 0)
+                //            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
+
+                //        var t = dataGridView1.Rows[i].Cells;
+
+                //    }
+                //}
+            }
+            return true;
+        }
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
+            if(sender!=null)
+            {
+                page = 1;
+            }
             switch (listViewLeft.SelectedItems[0].Text)
             {
                 case "领还明细":
@@ -384,5 +429,16 @@ namespace ToolsManager
             if (listViewLeft.SelectedItems.Count > 0)
                 listViewLeft_DoubleClick(null, null);
         }
+
+        private void 添加NToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 修改OToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

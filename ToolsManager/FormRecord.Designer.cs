@@ -266,6 +266,7 @@
             this.添加NToolStripButton.Text = "添加(&N)";
             this.添加NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.添加NToolStripButton.ToolTipText = "添加(N)";
+            this.添加NToolStripButton.Click += new System.EventHandler(this.添加NToolStripButton_Click);
             // 
             // 修改OToolStripButton
             // 
@@ -275,6 +276,7 @@
             this.修改OToolStripButton.Size = new System.Drawing.Size(54, 47);
             this.修改OToolStripButton.Text = "修改(&O)";
             this.修改OToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.修改OToolStripButton.Click += new System.EventHandler(this.修改OToolStripButton_Click);
             // 
             // 删除DToolStripButton1
             // 

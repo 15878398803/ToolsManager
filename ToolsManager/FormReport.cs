@@ -350,7 +350,7 @@ namespace ToolsManager
                 foreach (var toolc in Global.ToolClass)
                 {
                     
-                    toolc.page_num = x.ToString();
+                    toolc.page_num = x;
                     x++;
                 }
 
@@ -396,11 +396,11 @@ namespace ToolsManager
                 foreach (var toolc in Global.ToolClass)
                 {
 
-                    toolc.page_num = y.ToString();
+                    toolc.page_num = y;
                     y++;
                 }
-                await Server.GetDefectList(Convert.ToInt32(Global.ToolClass.Find(t => t.page_num == page.ToString()).class_id));
-                    maxPageNum= Global.ToolClass.Count; ;
+                await Server.GetDefectList(Convert.ToInt32(Global.ToolClass.Find(t => t.page_num == page).class_id));
+                maxPageNum= Global.ToolClass.Count; ;
                 lb_cur.Text = "第" + page + "页";
                 lb_sum.Text = "共" + Global.ToolClass.Count + "页";
                 if (Global.ToolClass.Count != comboBox1.Items.Count)
