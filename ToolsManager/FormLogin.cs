@@ -160,9 +160,8 @@ namespace ToolsManager
                     return;
                 }
             }
-            //Global.FormLoading.Show();
 #if DEBUG
-            //Debug.WriteLine("使用默认账号yyq登录调试");
+            Debug.WriteLine("使用默认账号yyq登录调试");
             tx_username.Text = "yyqq";
             tx_password.Text = "123456";
 #endif
@@ -181,6 +180,7 @@ namespace ToolsManager
             }
             else
             {
+                linkLabel1.Text = " ";
                 //登录失败
             }
             tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;

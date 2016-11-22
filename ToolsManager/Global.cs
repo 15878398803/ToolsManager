@@ -24,6 +24,45 @@ namespace ToolsManager
         private static FormLoading formLoading;
         private static FormTaskReceiveList formTaskReceiveList;
 
+        public static void CloseAll()
+        {
+            //if (formLogin != null && !formLogin.IsDisposed)
+            //{
+            //    formLogin.Close();
+            //}
+            //if (formMain != null && !formMain.IsDisposed)
+            //{
+            //    formMain.Close();
+            //}
+            if (formMaintain != null && !formMaintain.IsDisposed)
+            {
+                formMaintain.Close();
+            }
+            if (formRecord != null && !formRecord.IsDisposed)
+            {
+                formRecord.Close();
+            }
+            if (formReport != null && !formReport.IsDisposed)
+            {
+                formReport.Close();
+            }
+            if (formSettings != null && !formSettings.IsDisposed)
+            {
+                formSettings.Close();
+            }
+            if (formSubsystem != null && !formSubsystem.IsDisposed)
+            {
+                formSubsystem.Close();
+            }
+            if (formLoading != null && !formLoading.IsDisposed)
+            {
+                formLoading.Close();
+            }
+            if (formTaskReceiveList != null && !formTaskReceiveList.IsDisposed)
+            {
+                formTaskReceiveList.Close();
+            }
+        }
         #region 窗体初始化
         public static FormLoading FormLoading
         {
@@ -32,7 +71,7 @@ namespace ToolsManager
                 if (formLoading == null || FormLogin.IsDisposed)
                 {
                     formLoading = new FormLoading();
-                    
+
                     return formLoading;
                 }
                 else
@@ -52,7 +91,7 @@ namespace ToolsManager
                 if (formTaskReceiveList == null || formTaskReceiveList.IsDisposed)
                 {
                     formTaskReceiveList = new FormTaskReceiveList();
-                    
+
                     return formTaskReceiveList;
                 }
                 else
@@ -197,7 +236,7 @@ namespace ToolsManager
             //c.SelectedIndex = 0;
             //           }
         }
-        
+
         public static string ServerIp = Properties.Settings.Default.ServerIp;
         public static int StationId = Properties.Settings.Default.站点ID;
         public static int PageNum = Properties.Settings.Default.单页容量;

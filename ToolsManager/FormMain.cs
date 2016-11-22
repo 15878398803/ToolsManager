@@ -99,6 +99,8 @@ namespace ToolsManager
             Global.AutoLogin = null;
             Global.FormLogin.Show();
             Global.FormLogin.FormLogin_Load(null, null);
+
+            Global.CloseAll();
             //e.Cancel = true;
             //FormMain_Load(null,null);
         }
