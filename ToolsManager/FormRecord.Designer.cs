@@ -345,6 +345,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 437);
             this.Controls.Add(this.tableLayoutPanel3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(545, 417);
             this.Name = "FormRecord";
             this.Text = "领还记录";

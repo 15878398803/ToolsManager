@@ -112,6 +112,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.listView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "主界面 —— 广东电网肇庆怀集供电局智能工器具管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInsertUpdateDoor));
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -120,6 +121,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormInsertUpdateDoor";
             this.Text = "添加门";
             this.TopMost = true;
