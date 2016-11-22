@@ -43,7 +43,7 @@ namespace ToolsManager
             {
                 if (updateUserItems != null)
                 {
-                    comboBox1.SelectedIndex = updateUserItems.role > 4 ? 4 : updateUserItems.role - 1;
+                    comboBox1.SelectedIndex = Convert.ToInt32(updateUserItems.role)  > 4 ? 4 : Convert.ToInt32(updateUserItems.role) - 1;
                     foreach (var i in comboBox2.Items)
                     {
                         Debug.WriteLine(i);

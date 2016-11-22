@@ -260,16 +260,9 @@ namespace ToolsManager
 
         public class UserListItem
         {
+            public string num { get; set; }
             /// <summary>
             /// 
-            /// </summary>
-            public string user_id { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string station_id { get; set; }
-            /// <summary>
-            /// 顾明轩
             /// </summary>
             public string name { get; set; }
             /// <summary>
@@ -279,11 +272,11 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string openid { get; set; }
+            public string username { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string username { get; set; }
+            public string role { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -291,11 +284,12 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public int role { get; set; }
+            public string station_id { get; set; }
             /// <summary>
-            /// 
+            /// 顾明轩
             /// </summary>
-            public string code { get; set; }
+             public string openid { get; set; }
+             public string user_id { get; set; }
         }
 
         public class UserListNum
@@ -343,15 +337,12 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string work_img { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
             public string type { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string is_delete { get; set; }
+            public string work_img { get; set; }
+//            public string is_delete { get; set; }
         }
         public class TaskListItem
         {

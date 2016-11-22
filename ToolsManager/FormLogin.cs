@@ -164,7 +164,7 @@ namespace ToolsManager
                 //登录成功
                 //Global.FormRecord.Show();
 
-                Global.FormReport.Show();
+                Global.FormMain.Show();
                 //Global.FormRecord.Show();
                 Global.FormLogin.Hide();
             }
