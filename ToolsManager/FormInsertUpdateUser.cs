@@ -43,7 +43,11 @@ namespace ToolsManager
             {
                 if (updateUserItems != null)
                 {
-                    comboBox1.SelectedIndex = Convert.ToInt32(updateUserItems.role)  > 4 ? 4 : Convert.ToInt32(updateUserItems.role) - 1;
+                    txPasswd.Enabled = false;
+                    label2.Visible = false;
+                    checkBox1.Visible = true;
+
+                    comboBox1.SelectedIndex = Convert.ToInt32(updateUserItems.role) > 4 ? 4 : Convert.ToInt32(updateUserItems.role) - 1;
                     foreach (var i in comboBox2.Items)
                     {
                         Debug.WriteLine(i);
@@ -73,6 +77,12 @@ namespace ToolsManager
                 }
                 //comboBox2.SelectedIndex = comboBox2.Items.// IndexOf();
             }
+            else
+            {
+                label2.Visible = true;
+                checkBox1.Visible = false;
+                txPasswd.Enabled = true;
+            }
 
         }
 
@@ -83,13 +93,15 @@ namespace ToolsManager
 
                 var stationName = comboBox2.Items[comboBox2.SelectedIndex] as string;
                 var s = stationName.Split('|');
-
-                MD5 md5 = new MD5CryptoServiceProvider();
-                byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(txPasswd.Text));
-                var pwd = BitConverter.ToString(output).Replace("-", "").ToUpper();
+                if (checkBox1.Checked || UpdateUser == false)
+                {
+                    MD5 md5 = new MD5CryptoServiceProvider();
+                    byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(txPasswd.Text));
+                    txPasswd.Text = BitConverter.ToString(output).Replace("-", "").ToUpper();
+                }
                 if (UpdateUser)
                 {
-                    if (await Server.UpdateUser(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(s[0]), textName.Text, textTeam.Text, textOpenId.Text, txUser.Text, pwd, ( comboBox1.SelectedIndex + 1 ).ToString(), Convert.ToInt32(updateUserItems.user_id)))
+                    if (await Server.UpdateUser(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(s[0]), textName.Text, textTeam.Text, textOpenId.Text, txUser.Text, txPasswd.Text, ( comboBox1.SelectedIndex + 1 ).ToString(), Convert.ToInt32(updateUserItems.user_id)))
                     {
                         MessageBox.Show("修改用户成功！");
                         //txUser.Focus();
@@ -102,7 +114,7 @@ namespace ToolsManager
                 }
                 else
                 {
-                    if (await Server.InsertUser(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(s[0]), textName.Text, textTeam.Text, textOpenId.Text, txUser.Text, pwd, ( comboBox2.SelectedIndex + 1 ).ToString()))
+                    if (await Server.InsertUser(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(s[0]), textName.Text, textTeam.Text, textOpenId.Text, txUser.Text, txPasswd.Text, ( comboBox2.SelectedIndex + 1 ).ToString()))
                     {
                         MessageBox.Show("添加用户成功！");
                         txUser.Focus();
@@ -115,11 +127,23 @@ namespace ToolsManager
                 }
 
             }
+            else
+            {
+                MessageBox.Show("抱歉信息填写不完整，请检查。");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UpdateUser)
+            {
+                txPasswd.Enabled = checkBox1.Checked;
+            }
         }
     }
 }

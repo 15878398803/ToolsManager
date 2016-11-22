@@ -266,7 +266,6 @@
             this.添加NToolStripButton.Text = "添加(&N)";
             this.添加NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.添加NToolStripButton.ToolTipText = "添加(N)";
-            this.添加NToolStripButton.Click += new System.EventHandler(this.添加NToolStripButton_Click);
             // 
             // 修改OToolStripButton
             // 
@@ -276,7 +275,6 @@
             this.修改OToolStripButton.Size = new System.Drawing.Size(54, 47);
             this.修改OToolStripButton.Text = "修改(&O)";
             this.修改OToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.修改OToolStripButton.Click += new System.EventHandler(this.修改OToolStripButton_Click);
             // 
             // 删除DToolStripButton1
             // 
@@ -305,8 +303,7 @@
             this.保存SToolStripButton.Size = new System.Drawing.Size(51, 47);
             this.保存SToolStripButton.Text = "保存(&S)";
             this.保存SToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.保存SToolStripButton.Click += new System.EventHandler(this.保存OToolStripButton_Click);
-
+            this.保存SToolStripButton.Click += new System.EventHandler(this.保存SToolStripButton_Click);
             // 
             // 打印PToolStripButton
             // 
@@ -330,6 +327,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(153, 82);
@@ -347,6 +345,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 437);
             this.Controls.Add(this.tableLayoutPanel3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(545, 417);
             this.Name = "FormRecord";
             this.Text = "领还记录";

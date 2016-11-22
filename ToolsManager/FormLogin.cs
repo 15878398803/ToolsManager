@@ -54,12 +54,12 @@ namespace ToolsManager
                     FormLocal f = new FormLocal();
                     f.TopMost = true;
                     f.Show();
+                    timer1.Stop();
                     return;
                 }
             }
-            //Global.FormLoading.Show();
 #if DEBUG
-            //Debug.WriteLine("使用默认账号yyq登录调试");
+            Debug.WriteLine("使用默认账号yyq登录调试");
             tx_username.Text = "yyqq";
             tx_password.Text = "123456";
 #endif
@@ -71,7 +71,6 @@ namespace ToolsManager
                 //Test();
 
                 //登录成功
-                //Global.FormRecord.Show();
 
                 Global.FormMain.Show();
                 //Global.FormRecord.Show();
@@ -80,10 +79,10 @@ namespace ToolsManager
             }
             else
             {
+                linkLabel1.Text = " ";
                 //登录失败
             }
-
-            Global.FormLoading.Hide();
+            tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
 
         }
 
@@ -242,6 +241,95 @@ namespace ToolsManager
             tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
 
 
+        }
+
+        public void FormLogin_Load(object sender, EventArgs e)
+        {
+
+            if (Properties.Settings.Default.isAutoLogin)
+            {
+                linkLabel1.Text = "正在自动登录...点此取消";
+                linkLabel1.Enabled = true;
+                timer1.Interval = 2000;
+                timer1.Start();
+                tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = false;
+            }
+            else
+            {
+                linkLabel1.Enabled = false;
+            }
+        }
+        async public void autoLogin()
+        {
+            string usercode;
+            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.LastUserCode))
+            {
+                usercode = DateTime.Now.Ticks.ToString("x");
+            }
+            else
+            {
+                usercode = DateTime.Now.Ticks.ToString("x");
+                //usercode = Properties.Settings.Default.LastUserCode;
+            }
+
+            if (await Server.AutoLogin(Global.StationId, usercode) == false)
+            {
+                linkLabel1.Enabled = true;
+                linkLabel1.Text = "自动登录失败，可能网络通讯不畅，正在重试...点此取消";
+                timer1.Start();
+                return;
+            }
+            if (Global.AutoLogin.msg == "无开门记录")
+            {
+                linkLabel1.Enabled = false;
+                linkLabel1.Text = "正在等待开门...";
+                timer1.Start();
+            }
+            else
+            {
+                Properties.Settings.Default.LastUserCode = Global.AutoLogin.user_code;
+                Properties.Settings.Default.Save();
+                Global.LoginInfo = Global.AutoLogin;
+                if (Global.LoginInfo != null)
+                {
+                    Global.FormMain.Show();
+                    Global.FormLogin.Hide();
+                    //linkLabel1.Enabled = true;
+                    linkLabel1.Text = " ";
+                    tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
+
+
+                }
+            }
+
+        }
+
+        private int reTryDelay = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (reTryDelay == 2)
+            {
+                reTryDelay = 0;
+                timer1.Stop();
+                autoLogin();
+                return;
+            }
+            else
+            {
+                reTryDelay++;
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (Properties.Settings.Default.isAutoLogin)
+            {
+                reTryDelay = 0;
+                timer1.Stop();
+                linkLabel1.Text = "";
+                linkLabel1.Enabled = false;
+                tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
+            }
         }
     }
 }

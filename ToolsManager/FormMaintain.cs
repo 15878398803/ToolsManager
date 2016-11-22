@@ -31,7 +31,8 @@ namespace ToolsManager
 
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
-            //DataTable datatable = new DataTable();
+
+            label1.Text = listViewLeft.SelectedItems[0].Text;
             switch (listViewLeft.SelectedItems[0].Text)
             {
                 case "台账报表":

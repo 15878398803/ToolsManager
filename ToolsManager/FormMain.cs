@@ -67,15 +67,15 @@ namespace ToolsManager
 
                     //Global.FormSettings.Show();
                     //Global.FormSettings.Focus();
-                    var pwd = Interaction.InputBox("请输入管理员密码：", "系统设置");
+                    //var pwd = Interaction.InputBox("请输入管理员密码：", "系统设置");
                     //if (ShowDialog(new FormPassword()) == DialogResult.Yes)
-                    //if (ShowDialog(new FormPassword()) == DialogResult.Yes)
+                    if (new FormPassword().ShowDialog() == DialogResult.Yes)
                     {
-                        Global.PasswordInput = Global.UserInput = "";
-                        //if (Global.UserInput.Trim() == "admin")
+
+                        if (Global.UserInput.Trim() == "admin")
                         {
                             MD5 md5 = new MD5CryptoServiceProvider();
-                            byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(pwd));
+                            byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(Global.PasswordInput));
                             if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
                             {
                                 FormLocal f = new FormLocal();
@@ -84,8 +84,8 @@ namespace ToolsManager
                                 return;
                             }
                         }
+                        Global.PasswordInput = Global.UserInput = "";
                         MessageBox.Show("抱歉，账号密码错误。");
-
                     }
 
                     break;
@@ -99,20 +99,11 @@ namespace ToolsManager
             Global.AutoLogin = null;
             Global.FormLogin.Show();
             Global.FormLogin.FormLogin_Load(null, null);
+
+            Global.CloseAll();
             //e.Cancel = true;
             //FormMain_Load(null,null);
         }
-
-        private void FormMain_Shown(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormMain_Load(object sender, EventArgs e)
         {
             Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.站点名称 + " - " + "智能物联工器具管理系统";
@@ -131,13 +122,18 @@ namespace ToolsManager
             }
             else
             {
+
+
+                Global.FormTaskReceiveList.Show();
+                Global.FormTaskReceiveList.Focus();
                 timer1.Start();
+
             }
 
         }
         async private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = Global.LoginInfo.name + Global.LoginInfo.user_code;
+            label1.Text = "姓名：" + Global.LoginInfo.name + " 角色：" + Global.LoginInfo.role + " Code:" + Global.LoginInfo.user_code;
             timer1.Stop();
 
             if (await Server.AutoLogin(Global.StationId, Properties.Settings.Default.LastUserCode))
@@ -153,6 +149,14 @@ namespace ToolsManager
                     return;
                     //}
                 }
+
+                //if (Global.FormTaskReceiveList.IsDisposed)
+                //{
+                //Global.FormTaskReceiveList.TopMost = true;
+                //Global.FormTaskReceiveList.Show();
+                //    //Global.FormTaskReceiveList.Focus();
+                //}
+                //Global.FormTaskReceiveList.Focus();
                 //if (Global.AutoLogin.msg == "无开门记录")
                 //{
                 //    Global.LoginInfo = null;
@@ -168,6 +172,13 @@ namespace ToolsManager
                 return;
             }
             timer1.Start();
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

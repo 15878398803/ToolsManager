@@ -30,5 +30,13 @@ namespace ToolsManager
             DialogResult = DialogResult.No;
             Close();
         }
+
+        private void textBox2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(null, null);
+            }
+        }
     }
 }

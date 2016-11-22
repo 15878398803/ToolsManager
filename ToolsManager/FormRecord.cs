@@ -286,7 +286,8 @@ namespace ToolsManager
         }
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
-            if(sender!=null)
+            label3.Text = listViewLeft.SelectedItems[0].Text;
+            if (sender!=null)
             {
                 page = 1;
             }

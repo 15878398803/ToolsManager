@@ -21,7 +21,7 @@ namespace ToolsManager
         /// 标记位，防止comboBox1的comboBox1_SelectedIndexChanged误触发
         /// </summary>
         private int page = 0;
-        
+
         private DataGridViewCellStyle color_danger = new DataGridViewCellStyle();
 
         public FormReport()
@@ -48,6 +48,7 @@ namespace ToolsManager
 
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
+            label1.Text = listViewLeft.SelectedItems[0].Text;
             ll_First.Text = "第一页";
             if (sender != null)
                 page = 0;
@@ -75,7 +76,7 @@ namespace ToolsManager
                     break;
                 case "员工权限":
                     lastTable = "员工权限";
-                    await ReadUserList(page+1);
+                    await ReadUserList(page + 1);
                     break;
             }
         }
@@ -142,7 +143,7 @@ namespace ToolsManager
                     case "缺陷类别":
                         var d = new FormUpdateInsertDefect();
                         d.IsUpdate = true;
-                        if(page!=0)
+                        if (page != 0)
                         {
                             d.Defect = Global.DefectList.Find(t => t.defect_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
                             d.ShowDialog();
@@ -155,7 +156,7 @@ namespace ToolsManager
                         await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, page, 100);
                         var c = new FormInsertUpdateUser();
                         c.UpdateUser = true;
-                        c.updateUserItems = Global.UserList.list.Find(t => t.user_id== dataGridView1.SelectedRows[0].Cells[8].Value as string);
+                        c.updateUserItems = Global.UserList.list.Find(t => t.user_id == dataGridView1.SelectedRows[0].Cells[8].Value as string);
                         c.ShowDialog();
                         listViewLeft_DoubleClick(null, null);
                         break;
@@ -197,26 +198,26 @@ namespace ToolsManager
                         break;
                     case "缺陷类别":
                         //                       var toolDefect = Global.WorkTypeList.Find(t => t.work_id == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value as string);
-                        if(page!=0)
+                        if (page != 0)
                         {
                             if (MessageBox.Show("您确定要删除工作类别 " + dataGridView1.SelectedRows[0].Cells[2].Value as string + " 吗？", "删除确认", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
-                                if (await Server.DeleteDefect(Global.LoginInfo.user_id, Global.LoginInfo.user_code,   Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value)))
+                                if (await Server.DeleteDefect(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value)))
                                 {
                                     MessageBox.Show("删除工作类别 " + dataGridView1.SelectedRows[0].Cells[0].Value as string + " 成功");
-                                 //   await WorkTypeList();
+                                    //   await WorkTypeList();
                                 }
                                 listViewLeft_DoubleClick(null, null);
                             }
-                            
+
                         }
 
-                        
 
-                            //}
-                            //                        DeleteDefect
 
-                            break;
+                        //}
+                        //                        DeleteDefect
+
+                        break;
                     case "员工权限":
                         break;
                 }
@@ -234,12 +235,12 @@ namespace ToolsManager
         }
         private void ll_Next_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(page <maxPageNum)
+            if (page < maxPageNum)
             {
                 page++;
                 listViewLeft_DoubleClick(null, null);
             }
-            
+
         }
 
         private void ll_End_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -258,12 +259,12 @@ namespace ToolsManager
 
         private void ll_Last_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(page>0)
+            if (page > 0)
             {
                 page--;
                 listViewLeft_DoubleClick(null, null);
             }
-            
+
         }
 
         private void ll_First_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -311,8 +312,8 @@ namespace ToolsManager
                     }
 
                 }
-                    dataGridView1.DataSource = Global.WorkTypeList;
-                
+                dataGridView1.DataSource = Global.WorkTypeList;
+
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     if (i % 2 == 0)
@@ -325,7 +326,7 @@ namespace ToolsManager
                 dataGridView1.Columns[0].HeaderText = "任务类型id标识";
                 dataGridView1.Columns[1].HeaderText = "任务类型名称";
                 dataGridView1.Columns[2].HeaderText = "是否有输入框";
-                dataGridView1.Columns[3].HeaderText = "使用权限"; 
+                dataGridView1.Columns[3].HeaderText = "使用权限";
                 dataGridView1.Columns[4].HeaderText = "类型图片";
                 for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
@@ -349,7 +350,7 @@ namespace ToolsManager
                 await Server.GetToolClasses();
                 foreach (var toolc in Global.ToolClass)
                 {
-                    
+
                     toolc.page_num = x;
                     x++;
                 }
@@ -388,11 +389,11 @@ namespace ToolsManager
                 }
 
             }
-           else  
+            else
             {
                 //                int list_num = Global.ToolClass.Count;
                 //                maxPageNum = (list_num / 100) + 1;
-                int y=1; 
+                int y = 1;
                 foreach (var toolc in Global.ToolClass)
                 {
 
@@ -400,7 +401,8 @@ namespace ToolsManager
                     y++;
                 }
                 await Server.GetDefectList(Convert.ToInt32(Global.ToolClass.Find(t => t.page_num == page).class_id));
-                maxPageNum= Global.ToolClass.Count; ;
+                maxPageNum = Global.ToolClass.Count;
+                ;
                 lb_cur.Text = "第" + page + "页";
                 lb_sum.Text = "共" + Global.ToolClass.Count + "页";
                 if (Global.ToolClass.Count != comboBox1.Items.Count)
@@ -442,7 +444,7 @@ namespace ToolsManager
             int x = 1;
             await Server.GetStationList();
             await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, page, 100);
-            maxPageNum = (Global.UserList.num.list_num / Convert.ToInt32(Global.UserList.num.page_num)) + 1;
+            maxPageNum = ( Global.UserList.num.list_num / Convert.ToInt32(Global.UserList.num.page_num) ) + 1;
             //               int list_num = Global.ToolsList.list.Count;
             lb_cur.Text = "第" + page + "页";
             lb_sum.Text = "共" + maxPageNum + "页";
@@ -452,11 +454,11 @@ namespace ToolsManager
                 Global.AddComboxNum(comboBox1, maxPageNum);
             }
             foreach (var user in Global.UserList.list)
-            {                
+            {
                 user.num = x.ToString();
                 x++;
                 var k = Global.StationList.Find(t => t.station_id == Convert.ToInt32(user.station_id));
-                user.station_id = k==null?"其他":k.name;
+                user.station_id = k == null ? "其他" : k.name;
                 switch (user.role)
                 {
                     case "1":
@@ -472,7 +474,7 @@ namespace ToolsManager
                         user.role = "其他";
                         break;
                 }
-                    
+
             }
             dataGridView1.DataSource = Global.UserList.list;
             dataGridView1.RowHeadersVisible = false;
