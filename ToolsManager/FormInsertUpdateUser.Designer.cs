@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInsertUpdateUser));
             this.label1 = new System.Windows.Forms.Label();
             this.txUser = new System.Windows.Forms.TextBox();
             this.txPasswd = new System.Windows.Forms.TextBox();
@@ -217,6 +218,7 @@
             this.Controls.Add(this.txPasswd);
             this.Controls.Add(this.txUser);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormInsertUpdateUser";
             this.Text = "添加用户";
             this.Load += new System.EventHandler(this.FormInsertUser_Load);
