@@ -245,6 +245,7 @@ namespace ToolsManager
         }
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
+            label3.Text = listViewLeft.SelectedItems[0].Text;
             switch (listViewLeft.SelectedItems[0].Text)
             {
                 case "领还明细":
@@ -387,7 +388,7 @@ namespace ToolsManager
 
         private void 保存SToolStripButton_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

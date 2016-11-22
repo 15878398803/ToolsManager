@@ -64,6 +64,7 @@
             this.MinimumSize = new System.Drawing.Size(712, 501);
             this.Name = "FormTaskReceiveList";
             this.Text = "实时领还记录表";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormTaskReceiveList_FormClosing);
             this.Load += new System.EventHandler(this.FormTaskReceiveList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -126,7 +126,7 @@ namespace ToolsManager
 
                 
                 Global.FormTaskReceiveList.Show();
-
+                Global.FormTaskReceiveList.Focus();
                 timer1.Start();
 
             }

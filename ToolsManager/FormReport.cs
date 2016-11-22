@@ -48,6 +48,7 @@ namespace ToolsManager
 
         async private void listViewLeft_DoubleClick(object sender, EventArgs e)
         {
+            label1.Text = listViewLeft.SelectedItems[0].Text;
             ll_First.Text = "第一页";
             if (sender != null)
                 page = 0;
