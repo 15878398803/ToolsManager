@@ -143,7 +143,8 @@ namespace ToolsManager
             //超级密码为123465
             //var t = await Server.AutoLogin(1, Properties.Settings.Default.LastUserCode);
             //var tt = await Server.AutoLogin(1, Global.AutoLogin.user_code);
-
+            tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = false;
+            linkLabel1.Text = "正在登陆...";
 
             //return;
             if (tx_username.Text == "admin")
@@ -155,6 +156,7 @@ namespace ToolsManager
                     FormLocal f = new FormLocal();
                     f.TopMost = true;
                     f.Show();
+                    timer1.Stop();
                     return;
                 }
             }
@@ -168,11 +170,9 @@ namespace ToolsManager
 
             if (result)
             {
-
                 //Test();
 
                 //登录成功
-                //Global.FormRecord.Show();
 
                 Global.FormMain.Show();
                 //Global.FormRecord.Show();
@@ -183,8 +183,7 @@ namespace ToolsManager
             {
                 //登录失败
             }
-
-            Global.FormLoading.Hide();
+            tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
 
         }
 
@@ -336,13 +335,14 @@ namespace ToolsManager
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            reTryDelay = 0;
-            timer1.Stop();
-            linkLabel1.Text = "";
-            linkLabel1.Enabled = false;
-            tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
-
-
+            if (Properties.Settings.Default.isAutoLogin)
+            {
+                reTryDelay = 0;
+                timer1.Stop();
+                linkLabel1.Text = "";
+                linkLabel1.Enabled = false;
+                tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = true;
+            }
         }
     }
 }

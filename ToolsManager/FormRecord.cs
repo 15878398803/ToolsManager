@@ -384,5 +384,10 @@ namespace ToolsManager
             if (listViewLeft.SelectedItems.Count > 0)
                 listViewLeft_DoubleClick(null, null);
         }
+
+        private void 保存SToolStripButton_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

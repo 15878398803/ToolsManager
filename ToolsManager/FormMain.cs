@@ -67,15 +67,15 @@ namespace ToolsManager
 
                     //Global.FormSettings.Show();
                     //Global.FormSettings.Focus();
-                    var pwd = Interaction.InputBox("请输入管理员密码：", "系统设置");
+                    //var pwd = Interaction.InputBox("请输入管理员密码：", "系统设置");
                     //if (ShowDialog(new FormPassword()) == DialogResult.Yes)
-                    //if (ShowDialog(new FormPassword()) == DialogResult.Yes)
+                    if (new FormPassword().ShowDialog() == DialogResult.Yes)
                     {
-                        Global.PasswordInput = Global.UserInput = "";
-                        //if (Global.UserInput.Trim() == "admin")
+
+                        if (Global.UserInput.Trim() == "admin")
                         {
                             MD5 md5 = new MD5CryptoServiceProvider();
-                            byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(pwd));
+                            byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(Global.PasswordInput));
                             if (BitConverter.ToString(output).Replace("-", "").ToUpper() == Properties.Settings.Default.pwd.Trim())
                             {
                                 FormLocal f = new FormLocal();
@@ -84,8 +84,8 @@ namespace ToolsManager
                                 return;
                             }
                         }
+                        Global.PasswordInput = Global.UserInput = "";
                         MessageBox.Show("抱歉，账号密码错误。");
-
                     }
 
                     break;
@@ -101,16 +101,6 @@ namespace ToolsManager
             Global.FormLogin.FormLogin_Load(null, null);
             //e.Cancel = true;
             //FormMain_Load(null,null);
-        }
-
-        private void FormMain_Shown(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -168,6 +158,11 @@ namespace ToolsManager
                 return;
             }
             timer1.Start();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
     }
