@@ -32,7 +32,6 @@ namespace ToolsManager
 
             [DataMember(Order = 6)]
             public int role { get; set; }
-
         }
 
         public class Station
@@ -168,7 +167,7 @@ namespace ToolsManager
 
         public class ToolClass
         {
-            public string page_num { get; set; }
+            public int page_num { get; set; }
             public string class_id { get; set; }
             public string class_name { get; set; }
             public string memo { get; set; }
