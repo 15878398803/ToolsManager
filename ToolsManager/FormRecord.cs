@@ -340,14 +340,14 @@ namespace ToolsManager
             {
                 case "领还明细":
                     lastTable = "领还明细";
-                    await TableReceiveList(comboBox1.Items.Count);
+                    await TableReceiveList(comboBox1.Items.Count + 1);
                     break;
                 case "现存库存":
                     lastTable = "现存库存";
                     break;
                 case "我的领用":
                     lastTable = "我的领用";
-                    await UserReceiveList(comboBox1.Items.Count);
+                    await UserReceiveList(comboBox1.Items.Count + 1);
                     break;
                 case "单号事件记录表":
                     lastTable = "单号事件记录表";

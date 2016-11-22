@@ -21,6 +21,8 @@ namespace ToolsManager
 
         async private void FormLocal_Load(object sender, EventArgs e)
         {
+            checkBox2.Checked = Properties.Settings.Default.isAutoLogin;
+
             textBox1.Text = Properties.Settings.Default.供电局名称;
             //textBox2.Text = Properties.Settings.Default.站点名称;
             if (await Server.GetStationList())
@@ -74,7 +76,7 @@ namespace ToolsManager
                     byte[] output = md5.ComputeHash(Encoding.Default.GetBytes(tx_password.Text));
                     Properties.Settings.Default.pwd = BitConverter.ToString(output).Replace("-", "").ToUpper();
                 }
-
+                Properties.Settings.Default.isAutoLogin = checkBox2.Checked;
                 Properties.Settings.Default.单页容量 = Convert.ToInt32(tx_num.Text.Trim());
 
                 if (Properties.Settings.Default.第一次运行)
@@ -83,13 +85,14 @@ namespace ToolsManager
                 }
             }
             Properties.Settings.Default.Save();
-            MessageBox.Show("修改完成。程序将自动关闭，请重新运行本程序即可生效。");
-            Application.Exit();
+            MessageBox.Show("修改完成。一些设置在重启后生效，建议重启本程序。");
+            //Application.Exit();
         }
 
         private void FormLocal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            //if (Global.LoginInfo == null)
+            //    Application.Exit();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
