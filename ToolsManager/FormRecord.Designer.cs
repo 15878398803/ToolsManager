@@ -165,6 +165,7 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "末页";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.Click += new System.EventHandler(this.ll_End_LinkClicked);
             // 
             // linkLabel2
             // 
@@ -179,6 +180,7 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "下一页";
             this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel2.Click += new System.EventHandler(this.ll_Next_LinkClicked);
             // 
             // comboBox1
             // 
@@ -188,6 +190,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(48, 20);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // linkLabel3
             // 
@@ -201,6 +204,7 @@
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "上一页";
             this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel3.Click += new System.EventHandler(this.ll_Last_LinkClicked);
             // 
             // linkLabel4
             // 
@@ -214,6 +218,7 @@
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "第一页";
             this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel4.Click += new System.EventHandler(this.ll_First_LinkClicked);
             // 
             // lb_cur
             // 
@@ -266,6 +271,7 @@
             this.添加NToolStripButton.Text = "添加(&N)";
             this.添加NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.添加NToolStripButton.ToolTipText = "添加(N)";
+            this.添加NToolStripButton.Click += new System.EventHandler(this.添加NToolStripButton_Click);
             // 
             // 修改OToolStripButton
             // 
@@ -275,6 +281,7 @@
             this.修改OToolStripButton.Size = new System.Drawing.Size(54, 47);
             this.修改OToolStripButton.Text = "修改(&O)";
             this.修改OToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.修改OToolStripButton.Click += new System.EventHandler(this.修改OToolStripButton_Click);
             // 
             // 删除DToolStripButton1
             // 
@@ -284,6 +291,7 @@
             this.删除DToolStripButton1.Size = new System.Drawing.Size(53, 47);
             this.删除DToolStripButton1.Text = "删除(&D)";
             this.删除DToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.删除DToolStripButton1.Click += new System.EventHandler(this.ll_Last_LinkClicked);
             // 
             // 刷新ToolStripButton1
             // 
@@ -303,7 +311,7 @@
             this.保存SToolStripButton.Size = new System.Drawing.Size(51, 47);
             this.保存SToolStripButton.Text = "保存(&S)";
             this.保存SToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.保存SToolStripButton.Click += new System.EventHandler(this.保存SToolStripButton_Click);
+            this.保存SToolStripButton.Click += new System.EventHandler(this.保存OToolStripButton_Click);
             // 
             // 打印PToolStripButton
             // 

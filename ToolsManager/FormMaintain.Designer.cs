@@ -113,6 +113,7 @@
             this.删除DToolStripButton1.Size = new System.Drawing.Size(53, 47);
             this.删除DToolStripButton1.Text = "删除(&D)";
             this.删除DToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.删除DToolStripButton1.Click += new System.EventHandler(this.删除ToolStripButton1_Click);
             // 
             // label1
             // 
@@ -162,6 +163,7 @@
             this.修改OToolStripButton.Size = new System.Drawing.Size(54, 47);
             this.修改OToolStripButton.Text = "修改(&O)";
             this.修改OToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.修改OToolStripButton.Click += new System.EventHandler(this.修改ToolStripButton1_Click);
             // 
             // 添加NToolStripButton
             // 
@@ -172,6 +174,7 @@
             this.添加NToolStripButton.Text = "添加(&N)";
             this.添加NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.添加NToolStripButton.ToolTipText = "添加(N)";
+            this.添加NToolStripButton.Click += new System.EventHandler(this.添加ToolStripButton1_Click);
             // 
             // toolStrip1
             // 
@@ -243,6 +246,7 @@
             this.ll_End.TabStop = true;
             this.ll_End.Text = "末页";
             this.ll_End.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_End.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ll_End_MouseClick);
             // 
             // ll_Next
             // 
@@ -257,6 +261,7 @@
             this.ll_Next.TabStop = true;
             this.ll_Next.Text = "下一页";
             this.ll_Next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_Next.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Next_MouseClick);
             // 
             // comboBox1
             // 
@@ -266,6 +271,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(48, 20);
             this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // ll_Last
             // 
@@ -279,6 +285,7 @@
             this.ll_Last.TabStop = true;
             this.ll_Last.Text = "上一页";
             this.ll_Last.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_Last.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Last_MouseClick);
             // 
             // ll_First
             // 
@@ -292,6 +299,7 @@
             this.ll_First.TabStop = true;
             this.ll_First.Text = "第一页";
             this.ll_First.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ll_First.MouseClick += new System.Windows.Forms.MouseEventHandler(this.First_MouseClick);
             // 
             // lb_cur
             // 

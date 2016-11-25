@@ -104,7 +104,6 @@ namespace ToolsManager
             //e.Cancel = true;
             //FormMain_Load(null,null);
         }
-
         private void FormMain_Load(object sender, EventArgs e)
         {
             Text = Properties.Settings.Default.供电局名称 + " - " + Properties.Settings.Default.站点名称 + " - " + "智能物联工器具管理系统";
@@ -173,6 +172,14 @@ namespace ToolsManager
                 return;
             }
             timer1.Start();
+        }
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

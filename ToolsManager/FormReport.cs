@@ -233,6 +233,15 @@ namespace ToolsManager
             if (listViewLeft.SelectedItems.Count > 0)
                 listViewLeft_DoubleClick(null, null);
         }
+
+        private void 保存SToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1 != null)
+            {
+                Excel.DataGridViewToExcelCSV(dataGridView1);
+            }
+        }
+
         private void ll_Next_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (page < maxPageNum)
@@ -320,7 +329,6 @@ namespace ToolsManager
                         dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
 
                     var t = dataGridView1.Rows[i].Cells;
-
                 }
 
                 dataGridView1.Columns[0].HeaderText = "任务类型id标识";
@@ -504,12 +512,6 @@ namespace ToolsManager
                 }
             }
             return true;
-        }
-
-        private void 保存SToolStripButton_Click(object sender, EventArgs e)
-        {
-            Excel.DataGridViewToExcelCSV(dataGridView1);
-
         }
     }
 }

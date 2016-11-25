@@ -51,6 +51,7 @@ namespace ToolsManager
 
         public class ToolListItem
         {
+            public string order { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -352,10 +353,6 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string station_id { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
             public string work_id { get; set; }
             /// <summary>
             /// 
@@ -364,11 +361,15 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
+            public string team { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
             public string insert_time { get; set; }
             /// <summary>
             /// 
             /// </summary>
-            public string team { get; set; }
+            public string station_id { get; set; }
             /// <summary>
             /// 
             /// </summary>
@@ -380,7 +381,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            public string is_delete { get; set; }
+//            public string is_delete { get; set; }
         }
 
         public class TaskListNum

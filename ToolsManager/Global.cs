@@ -104,6 +104,7 @@ namespace ToolsManager
                 formTaskReceiveList = value;
             }
         }
+                  
         public static FormMain FormMain
         {
             get
