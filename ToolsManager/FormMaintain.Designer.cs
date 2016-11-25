@@ -153,6 +153,7 @@
             this.保存SToolStripButton.Size = new System.Drawing.Size(51, 47);
             this.保存SToolStripButton.Text = "保存(&S)";
             this.保存SToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.保存SToolStripButton.Click += new System.EventHandler(this.保存SToolStripButton_Click);
             // 
             // 修改OToolStripButton
             // 

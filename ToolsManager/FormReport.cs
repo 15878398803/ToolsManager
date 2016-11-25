@@ -234,6 +234,14 @@ namespace ToolsManager
                 listViewLeft_DoubleClick(null, null);
         }
 
+        private void 保存SToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1 != null)
+            {
+                Excel.DataGridViewToExcelCSV(dataGridView1);
+            }
+        }
+
         private void ll_Next_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (page < maxPageNum)

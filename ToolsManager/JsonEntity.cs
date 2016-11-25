@@ -51,6 +51,7 @@ namespace ToolsManager
 
         public class ToolListItem
         {
+            public string order { get; set; }
             /// <summary>
             /// 
             /// </summary>
