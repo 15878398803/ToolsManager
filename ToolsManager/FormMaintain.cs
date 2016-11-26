@@ -19,13 +19,12 @@ namespace ToolsManager
         public FormMaintain()
         {
             InitializeComponent();
-            //           this.button1.Visible = false;
-            //           this.button2.Visible = false;
-            //           this.button3.Visible = false;
+            Global.SelectedTaskId = -1;
         }
 
         private void FormMaintain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Global.SelectedTaskId = -1;
             Global.FormMaintain = null;
         }
 

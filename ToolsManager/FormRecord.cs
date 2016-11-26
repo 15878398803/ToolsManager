@@ -245,7 +245,7 @@ namespace ToolsManager
         }
         async public Task<bool> UserTaskList(int cur)
         {
-            if (await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum, "1"))
+            if (await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum, Global.SelectedWorkId.ToString()))
             {
                 if (Global.TaskList.list == null)
                 {
@@ -322,8 +322,11 @@ namespace ToolsManager
                     await UserReceiveList(1);
                     break;
                 case "单号事件记录表":
-                    await UserTaskList(1);
                     lastTable = "单号事件记录表";
+                    if (new FormSelectWork().ShowDialog() == DialogResult.OK)
+                    {
+                        await UserTaskList(1);
+                    }
                     break;
             }
         }
@@ -398,6 +401,7 @@ namespace ToolsManager
                     await UserReceiveList(1);
                     break;
                 case "单号事件记录表":
+                    dataGridView1.DataSource = null;
                     await UserTaskList(1);
                     lastTable = "单号事件记录表";
                     break;

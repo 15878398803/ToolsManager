@@ -264,6 +264,8 @@ namespace ToolsManager
         public static List<JsonEntity.WorkList> WorkList;
 
         public static int SelectedTaskId = -1;
+        public static int SelectedWorkId = -1;
+
 
     }
 }
