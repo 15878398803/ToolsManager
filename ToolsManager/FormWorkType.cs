@@ -40,12 +40,14 @@ namespace ToolsManager
                 comboBox1.SelectedIndex = a > 1 ? 1 : a;
                 a = Convert.ToInt32(WorkType.type);
                 comboBox2.SelectedIndex = a > 1 ? 1 : a;
+                a = Convert.ToInt32(WorkType.special);
+                comboBox3.SelectedIndex = a > 3 ? 0 : a;
                 pictureBox1.ImageLocation = textBox2.Text;
 
             }
             else
             {
-                comboBox1.SelectedIndex = comboBox2.SelectedIndex = 0;
+                comboBox3.SelectedIndex = comboBox1.SelectedIndex = comboBox2.SelectedIndex = 0;
             }
 
         }
@@ -54,7 +56,7 @@ namespace ToolsManager
         {
             if (IsUpdate)
             {
-                if (await Server.UpdateWork(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(WorkType.work_id), textBox1.Text, Convert.ToBoolean(comboBox1.SelectedIndex), textBox2.Text, comboBox2.SelectedIndex))
+                if (await Server.UpdateWork(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(WorkType.work_id), textBox1.Text, Convert.ToBoolean(comboBox1.SelectedIndex), textBox2.Text, comboBox2.SelectedIndex, comboBox3.SelectedIndex.ToString()))
                 {
                     MessageBox.Show("修改工作类型成功");
                 }
@@ -66,7 +68,7 @@ namespace ToolsManager
             }
             else
             {
-                if (await Server.InsertWork(Global.LoginInfo.user_id, Global.LoginInfo.user_code, textBox1.Text, Convert.ToBoolean(comboBox1.SelectedIndex), textBox2.Text, comboBox2.SelectedIndex))
+                if (await Server.InsertWork(Global.LoginInfo.user_id, Global.LoginInfo.user_code, textBox1.Text, Convert.ToBoolean(comboBox1.SelectedIndex), textBox2.Text, comboBox2.SelectedIndex, comboBox3.SelectedIndex.ToString()))
                 {
                     MessageBox.Show("添加工作类型成功");
                 }

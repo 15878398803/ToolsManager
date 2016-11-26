@@ -120,7 +120,8 @@ namespace ToolsManager
                     Global.AutoLogin = autologin;
                     Properties.Settings.Default.LastUserCode = autologin.user_code;
                     Properties.Settings.Default.Save();
-                }else
+                }
+                else
                 {
                     Global.UserChanged = true;
                 }
@@ -725,11 +726,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> InsertWork(int user_id, string UserCode, string name, bool IsInput, string WorkImg, int Type)
+        async public static Task<bool> InsertWork(int user_id, string UserCode, string name, bool IsInput, string WorkImg, int Type, string special)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/work/insert_work.api?user_id={1}&user_code={2}&name={3}&is_input={4}&type={6}&work_img={5}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type);
+            builder.AppendFormat("http://{0}/work/insert_work.api?user_id={1}&user_code={2}&name={3}&is_input={4}&type={6}&work_img={5}&special={7}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type, special);
 #if !DEBUG
             try
             {
@@ -762,11 +763,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> UpdateWork(int user_id, string UserCode, int WorkID, string name, bool IsInput, string WorkImg, int Type)
+        async public static Task<bool> UpdateWork(int user_id, string UserCode, int WorkID, string name, bool IsInput, string WorkImg, int Type, string special)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/work/update_work.api?user_id={1}&user_code={2}&work_id={7}&name={3}&is_input={4}&type={6}&work_img={5}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type, WorkID);
+            builder.AppendFormat("http://{0}/work/update_work.api?user_id={1}&user_code={2}&work_id={7}&name={3}&is_input={4}&type={6}&work_img={5}&special={8}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type, WorkID, special);
 #if !DEBUG
             try
             {

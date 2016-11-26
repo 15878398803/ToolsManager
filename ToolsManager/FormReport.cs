@@ -319,6 +319,18 @@ namespace ToolsManager
                             w.type = "站点管理员可用";
                             break;
                     }
+                    switch (w.special)
+                    {
+                        case "0":
+                            w.special = "普通工作";
+                            break;
+                        case "1":
+                            w.special = "已建任务";
+                            break;
+                        case "2":
+                            w.special = "定期检查";
+                            break;
+                    }
 
                 }
                 dataGridView1.DataSource = Global.WorkTypeList;
@@ -335,7 +347,9 @@ namespace ToolsManager
                 dataGridView1.Columns[1].HeaderText = "任务类型名称";
                 dataGridView1.Columns[2].HeaderText = "是否有输入框";
                 dataGridView1.Columns[3].HeaderText = "使用权限";
-                dataGridView1.Columns[4].HeaderText = "类型图片";
+                dataGridView1.Columns[4].HeaderText = "工作类别";
+                dataGridView1.Columns[5].HeaderText = "类型图片";
+
                 for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
                     //全部列不可修改
@@ -452,6 +466,11 @@ namespace ToolsManager
             int x = 1;
             await Server.GetStationList();
             await Server.GetUserList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, page, 100);
+            if (Global.UserList.list == null)
+            {
+                MessageBox.Show("获取用户列表失败，无权限");
+                return false;
+            }
             maxPageNum = ( Global.UserList.num.list_num / Convert.ToInt32(Global.UserList.num.page_num) ) + 1;
             //               int list_num = Global.ToolsList.list.Count;
             lb_cur.Text = "第" + page + "页";

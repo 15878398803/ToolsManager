@@ -341,8 +341,12 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
+            /// <summary>
+            /// 0为普通工作，1为已建任务，2为定期检查
+            /// </summary>
+            public string special { get; set; }
             public string work_img { get; set; }
-//            public string is_delete { get; set; }
+            //            public string is_delete { get; set; }
         }
         public class TaskListItem
         {
