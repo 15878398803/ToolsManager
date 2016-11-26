@@ -61,13 +61,6 @@ namespace ToolsManager
             {
                 SelectedWorkTypeId = comboBox1.SelectedItem.ToString().Split('|')[0];
                 page = 0;
-                //await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1, 100, SelectedWorkTypeId);
-                //dataGridView1.DataSource = Global.TaskList.list;
-
-                //for (int i = 0; i < dataGridView1.Columns.Count; i++)
-                //{
-                //    dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                //}
                 await GetTaskList(page);
             }
         }

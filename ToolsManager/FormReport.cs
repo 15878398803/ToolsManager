@@ -296,6 +296,11 @@ namespace ToolsManager
             comboBox1.Items.Add(1);
             if (await Server.GetWorkTypeList())
             {
+                if (Global.WorkTypeList.Count == 0)
+                {
+                    MessageBox.Show("暂无任何工作类别");
+                    return true;
+                }
                 flowLayoutPanel1.Enabled = true;
                 lb_cur.Text = "第1页";
                 lb_sum.Text = "共1页";
@@ -370,6 +375,11 @@ namespace ToolsManager
                 int x = 1;
                 maxPageNum = 1;
                 await Server.GetToolClasses();
+                if (Global.ToolClass.Count == 0)
+                {
+                    MessageBox.Show("暂无任何工具类别");
+                    return false;
+                }
                 foreach (var toolc in Global.ToolClass)
                 {
 
