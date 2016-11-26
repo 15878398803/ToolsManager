@@ -104,7 +104,7 @@ namespace ToolsManager
                 formTaskReceiveList = value;
             }
         }
-                  
+
         public static FormMain FormMain
         {
             get
@@ -261,6 +261,9 @@ namespace ToolsManager
         public static List<JsonEntity.ReadyToolsItem> ReadyTestTools;
         public static List<JsonEntity.ReadyToolsItem> ReadyDeathTools;
         public static JsonEntity.TestList TestList;
+        public static List<JsonEntity.WorkList> WorkList;
+
+        public static int SelectedTaskId = -1;
 
     }
 }

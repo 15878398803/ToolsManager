@@ -254,7 +254,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            
+
             //            public string is_delete { get; set; }
         }
 
@@ -288,8 +288,8 @@ namespace ToolsManager
             /// <summary>
             /// 顾明轩
             /// </summary>
-             public string openid { get; set; }
-             public string user_id { get; set; }
+            public string openid { get; set; }
+            public string user_id { get; set; }
         }
 
         public class UserListNum
@@ -728,6 +728,7 @@ namespace ToolsManager
             /// 
             /// </summary>
             public List<string> defect_msg { get; set; }
+            public string defect_msgs { get; set; }
         }
 
         public class TestListNum
@@ -757,5 +758,49 @@ namespace ToolsManager
             /// </summary>
             public TestListNum num { get; set; }
         }
+        public class WorkList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string work_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string insert_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string team { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type_complete { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            //public string is_delete { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_test { get; set; }
+        }
+
     }
 }

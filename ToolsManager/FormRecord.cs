@@ -247,6 +247,10 @@ namespace ToolsManager
         {
             if (await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum, "1"))
             {
+                if (Global.TaskList.list == null)
+                {
+                    return false;
+                }
                 await Server.GetWorkTypeList();
                 lb_cur.Text = "第" + cur + "页";
                 maxPageNum = ( Convert.ToInt32(Global.TaskList.num.list_num) / Convert.ToInt32(Global.TaskList.num.page_num) ) + 1;

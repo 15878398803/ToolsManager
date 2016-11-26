@@ -1393,6 +1393,38 @@ namespace ToolsManager
 #endif
 
         }
+        async public static Task<bool> GetWorkList(int user_id, string UserCode)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/task/iswork_task.api?user_id={1}&user_code={2}", Global.ServerIp, user_id, UserCode);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            List<JsonEntity.WorkList> WorkList = JsonHelper.parse<List<JsonEntity.WorkList>>(jsonString);
+            Global.WorkList = WorkList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
 
     }
 }
