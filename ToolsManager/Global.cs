@@ -260,6 +260,7 @@ namespace ToolsManager
         public static JsonEntity.TaskReceiveList TaskReceiveList;
         public static List<JsonEntity.ReadyToolsItem> ReadyTestTools;
         public static List<JsonEntity.ReadyToolsItem> ReadyDeathTools;
+        public static JsonEntity.TestList TestList;
 
     }
 }

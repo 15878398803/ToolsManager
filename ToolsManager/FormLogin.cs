@@ -69,6 +69,7 @@ namespace ToolsManager
             {
 
                 //Test();
+                //await Server.GetTestList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 56, 1, 100);
 
                 //登录成功
 

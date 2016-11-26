@@ -702,5 +702,60 @@ namespace ToolsManager
             public string msg { get; set; }
             public string img_url { get; set; }
         }
+        public class TestListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<string> defect_msg { get; set; }
+        }
+
+        public class TestListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class TestList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<TestListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public TestListNum num { get; set; }
+        }
     }
 }
