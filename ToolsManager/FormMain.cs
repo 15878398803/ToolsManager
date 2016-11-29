@@ -133,7 +133,7 @@ namespace ToolsManager
         }
         async private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = "姓名：" + Global.LoginInfo.name + " 角色：" + Global.LoginInfo.role + " Code:" + Global.LoginInfo.user_code;
+            label1.Text = "姓名：" + Global.LoginInfo.name + " 角色：" + Global.LoginInfo.role;//+ " Code:" + Global.LoginInfo.user_code;
             timer1.Stop();
 
             if (await Server.AutoLogin(Global.StationId, Properties.Settings.Default.LastUserCode))

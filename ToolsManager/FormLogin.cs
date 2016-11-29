@@ -72,7 +72,7 @@ namespace ToolsManager
                 //await Server.GetTestList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 56, 1, 100);
 
                 //登录成功
-
+                Convert.ToInt32("Hello");
                 Global.FormMain.Show();
                 //Global.FormRecord.Show();
                     Global.FormLogin.Hide();
