@@ -348,6 +348,7 @@ namespace ToolsManager
                     break;
                 case "现存库存":
                     lastTable = "现存库存";
+                    dataGridView1.DataSource = null;
                     break;
                 case "我的领用":
                     lastTable = "我的领用";

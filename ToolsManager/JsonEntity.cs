@@ -801,6 +801,98 @@ namespace ToolsManager
             /// </summary>
             public string is_test { get; set; }
         }
+        public class DeathToolsList
+        {
+            public string num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string scrap_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>           
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string insert_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string model { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string subject { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string factory_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string buy_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string life_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string why_scrap { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+            /// <summary>
+            /// 绝缘棒
+            /// </summary>
+            
+        }
+
+        public class DeathToolsNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class DeathList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<DeathToolsList> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public DeathToolsNum num { get; set; }
+        }
 
     }
 }

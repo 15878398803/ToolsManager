@@ -262,7 +262,7 @@ namespace ToolsManager
         public static List<JsonEntity.ReadyToolsItem> ReadyDeathTools;
         public static JsonEntity.TestList TestList;
         public static List<JsonEntity.WorkList> WorkList;
-
+        public static JsonEntity.DeathList DeathList;
         public static int SelectedTaskId = -1;
         public static int SelectedWorkId = -1;
 

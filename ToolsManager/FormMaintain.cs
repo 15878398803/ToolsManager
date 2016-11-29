@@ -71,14 +71,19 @@ namespace ToolsManager
                 case "送检反馈":
                     lastTable = "送检反馈";
                     Global.SelectedTaskId = -1;
+                    dataGridView1.DataSource = null;
                     break;
                 case "逾期记录":
                     lastTable = "逾期记录";
                     Global.SelectedTaskId = -1;
+                    dataGridView1.DataSource = null;
+
                     break;
                 case "增购申请":
                     lastTable = "增购申请";
                     Global.SelectedTaskId = -1;
+                    dataGridView1.DataSource = null;
+
                     break;
                 case "未完成的工作任务":
                     Global.SelectedTaskId = -1;
@@ -447,6 +452,29 @@ namespace ToolsManager
                         dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
 
                     var t = dataGridView1.Rows[i].Cells;
+                    if(DateTime.Parse(dataGridView1.Rows[i].Cells[12].Value.ToString())!=null)
+                    {
+                        if (DateTime.Now > DateTime.Parse(dataGridView1.Rows[i].Cells[12].Value.ToString()))
+                        {
+                            dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Red;
+                        }
+                        else if((DateTime.Parse(dataGridView1.Rows[i].Cells[12].Value.ToString())- DateTime.Now).Days<30)
+                        {
+                            dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Orange;
+                        }
+                    }
+                    if (DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()) != null)
+                    {
+                        if (DateTime.Now > DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()))
+                        {
+                            dataGridView1.Rows[i].Cells[19].Style.BackColor = Color.Red;
+                        }
+                        else if ((DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()) - DateTime.Now).Days < 30)
+                        {
+                            dataGridView1.Rows[i].Cells[19].Style.BackColor = Color.Orange;
+                        }
+                    }
+
                 }
                 //               dataGridView1.RowHeadersVisible = false;
                 dataGridView1.Columns[0].HeaderText = "序号";
@@ -472,6 +500,14 @@ namespace ToolsManager
                 dataGridView1.Columns[19].HeaderText = "报废日期";
                 dataGridView1.Columns[20].HeaderText = "是否在库";
                 dataGridView1.Columns[21].HeaderText = "去向";
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    //全部列不可修改
+                    dataGridView1.Columns[i].ReadOnly = true;
+                    //拉伸列宽来填满表格
+                    dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                }
             }
             return true;
         }

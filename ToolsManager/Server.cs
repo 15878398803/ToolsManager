@@ -1425,6 +1425,37 @@ namespace ToolsManager
 #endif
 
         }
+        async public static Task<bool> GetDeathList(int user_id, string UserCode,int StationId, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/scrap/scrap_list.api?user_id={1}&user_code={2}&station_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode,StationId, page, num);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.DeathList DeathList = JsonHelper.parse<JsonEntity.DeathList>(jsonString);
+            Global.DeathList = DeathList;
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
 
     }
 }
