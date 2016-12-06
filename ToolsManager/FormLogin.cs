@@ -27,7 +27,7 @@ namespace ToolsManager
             {
                 FormLocal f = new FormLocal();
                 f.TopMost = true;
- //               f.Show();
+                //               f.Show();
                 this.Hide();
                 return;
             }
@@ -75,7 +75,7 @@ namespace ToolsManager
                 //Convert.ToInt32("Hello");
                 Global.FormMain.Show();
                 //Global.FormRecord.Show();
-                    Global.FormLogin.Hide();
+                Global.FormLogin.Hide();
                 timer1.Stop();
             }
             else
