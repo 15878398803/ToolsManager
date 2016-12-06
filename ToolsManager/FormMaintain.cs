@@ -456,22 +456,22 @@ namespace ToolsManager
                     {
                         if (DateTime.Now > DateTime.Parse(dataGridView1.Rows[i].Cells[12].Value.ToString()))
                         {
-                            dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Red;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                         }
                         else if((DateTime.Parse(dataGridView1.Rows[i].Cells[12].Value.ToString())- DateTime.Now).Days<30)
                         {
-                            dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Orange;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
                         }
                     }
                     if (DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()) != null)
                     {
                         if (DateTime.Now > DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()))
                         {
-                            dataGridView1.Rows[i].Cells[19].Style.BackColor = Color.Red;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                         }
                         else if ((DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()) - DateTime.Now).Days < 30)
                         {
-                            dataGridView1.Rows[i].Cells[19].Style.BackColor = Color.Orange;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
                         }
                     }
 

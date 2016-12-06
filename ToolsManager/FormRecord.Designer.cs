@@ -111,7 +111,6 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(451, 29);
             this.label3.TabIndex = 5;
-            this.label3.Text = "表格名称";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel3
