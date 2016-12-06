@@ -362,6 +362,11 @@ namespace ToolsManager
                         dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     }
                 }
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    dataGridView1.Columns[i].ReadOnly = true;
+                    dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
 
             }
             return true;
@@ -450,6 +455,11 @@ namespace ToolsManager
                 dataGridView1.Columns[19].HeaderText = "报废日期";
                 dataGridView1.Columns[20].HeaderText = "是否在库";
                 dataGridView1.Columns[21].HeaderText = "去向";
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    dataGridView1.Columns[i].ReadOnly = true;
+                    dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
             }
             return true;
         }
