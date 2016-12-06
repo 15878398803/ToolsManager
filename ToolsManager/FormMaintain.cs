@@ -456,22 +456,22 @@ namespace ToolsManager
                     {
                         if (DateTime.Now > DateTime.Parse(dataGridView1.Rows[i].Cells[12].Value.ToString()))
                         {
-                            dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Red;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                         }
                         else if((DateTime.Parse(dataGridView1.Rows[i].Cells[12].Value.ToString())- DateTime.Now).Days<30)
                         {
-                            dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Orange;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
                         }
                     }
                     if (DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()) != null)
                     {
                         if (DateTime.Now > DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()))
                         {
-                            dataGridView1.Rows[i].Cells[19].Style.BackColor = Color.Red;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                         }
                         else if ((DateTime.Parse(dataGridView1.Rows[i].Cells[19].Value.ToString()) - DateTime.Now).Days < 30)
                         {
-                            dataGridView1.Rows[i].Cells[19].Style.BackColor = Color.Orange;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
                         }
                     }
 
@@ -572,13 +572,15 @@ namespace ToolsManager
                     var t = dataGridView1.Rows[i].Cells;
 
                 }
-                dataGridView1.Columns[0].HeaderText = "ID";
-                dataGridView1.Columns[1].HeaderText = "站点ID";
-                dataGridView1.Columns[2].HeaderText = "工具ID";
-                dataGridView1.Columns[3].HeaderText = "工作票ID";
-                dataGridView1.Columns[4].HeaderText = "时间";
-                dataGridView1.Columns[5].HeaderText = "缺陷";
-               
+                dataGridView1.Columns[0].HeaderText = "检测记录id标识";
+                dataGridView1.Columns[1].HeaderText = "工具ID";
+                dataGridView1.Columns[2].HeaderText = "工器具名称";
+                dataGridView1.Columns[3].HeaderText = "工器具编号";
+                dataGridView1.Columns[4].HeaderText = "工作票ID";
+                dataGridView1.Columns[5].HeaderText = "检查时间";
+                dataGridView1.Columns[6].HeaderText = "类别名称";
+                dataGridView1.Columns[7].HeaderText = "缺陷";
+                //dataGridView1.Columns[0].Visible = false;
             }
             return true;
         }

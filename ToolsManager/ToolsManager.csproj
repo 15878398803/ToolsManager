@@ -72,8 +72,28 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
@@ -105,6 +125,7 @@
       <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -113,9 +134,19 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\WebKitBrowser.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excel.cs" />
+    <Compile Include="FormInsertUpdateBuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInsertUpdateBuy.Designer.cs">
+      <DependentUpon>FormInsertUpdateBuy.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInsertUpdateDoor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +237,12 @@
     <Compile Include="FormSelectWork.Designer.cs">
       <DependentUpon>FormSelectWork.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSensor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSensor.Designer.cs">
+      <DependentUpon>FormSensor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +293,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="FormInsertUpdateBuy.resx">
+      <DependentUpon>FormInsertUpdateBuy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInsertUpdateDoor.resx">
       <DependentUpon>FormInsertUpdateDoor.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelectWork.resx">
       <DependentUpon>FormSelectWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSensor.resx">
+      <DependentUpon>FormSensor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>

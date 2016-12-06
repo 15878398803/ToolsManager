@@ -11,7 +11,7 @@ namespace ToolsManager
     {
         public static string PasswordInput;
         public static string UserInput;
-
+        public static string SensorIdSelected;
 
         public static bool isLocalSuper;
         private static FormMain formMain;
@@ -263,6 +263,8 @@ namespace ToolsManager
         public static JsonEntity.TestList TestList;
         public static List<JsonEntity.WorkList> WorkList;
         public static JsonEntity.DeathList DeathList;
+        public static List<JsonEntity.BuyListItem> BuyList;
+
         public static JsonEntity.overdueList overdueList;
         public static int SelectedTaskId = -1;
         public static int SelectedWorkId = -1;

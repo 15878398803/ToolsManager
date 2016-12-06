@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WebKit;
 
 namespace ToolsManager
 {
@@ -18,7 +20,13 @@ namespace ToolsManager
 
         private void FormSubsystem_Load(object sender, EventArgs e)
         {
+            //webBrowser1.ObjectForScripting = this;
+            WebKit.WebKitBrowser browser = new WebKitBrowser();
+            browser.Dock = DockStyle.Fill;
+            tabPage2.Controls.Add(browser);
+            browser.Navigate("http://"+Global.ServerIp+"/control_air_airdev.html?dev_sn=808600006512");
 
+            //tabPage2.Controls.Add()
         }
 
         private void FormSubsystem_FormClosing(object sender, FormClosingEventArgs e)
@@ -28,20 +36,22 @@ namespace ToolsManager
 
         private void FormSubsystem_DoubleClick(object sender, EventArgs e)
         {
-            switch (listViewLeft.SelectedItems[0].Text)
-            {
-                case "视频监控系统":
-                    break;
-                case "温湿度控制系统":
-                    break;
-                case "门禁系统":
-                    break;
-            }
+
         }
 
         private void FormSubsystem_Shown(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            //if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
+            //{
+            //    Debug.WriteLine(webBrowser1.ReadyState);
+            //    Debug.WriteLine(webBrowser1.Document.Body.InnerHtml);
+            //}
+
         }
     }
 }
