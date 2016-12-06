@@ -81,5 +81,15 @@ namespace ToolsManager
         {
             Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var i = new FormSensor();
+            i.Text = "请双击选择传感器";
+            if (i.ShowDialog() == DialogResult.OK)
+            {
+                textBox6.Text = Global.SensorIdSelected.Trim();
+            }
+        }
     }
 }
