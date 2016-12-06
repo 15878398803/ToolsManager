@@ -704,6 +704,9 @@ namespace ToolsManager
         }
         public class TestListItem
         {
+            public string test_id { get; set; }
+            public string tool_id { get; set; }
+
             /// <summary>
             /// 
             /// </summary>

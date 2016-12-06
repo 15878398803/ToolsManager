@@ -572,13 +572,15 @@ namespace ToolsManager
                     var t = dataGridView1.Rows[i].Cells;
 
                 }
-                dataGridView1.Columns[0].HeaderText = "ID";
-                dataGridView1.Columns[1].HeaderText = "站点ID";
-                dataGridView1.Columns[2].HeaderText = "工具ID";
-                dataGridView1.Columns[3].HeaderText = "工作票ID";
-                dataGridView1.Columns[4].HeaderText = "时间";
-                dataGridView1.Columns[5].HeaderText = "缺陷";
-               
+                dataGridView1.Columns[0].HeaderText = "检测记录id标识";
+                dataGridView1.Columns[1].HeaderText = "工具ID";
+                dataGridView1.Columns[2].HeaderText = "工器具名称";
+                dataGridView1.Columns[3].HeaderText = "工器具编号";
+                dataGridView1.Columns[4].HeaderText = "工作票ID";
+                dataGridView1.Columns[5].HeaderText = "检查时间";
+                dataGridView1.Columns[6].HeaderText = "类别名称";
+                dataGridView1.Columns[7].HeaderText = "缺陷";
+                //dataGridView1.Columns[0].Visible = false;
             }
             return true;
         }
