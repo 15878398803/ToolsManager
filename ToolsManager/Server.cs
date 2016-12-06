@@ -1456,6 +1456,50 @@ namespace ToolsManager
 #endif
 
         }
+        async public static Task<bool> GetOverdueList(int user_id, string UserCode, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
 
+            builder.AppendFormat("http://{0}/overdue/overdue_list.api?user_id={1}&user_code={2}&station_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId, page, num);
+
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            if(jsonString.StartsWith("{\"msg\":"))
+            {
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                JsonEntity.overdueList overdueList = JsonHelper.parse<JsonEntity.overdueList>(jsonString);
+                Global.overdueList = overdueList;
+            }
+                //"{\"msg\":\"\\u7528\\u6237\\u9519\\u8bef\\uff0c\\u6743\\u9650\\u9519\\u8bef\"}"
+                
+                //Global.AutoLogin = autologin;
+                //Global.StationList = stations;
+
+            return true;
+
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
     }
 }

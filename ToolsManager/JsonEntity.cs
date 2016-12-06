@@ -893,6 +893,116 @@ namespace ToolsManager
             /// </summary>
             public DeathToolsNum num { get; set; }
         }
+        public class overdueToolList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string overdue_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string model { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string factory_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string buy_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string life_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string state { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string solve_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_name { get; set; }
+            /// <summary>
+            /// 测试一下
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string naxt_test { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string death_time { get; set; }
+        }
 
+        public class overdueToolNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class overdueList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<overdueToolList> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public overdueToolNum num { get; set; }
+        }
     }
 }

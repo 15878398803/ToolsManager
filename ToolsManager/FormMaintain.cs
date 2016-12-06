@@ -76,7 +76,7 @@ namespace ToolsManager
                 case "逾期记录":
                     lastTable = "逾期记录";
                     Global.SelectedTaskId = -1;
-                    dataGridView1.DataSource = null;
+                    await overdueList(page);
 
                     break;
                 case "增购申请":
@@ -582,6 +582,94 @@ namespace ToolsManager
             }
             return true;
         }
+        async public Task<bool> overdueList(int cur)
+        {
+            if (cur <= 0)
+                cur = 1;
 
+            if (await Server.GetOverdueList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
+            {
+                await Server.GetStationList();
+                if (Global.overdueList.list == null)
+                {
+                    Global.SelectedTaskId = -1;
+
+                    dataGridView1.DataSource = null;
+                    MessageBox.Show("无逾期记录");
+                    return true;
+                }
+                maxPageNum = (Global.overdueList.num.list_num / Convert.ToInt32(Global.overdueList.num.page_num)) + 1;
+                lb_cur.Text = "第" + Global.overdueList.num.page + "页";
+                lb_sum.Text = "共" + maxPageNum + "页";
+                curPage = cur;
+                if (maxPageNum != comboBox1.Items.Count)
+                {
+                    Global.AddComboxNum(comboBox1, maxPageNum);
+                }
+                foreach(var tool in Global.overdueList.list)
+                {
+                    var s = Global.StationList.Find(t => t.station_id == Convert.ToInt32(tool.station_id));
+                    if (s != null)
+                    {
+                        tool.station_id = s.name + "(" + tool.station_id + ")";
+                    }
+                    else
+                    {
+                        tool.station_id = "其他" + "(" + tool.station_id + ")";
+                    }
+
+                    if (tool.state=="1")
+                    {
+                        tool.state = "已处理";
+                    }
+                    else
+                    {
+                        tool.state = "未处理";
+                    }
+
+                    if (tool.type == "1")
+                    {
+                        tool.type = "试验逾期";
+                    }
+                    else
+                    {
+                        tool.type = "报废逾期";
+                    }
+                }
+                dataGridView1.DataSource = Global.overdueList.list;
+                dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (i % 2 == 0)
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
+
+                    var t = dataGridView1.Rows[i].Cells;
+
+                }
+                dataGridView1.Columns[0].HeaderText = "逾期记录id标识";
+                dataGridView1.Columns[1].HeaderText = "站点id标识";
+                dataGridView1.Columns[2].HeaderText = "传感器id标识";
+                dataGridView1.Columns[3].HeaderText = "工具id标识";
+                dataGridView1.Columns[4].HeaderText = "工具名称";
+                dataGridView1.Columns[5].HeaderText = "工具型号";
+                dataGridView1.Columns[6].HeaderText = "工具编号";
+                dataGridView1.Columns[7].HeaderText = "类别id标识";
+                dataGridView1.Columns[8].HeaderText = "出厂日期";
+                dataGridView1.Columns[9].HeaderText = "购买日期";
+                dataGridView1.Columns[10].HeaderText = "试验日期";
+                dataGridView1.Columns[11].HeaderText = "试验周期（月）";
+                dataGridView1.Columns[12].HeaderText = "生命周期（月）";
+                dataGridView1.Columns[13].HeaderText = "类型";
+                dataGridView1.Columns[14].HeaderText = "状态";
+                dataGridView1.Columns[15].HeaderText = "处理时间";
+                dataGridView1.Columns[16].HeaderText = "传感器名称（位置）";
+                dataGridView1.Columns[17].HeaderText = "类别名称";
+                dataGridView1.Columns[18].HeaderText = "下次试验日期";
+                dataGridView1.Columns[19].HeaderText = "报废日期";
+            }
+            return true;
+        }
     }
 }
