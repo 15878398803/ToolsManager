@@ -19,7 +19,7 @@ namespace ToolsManager
         {
             InitializeComponent();
             initTitle();
-
+            //this.Icon = new System.Drawing.Icon(Application.StartupPath + @"\desktop.ico");
         }
         public void initTitle()
         {
@@ -27,7 +27,7 @@ namespace ToolsManager
             {
                 FormLocal f = new FormLocal();
                 f.TopMost = true;
-                f.Show();
+ //               f.Show();
                 this.Hide();
                 return;
             }
@@ -69,12 +69,13 @@ namespace ToolsManager
             {
 
                 //Test();
+                //await Server.GetTestList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 56, 1, 100);
 
                 //登录成功
-
+                //Convert.ToInt32("Hello");
                 Global.FormMain.Show();
                 //Global.FormRecord.Show();
-                Global.FormLogin.Hide();
+                    Global.FormLogin.Hide();
                 timer1.Stop();
             }
             else

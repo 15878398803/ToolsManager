@@ -17,6 +17,9 @@ namespace ToolsManager
         public FormLocal()
         {
             InitializeComponent();
+            //MessageBox.Show(Application.StartupPath + @"\desktop.ico");
+            //this.Icon = new System.Drawing.Icon(Application.StartupPath + @"\desktop.ico");
+
         }
 
         async private void FormLocal_Load(object sender, EventArgs e)

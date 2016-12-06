@@ -254,7 +254,7 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
-            
+
             //            public string is_delete { get; set; }
         }
 
@@ -288,8 +288,8 @@ namespace ToolsManager
             /// <summary>
             /// 顾明轩
             /// </summary>
-             public string openid { get; set; }
-             public string user_id { get; set; }
+            public string openid { get; set; }
+            public string user_id { get; set; }
         }
 
         public class UserListNum
@@ -341,8 +341,12 @@ namespace ToolsManager
             /// <summary>
             /// 
             /// </summary>
+            /// <summary>
+            /// 0为普通工作，1为已建任务，2为定期检查
+            /// </summary>
+            public string special { get; set; }
             public string work_img { get; set; }
-//            public string is_delete { get; set; }
+            //            public string is_delete { get; set; }
         }
         public class TaskListItem
         {
@@ -698,5 +702,197 @@ namespace ToolsManager
             public string msg { get; set; }
             public string img_url { get; set; }
         }
+        public class TestListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tool_number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string test_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<string> defect_msg { get; set; }
+            public string defect_msgs { get; set; }
+        }
+
+        public class TestListNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class TestList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<TestListItem> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public TestListNum num { get; set; }
+        }
+        public class WorkList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string work_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string task_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string insert_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string team { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type_complete { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            //public string is_delete { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string is_test { get; set; }
+        }
+        public class DeathToolsList
+        {
+            public string num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string scrap_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>           
+            public string class_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string class_name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string insert_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string model { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string subject { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string factory_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string buy_time { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string life_cycle { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string why_scrap { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string memo { get; set; }
+            /// <summary>
+            /// 绝缘棒
+            /// </summary>
+            
+        }
+
+        public class DeathToolsNum
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public int list_num { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string page_num { get; set; }
+        }
+
+        public class DeathList
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<DeathToolsList> list { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public DeathToolsNum num { get; set; }
+        }
+
     }
 }

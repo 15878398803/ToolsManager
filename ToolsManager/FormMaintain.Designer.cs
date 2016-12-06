@@ -33,7 +33,9 @@
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("综合管理");
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("预送检表");
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("预报废表");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("定期检查");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            "定期检查",
+            "任务类型1"}, -1);
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("送检反馈");
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("逾期记录");
             System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("增购申请");

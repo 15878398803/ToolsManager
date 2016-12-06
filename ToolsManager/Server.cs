@@ -120,7 +120,8 @@ namespace ToolsManager
                     Global.AutoLogin = autologin;
                     Properties.Settings.Default.LastUserCode = autologin.user_code;
                     Properties.Settings.Default.Save();
-                }else
+                }
+                else
                 {
                     Global.UserChanged = true;
                 }
@@ -725,11 +726,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> InsertWork(int user_id, string UserCode, string name, bool IsInput, string WorkImg, int Type)
+        async public static Task<bool> InsertWork(int user_id, string UserCode, string name, bool IsInput, string WorkImg, int Type, string special)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/work/insert_work.api?user_id={1}&user_code={2}&name={3}&is_input={4}&type={6}&work_img={5}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type);
+            builder.AppendFormat("http://{0}/work/insert_work.api?user_id={1}&user_code={2}&name={3}&is_input={4}&type={6}&work_img={5}&special={7}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type, special);
 #if !DEBUG
             try
             {
@@ -762,11 +763,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> UpdateWork(int user_id, string UserCode, int WorkID, string name, bool IsInput, string WorkImg, int Type)
+        async public static Task<bool> UpdateWork(int user_id, string UserCode, int WorkID, string name, bool IsInput, string WorkImg, int Type, string special)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/work/update_work.api?user_id={1}&user_code={2}&work_id={7}&name={3}&is_input={4}&type={6}&work_img={5}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type, WorkID);
+            builder.AppendFormat("http://{0}/work/update_work.api?user_id={1}&user_code={2}&work_id={7}&name={3}&is_input={4}&type={6}&work_img={5}&special={8}", Global.ServerIp, user_id, UserCode, name, Convert.ToInt32(IsInput), WorkImg, Type, WorkID, special);
 #if !DEBUG
             try
             {
@@ -910,11 +911,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> GetTaskList(int user_id, string UserCode, int page, int num)
+        async public static Task<bool> GetTaskList(int user_id, string UserCode, int page, int num, string work_id)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/task/task_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
+            builder.AppendFormat("http://{0}/task/task_list.api?user_id={1}&user_code={2}&page={3}&num={4}&station_id={5}&work_id={6}", Global.ServerIp, user_id, UserCode, page, num, Global.LoginInfo.role == 3 ? 0 : Global.StationId, work_id);
 #if !DEBUG
             try
             {
@@ -1305,6 +1306,143 @@ namespace ToolsManager
             List<JsonEntity.ReadyToolsItem> ReadyDeathTools = JsonHelper.parse<List<JsonEntity.ReadyToolsItem>>(jsonString);
             Global.ReadyDeathTools = ReadyDeathTools;
 
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetTestList(int user_id, string UserCode, int TaskId, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/test/test_list.api?user_id={1}&user_code={2}&task_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode, TaskId, page, num);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.TestList TestList = JsonHelper.parse<JsonEntity.TestList>(jsonString);
+            Global.TestList = TestList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateTestList(int user_id, string UserCode, int TestId, int StationId, int ToolId, int TaskId, List<string> DefectsId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/test/update_test.api?user_id={1}&user_code={2}&test_id={3}&station_id={4}&tool_id={5}&task_id={6}", Global.ServerIp, user_id, UserCode, TestId, StationId, ToolId, TaskId);
+
+            for (int i = 0; i < DefectsId.Count; i++)
+            {
+                builder.AppendFormat("&defect_json[{0}]={1}", i, DefectsId[i]);
+            }
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+            {
+
+                JsonEntity.Msg Msg = JsonHelper.parse<JsonEntity.Msg>(jsonString);
+                MessageBox.Show(Msg.msg, null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetWorkList(int user_id, string UserCode)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/task/iswork_task.api?user_id={1}&user_code={2}", Global.ServerIp, user_id, UserCode);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            List<JsonEntity.WorkList> WorkList = JsonHelper.parse<List<JsonEntity.WorkList>>(jsonString);
+            Global.WorkList = WorkList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetDeathList(int user_id, string UserCode,int StationId, int page, int num)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/scrap/scrap_list.api?user_id={1}&user_code={2}&station_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode,StationId, page, num);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            JsonEntity.DeathList DeathList = JsonHelper.parse<JsonEntity.DeathList>(jsonString);
+            Global.DeathList = DeathList;
             return true;
             //Global.AutoLogin = autologin;
             //Global.StationList = stations;

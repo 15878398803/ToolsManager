@@ -22,9 +22,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -48,12 +49,29 @@
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>desktop.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FE59F2BA6822658214CAEC1E99371FD484743C9F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ToolsManager_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject>ToolsManager.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Microsoft.Build.Tasks.v4.0" />
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -176,6 +194,18 @@
     <Compile Include="FormReport.Designer.cs">
       <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelectChecks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectChecks.Designer.cs">
+      <DependentUpon>FormSelectChecks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSelectWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectWork.Designer.cs">
+      <DependentUpon>FormSelectWork.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +235,12 @@
     </Compile>
     <Compile Include="FormUpdateTask.Designer.cs">
       <DependentUpon>FormUpdateTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateTest.Designer.cs">
+      <DependentUpon>FormUpdateTest.cs</DependentUpon>
     </Compile>
     <Compile Include="FormWorkType.cs">
       <SubType>Form</SubType>
@@ -259,6 +295,12 @@
     <EmbeddedResource Include="FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectChecks.resx">
+      <DependentUpon>FormSelectChecks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectWork.resx">
+      <DependentUpon>FormSelectWork.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpdateTask.resx">
       <DependentUpon>FormUpdateTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateTest.resx">
+      <DependentUpon>FormUpdateTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWorkType.resx">
       <DependentUpon>FormWorkType.cs</DependentUpon>
@@ -298,6 +343,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ToolsManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -318,6 +364,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="desktop.ico" />
+    <None Include="Resources\%24this.Icon.ico" />
+    <None Include="Resources\icon.bmp" />
     <None Include="Resources\登录-副本_0000s_0005_登录矩形框.png" />
     <None Include="Resources\登录-副本_0000s_0004_登录矩形框-移动反馈.png" />
     <None Include="Resources\登录-副本_0000s_0003_登录矩形框-点击反馈.png" />

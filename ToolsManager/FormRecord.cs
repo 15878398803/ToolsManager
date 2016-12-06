@@ -18,7 +18,7 @@ namespace ToolsManager
         /// <summary>
         /// 当前页码
         /// </summary>
-        private int curPage=1;
+        private int curPage = 1;
         /// <summary>
         /// 总页数
         /// </summary>
@@ -245,11 +245,15 @@ namespace ToolsManager
         }
         async public Task<bool> UserTaskList(int cur)
         {
-            if (await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
+            if (await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum, Global.SelectedWorkId.ToString()))
             {
+                if (Global.TaskList.list == null)
+                {
+                    return false;
+                }
                 await Server.GetWorkTypeList();
                 lb_cur.Text = "第" + cur + "页";
-                maxPageNum = (Convert.ToInt32(Global.TaskList.num.list_num) / Convert.ToInt32(Global.TaskList.num.page_num)) + 1;
+                maxPageNum = ( Convert.ToInt32(Global.TaskList.num.list_num) / Convert.ToInt32(Global.TaskList.num.page_num) ) + 1;
                 lb_sum.Text = "共" + maxPageNum + "页";
                 if (maxPageNum != comboBox1.Items.Count)
                 {
@@ -259,9 +263,9 @@ namespace ToolsManager
                         comboBox1.Items.Add(i);
                     }
                 }
-                foreach(var t in Global.TaskList.list)
+                foreach (var t in Global.TaskList.list)
                 {
-                    if(t.type_complete=="1")
+                    if (t.type_complete == "1")
                         t.type_complete = "是";
                     else
                         t.type_complete = "否";
@@ -272,12 +276,12 @@ namespace ToolsManager
                 if (Global.TaskList.list.Count > 0)
                 {
                     dataGridView1.Columns[0].HeaderText = "事件编号ID";
-                    dataGridView1.Columns[1].HeaderText = "工作类型";               
+                    dataGridView1.Columns[1].HeaderText = "工作类型";
                     dataGridView1.Columns[2].HeaderText = "作业票单号";
                     dataGridView1.Columns[3].HeaderText = "生产班组";
                     dataGridView1.Columns[4].HeaderText = "开门时间";
                     dataGridView1.Columns[5].HeaderText = "站点";
-                    dataGridView1.Columns[6].HeaderText = "工作是否完成";           
+                    dataGridView1.Columns[6].HeaderText = "工作是否完成";
                     dataGridView1.Columns[7].HeaderText = "备注";
                     dataGridView1.Columns[5].Visible = false;
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
@@ -318,8 +322,11 @@ namespace ToolsManager
                     await UserReceiveList(1);
                     break;
                 case "单号事件记录表":
-                    await UserTaskList(1);
                     lastTable = "单号事件记录表";
+                    if (new FormSelectWork().ShowDialog() == DialogResult.OK)
+                    {
+                        await UserTaskList(1);
+                    }
                     break;
             }
         }
@@ -331,7 +338,7 @@ namespace ToolsManager
 
         async private void ll_Last_LinkClicked(object sender, EventArgs e)
         {
-            if(curPage>1)
+            if (curPage > 1)
                 curPage--;
             switch (lastTable)
             {
@@ -341,6 +348,7 @@ namespace ToolsManager
                     break;
                 case "现存库存":
                     lastTable = "现存库存";
+                    dataGridView1.DataSource = null;
                     break;
                 case "我的领用":
                     lastTable = "我的领用";
@@ -361,7 +369,7 @@ namespace ToolsManager
             switch (lastTable)
             {
                 case "领还明细":
-                    lastTable = "领还明细";                    
+                    lastTable = "领还明细";
                     await TableReceiveList(curPage);
                     break;
                 case "现存库存":
@@ -394,6 +402,7 @@ namespace ToolsManager
                     await UserReceiveList(1);
                     break;
                 case "单号事件记录表":
+                    dataGridView1.DataSource = null;
                     await UserTaskList(1);
                     lastTable = "单号事件记录表";
                     break;
@@ -475,7 +484,7 @@ namespace ToolsManager
                     break;
                 case "单号事件记录表":
                     lastTable = "单号事件记录表";
-                    await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, curPage, Global.PageNum);
+                    await Server.GetTaskList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, curPage, Global.PageNum, "1");
                     var T = new FormUpdateTask();
                     T.tasklist = Global.TaskList.list.Find(t => t.task_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
                     T.ShowDialog();
@@ -492,6 +501,6 @@ namespace ToolsManager
             }
         }
 
-       
+
     }
 }
