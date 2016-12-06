@@ -1425,11 +1425,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> GetDeathList(int user_id, string UserCode,int StationId, int page, int num)
+        async public static Task<bool> GetDeathList(int user_id, string UserCode, int StationId, int page, int num)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/scrap/scrap_list.api?user_id={1}&user_code={2}&station_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode,StationId, page, num);
+            builder.AppendFormat("http://{0}/scrap/scrap_list.api?user_id={1}&user_code={2}&station_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode, StationId, page, num);
 #if !DEBUG
             try
             {
@@ -1446,6 +1446,136 @@ namespace ToolsManager
             return true;
             //Global.AutoLogin = autologin;
             //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> GetBuyList(int user_id, string UserCode, int StationId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/buy/buy_list.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, StationId);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            List<JsonEntity.BuyListItem> BuyList = JsonHelper.parse<List<JsonEntity.BuyListItem>>(jsonString);
+            Global.BuyList = BuyList;
+
+            return true;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> InsertBuyPlan(int user_id, string UserCode, string StationId, string SensorID, string Name, string Model, string Number, string Type)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/buy/insert_buy.api?user_id={1}&user_code={2}&station_id={3}&sensor_id={4}&name={5}&model={6}&number={7}&type={8}", Global.ServerIp, user_id, UserCode, StationId, SensorID, Name, Model, Number, Type);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            //List<JsonEntity.BuyListItem> BuyList = JsonHelper.parse<List<JsonEntity.BuyListItem>>(jsonString);
+            //Global.BuyList = BuyList;
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+                return false;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> UpdateBuyPlan(int user_id, string UserCode, string StationId, string SensorID, string Name, string Model, string Number, string Type, string BuyplanId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/buy/insert_buy.api?user_id={1}&user_code={2}&station_id={3}&sensor_id={4}&name={5}&model={6}&number={7}&type={8}&buyplan_id={9}", Global.ServerIp, user_id, UserCode, StationId, SensorID, Name, Model, Number, Type, BuyplanId);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            //List<JsonEntity.BuyListItem> BuyList = JsonHelper.parse<List<JsonEntity.BuyListItem>>(jsonString);
+            //Global.BuyList = BuyList;
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+                return false;
+            //Global.AutoLogin = autologin;
+            //Global.StationList = stations;
+#if !DEBUG
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("网络连接失败，请尝试重启计算机。", null, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+#endif
+
+        }
+        async public static Task<bool> DeleteBuyPlan(int user_id, string UserCode, string BuyplanId)
+        {
+            StringBuilder builder = new StringBuilder(200);
+
+            builder.AppendFormat("http://{0}/buy/delete_buy.api?user_id={1}&user_code={2}&buyplan_id={3}", Global.ServerIp, user_id, UserCode, BuyplanId);
+#if !DEBUG
+            try
+            {
+#endif
+
+            //异步执行GET请求，不影响UI主线程
+            string jsonString = await Task.Factory.StartNew(() =>
+            {
+                return HttpHelper.GetResponseString(HttpHelper.CreateGetHttpResponse(builder.ToString()));
+            });
+            //以下代码在上面的Task执行完后会自动回来调用
+            if (jsonString.ToLower() == "true")
+                return true;
+            else
+                return false;
 #if !DEBUG
             }
             catch (Exception)

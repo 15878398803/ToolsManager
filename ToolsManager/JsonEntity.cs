@@ -866,7 +866,7 @@ namespace ToolsManager
             /// <summary>
             /// 绝缘棒
             /// </summary>
-            
+
         }
 
         public class DeathToolsNum
@@ -895,6 +895,41 @@ namespace ToolsManager
             /// 
             /// </summary>
             public DeathToolsNum num { get; set; }
+        }
+        public class BuyListItem
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string buyplan_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string station_id { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_id { get; set; }
+            /// <summary>
+            /// 哈哈哈
+            /// </summary>
+            public string name { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string model { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string number { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string type { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string sensor_name { get; set; }
         }
 
     }
