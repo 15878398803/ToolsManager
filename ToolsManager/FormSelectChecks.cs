@@ -29,6 +29,10 @@ namespace ToolsManager
             {
                 comboBox1.Items.Add(i.work_id + "|" + i.name);
             }
+            if(comboBox1.Items.Count>0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -172,6 +176,11 @@ namespace ToolsManager
         {
             page = maxPageNum;
             await GetTaskList(page);
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button1_Click(null,null);
         }
     }
 }

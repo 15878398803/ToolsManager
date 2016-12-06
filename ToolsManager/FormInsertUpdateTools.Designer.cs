@@ -318,7 +318,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormInsertUpdateTools";
             this.Text = "添加工具";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormInsertUpdateTools_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
