@@ -27,7 +27,7 @@ namespace ToolsManager
 
         async private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Global.LoginInfo != null)
+            if (Global.LoginInfo != null && Global.AutoLogin != null)
             {
 
                 if (await Server.GetTaskReceiveList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, Convert.ToInt32(Global.AutoLogin.task_id)))
