@@ -77,7 +77,9 @@ namespace ToolsManager
                 //Global.FormRecord.Show();
                 Global.FormLogin.Hide();
                 timer1.Stop();
-                new FormInsertUpdateBuy().Show();
+                linkLabel1.Text = " ";
+
+                //new FormInsertUpdateBuy().Show();
             }
             else
             {

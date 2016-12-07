@@ -911,8 +911,9 @@ namespace ToolsManager
             /// </summary>
             public string sensor_id { get; set; }
             /// <summary>
-            /// 哈哈哈
+            /// 
             /// </summary>
+            public string sensor_name { get; set; }
             public string name { get; set; }
             /// <summary>
             /// 
@@ -926,10 +927,7 @@ namespace ToolsManager
             /// 
             /// </summary>
             public string type { get; set; }
-            /// <summary>
-            /// 
-            /// </summary>
-            public string sensor_name { get; set; }
+
         }
 
     }

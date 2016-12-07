@@ -1526,7 +1526,7 @@ namespace ToolsManager
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/buy/insert_buy.api?user_id={1}&user_code={2}&station_id={3}&sensor_id={4}&name={5}&model={6}&number={7}&type={8}&buyplan_id={9}", Global.ServerIp, user_id, UserCode, StationId, SensorID, Name, Model, Number, Type, BuyplanId);
+            builder.AppendFormat("http://{0}/buy/update_buy.api?user_id={1}&user_code={2}&station_id={3}&sensor_id={4}&name={5}&model={6}&number={7}&type={8}&buyplan_id={9}", Global.ServerIp, user_id, UserCode, StationId, SensorID, Name, Model, Number, Type, BuyplanId);
 #if !DEBUG
             try
             {
