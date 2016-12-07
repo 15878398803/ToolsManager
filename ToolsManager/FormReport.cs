@@ -33,7 +33,23 @@ namespace ToolsManager
 
         private void FormReport_Load(object sender, EventArgs e)
         {
+            foreach (ListViewItem i in listViewLeft.Items)
+            {
+                //Debug.WriteLine(i.Text);
+                if (i.Text == "工作类别" && Global.LoginInfo.role == 2)
+                {
+                    i.Remove();
+                }
+                if (i.Text == "缺陷类别" && Global.LoginInfo.role == 2)
+                {
+                    i.Remove();
+                }
+                if (i.Text == "员工权限" && Global.LoginInfo.role == 2)
+                {
+                    i.Remove();
+                }
 
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -54,20 +70,18 @@ namespace ToolsManager
                 page = 0;
             switch (listViewLeft.SelectedItems[0].Text)
             {
-                case "申购计划":
-                    lastTable = "申购计划";
-                    break;
-                case "局申购汇总":
-                    lastTable = "局申购汇总";
+                case "购买计划":
+                    lastTable = "购买计划";
+                    await BuyList();
                     break;
                 case "报废记录":
                     lastTable = "报废记录";
                     await ReadDeathList(page + 1);
                     break;
-                case "局报废汇总":
-                    lastTable = "局报废汇总";
-                    await ReadDeathList(page + 1);
-                    break;
+                //case "局报废汇总":
+                //    lastTable = "局报废汇总";
+                //    await ReadDeathList(page + 1);
+                //    break;
                 case "工作类别":
                     lastTable = "工作类别";
                     await WorkTypeList();
@@ -93,6 +107,9 @@ namespace ToolsManager
             switch (lastTable)
             {
                 case "申购计划":
+                    FormInsertUpdateBuy buy = new FormInsertUpdateBuy();
+                    buy.ShowDialog();
+                    await BuyList();
                     break;
                 case "局申购汇总":
                     break;
@@ -127,7 +144,11 @@ namespace ToolsManager
                 switch (lastTable)
                 {
                     case "申购计划":
-                        dataGridView1.DataSource = null;
+                        FormInsertUpdateBuy buy = new FormInsertUpdateBuy();
+                        buy.isUpdate = true;
+                        buy.BuyListItem = Global.BuyList.Find(t => t.buyplan_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
+                        buy.ShowDialog();
+                        await BuyList();
                         break;
                     case "局申购汇总":
                         dataGridView1.DataSource = null;
@@ -184,6 +205,17 @@ namespace ToolsManager
                 switch (lastTable)
                 {
                     case "申购计划":
+                        var buy = Global.BuyList.Find(t => t.buyplan_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
+
+                        if (MessageBox.Show("您确定要删除选中的 " + buy.name + " 的增购计划吗？", "删除确认", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            if (await Server.DeleteBuyPlan(Global.LoginInfo.user_id, Global.LoginInfo.user_code, buy.buyplan_id))
+                            {
+                                MessageBox.Show("删除 " + buy.name + " 的增购计划成功");
+                                await BuyList();
+                            }
+
+                        }
                         break;
                     case "局申购汇总":
                         break;
@@ -233,7 +265,7 @@ namespace ToolsManager
             }
             else
             {
-                MessageBox.Show("请先选择要修改的数据");
+                MessageBox.Show("请先选择要删除的数据");
             }
         }
 
@@ -634,6 +666,55 @@ namespace ToolsManager
             }
             return true;
         }
+        async public Task<bool> BuyList()
+        {
 
+            if (await Server.GetBuyList(Global.LoginInfo.user_id, Global.LoginInfo.user_code))
+            {
+                lb_cur.Text = "第1页";
+                lb_sum.Text = "共1页";
+                comboBox1.Items.Clear();
+                if (Global.BuyList == null)
+                {
+                    dataGridView1.DataSource = null;
+                    MessageBox.Show("无定期检查记录");
+                    return true;
+                }
+                dataGridView1.DataSource = Global.BuyList;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (i % 2 == 0)
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
+                    var t = dataGridView1.Rows[i].Cells;
+                    var type = t[7].Value.ToString();
+                    if (type == "1")
+                    {
+                        t[7].Value = "手动添加";
+                    }
+                    else if (type == "2")
+                    {
+                        t[7].Value = "报废换新";
+                    }
+                }
+                if (Global.BuyList.Count >= 0)
+                {
+                    dataGridView1.Columns[0].HeaderText = "增购计划ID";
+                    dataGridView1.Columns[1].HeaderText = "站点ID";
+                    dataGridView1.Columns[2].HeaderText = "传感器ID";
+                    dataGridView1.Columns[3].HeaderText = "传感器名称";
+                    dataGridView1.Columns[4].HeaderText = "工具名称";
+                    dataGridView1.Columns[5].HeaderText = "工具型号";
+                    dataGridView1.Columns[6].HeaderText = "工具编号";
+                    dataGridView1.Columns[7].HeaderText = "类别";
+
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+                        dataGridView1.Columns[i].ReadOnly = true;
+                        dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

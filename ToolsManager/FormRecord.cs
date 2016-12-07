@@ -56,6 +56,8 @@ namespace ToolsManager
         {
             if (await Server.GetReceiveList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
             {
+                if (Global.ReceiveList.num == null)
+                    return false;
                 lb_cur.Text = "第" + Global.ReceiveList.num.page + "页";
                 maxPageNum = Global.ReceiveList.num.list_num / Global.PageNum + 1;
                 lb_sum.Text = "共" + maxPageNum + "页";
@@ -163,6 +165,8 @@ namespace ToolsManager
         {
             if (await Server.GetUserReceiveList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
             {
+                if (Global.UserReceiveList.num == null)
+                    return false;
                 lb_cur.Text = "第" + Global.UserReceiveList.num.page + "页";
                 maxPageNum = Global.UserReceiveList.num.list_num / Global.PageNum + 1;
                 lb_sum.Text = "共" + maxPageNum + "页";

@@ -68,26 +68,16 @@ namespace ToolsManager
                         await TestList(page);
                     }
                     break;
-                case "送检反馈":
-                    lastTable = "送检反馈";
-                    Global.SelectedTaskId = -1;
-                    dataGridView1.DataSource = null;
-                    break;
                 case "逾期记录":
                     lastTable = "逾期记录";
                     Global.SelectedTaskId = -1;
                     await overdueList(page);
 
                     break;
-                case "增购申请":
-                    lastTable = "增购申请";
-                    Global.SelectedTaskId = -1;
-                    await BuyList();
-                    break;
-                case "未完成的工作任务":
-                    Global.SelectedTaskId = -1;
-                    await WorkList();
-                    break;
+                //case "未完成的工作任务":
+                //    Global.SelectedTaskId = -1;
+                //    await WorkList();
+                //    break;
             }
         }
 
@@ -172,15 +162,12 @@ namespace ToolsManager
                 case "逾期记录":
                     break;
                 case "增购申请":
-                    FormInsertUpdateBuy buy = new FormInsertUpdateBuy();
-                    buy.ShowDialog();
-                    await BuyList();
                     break;
             }
 
         }
 
-        async private void 修改ToolStripButton1_Click(object sender, EventArgs e)
+        private void 修改ToolStripButton1_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
@@ -206,11 +193,6 @@ namespace ToolsManager
                     case "逾期记录":
                         break;
                     case "增购申请":
-                        FormInsertUpdateBuy buy = new FormInsertUpdateBuy();
-                        buy.isUpdate = true;
-                        buy.BuyListItem = Global.BuyList.Find(t => t.buyplan_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
-                        buy.ShowDialog();
-                        await BuyList();
                         break;
 
                 }
@@ -251,17 +233,7 @@ namespace ToolsManager
                 case "逾期记录":
                     break;
                 case "增购申请":
-                    var buy = Global.BuyList.Find(t => t.buyplan_id == dataGridView1.SelectedRows[0].Cells[0].Value as string);
-
-                    if (MessageBox.Show("您确定要删除选中的 " + buy.name + " 的增购计划吗？", "删除确认", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if (await Server.DeleteBuyPlan(Global.LoginInfo.user_id, Global.LoginInfo.user_code, buy.buyplan_id))
-                        {
-                            MessageBox.Show("删除 " + buy.name + " 的增购计划成功");
-                            await BuyList();
-                        }
-
-                    }
+                    
                     break;
             }
 
@@ -280,6 +252,8 @@ namespace ToolsManager
             if (await Server.GetReadyDeathTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code))
             {
                 //               maxPageNum = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
+                if (Global.ReadyDeathTools == null)
+                    return false;
                 int list_num = Global.ReadyDeathTools.Count;
                 page = 1;
                 maxPageNum = ( list_num / 100 ) + 1;
@@ -338,6 +312,8 @@ namespace ToolsManager
             if (await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code))
             {
                 //               maxPageNum = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
+                if (Global.ReadyTestTools == null)
+                    return false;
                 int list_num = Global.ReadyTestTools.Count;
                 page = 1;
                 maxPageNum = ( list_num / 100 ) + 1;
@@ -428,6 +404,8 @@ namespace ToolsManager
                 cur = 1;
             if (await Server.GetToolsList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, cur, Global.PageNum))
             {
+                if (Global.ToolsList.num == null)
+                    return false;
                 maxPageNum = ( Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num) ) + 1;
                 //               int list_num = Global.ToolsList.list.Count;
                 //               page = 1;
@@ -539,12 +517,12 @@ namespace ToolsManager
             }
             return true;
         }
-        async public Task<bool> WorkList()
-        {
-            await Server.GetWorkList(Global.LoginInfo.user_id, Global.LoginInfo.user_code);
-            dataGridView1.DataSource = Global.WorkList;
-            return true;
-        }
+        //async public Task<bool> WorkList()
+        //{
+        //    await Server.GetWorkList(Global.LoginInfo.user_id, Global.LoginInfo.user_code);
+        //    dataGridView1.DataSource = Global.WorkList;
+        //    return true;
+        //}
         async public Task<bool> TestList(int cur)
         {
             if (cur <= 0)
@@ -612,6 +590,7 @@ namespace ToolsManager
             }
             return true;
         }
+
         async public Task<bool> overdueList(int cur)
         {
             if (cur <= 0)
@@ -647,56 +626,6 @@ namespace ToolsManager
                     {
                         tool.station_id = "其他" + "(" + tool.station_id + ")";
                     }
-        async public Task<bool> BuyList()
-        {
-
-            if (await Server.GetBuyList(Global.LoginInfo.user_id, Global.LoginInfo.user_code))
-            {
-                lb_cur.Text = "第1页";
-                lb_sum.Text = "共1页";
-                comboBox1.Items.Clear();
-                if (Global.BuyList == null)
-                {
-                    dataGridView1.DataSource = null;
-                    MessageBox.Show("无定期检查记录");
-                    return true;
-                }
-                dataGridView1.DataSource = Global.BuyList;
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    if (i % 2 == 0)
-                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightBlue;
-                    var t = dataGridView1.Rows[i].Cells;
-                    var type = t[7].Value.ToString();
-                    if (type == "1")
-                    {
-                        t[7].Value = "手动添加";
-                    }
-                    else if (type == "2")
-                    {
-                        t[7].Value = "报废换新";
-                    }
-                }
-                if (Global.BuyList.Count >= 0)
-                {
-                    dataGridView1.Columns[0].HeaderText = "增购计划ID";
-                    dataGridView1.Columns[1].HeaderText = "站点ID";
-                    dataGridView1.Columns[2].HeaderText = "传感器ID";
-                    dataGridView1.Columns[3].HeaderText = "传感器名称";
-                    dataGridView1.Columns[4].HeaderText = "工具名称";
-                    dataGridView1.Columns[5].HeaderText = "工具型号";
-                    dataGridView1.Columns[6].HeaderText = "工具编号";
-                    dataGridView1.Columns[7].HeaderText = "类别";
-
-                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
-                    {
-                        dataGridView1.Columns[i].ReadOnly = true;
-                        dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    }
-                }
-            }
-            return true;
-        }
 
                     if (tool.state=="1")
                     {
@@ -751,5 +680,6 @@ namespace ToolsManager
             }
             return true;
         }
+
     }
 }

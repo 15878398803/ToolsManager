@@ -117,6 +117,20 @@ namespace ToolsManager
                     {
                         i.Remove();
                     }
+
+                    if (i.Text == "维护管理" && Global.LoginInfo.role == 1)
+                    {
+                        i.Remove();
+                    }
+                    if (i.Text == "业务报表" && Global.LoginInfo.role == 1)
+                    {
+                        i.Remove();
+                    }
+                    if (i.Text == "子系统" && Global.LoginInfo.role == 1)
+                    {
+                        i.Remove();
+                    }
+
                 }
                 //  i.Remove();
 
@@ -131,14 +145,7 @@ namespace ToolsManager
 
             }
 
-            foreach (ListViewItem i in listView1.Items)
-            {
-                //Debug.WriteLine(i.Text);
-                if (i.Text == "维护管理" && Global.LoginInfo.role == 1)
-                {
-                    i.Remove();
-                }
-            }
+
 
         }
         async private void timer1_Tick(object sender, EventArgs e)

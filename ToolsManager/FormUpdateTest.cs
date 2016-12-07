@@ -17,7 +17,7 @@ namespace ToolsManager
             InitializeComponent();
         }
 
-        async private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (checkedListBox1.SelectedItems.Count == 0)
             {

@@ -30,9 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("领还明细");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("现存库存");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("我的领用");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("单号事件记录表");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("我的领用");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("单号事件记录表");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRecord));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.listViewLeft = new System.Windows.Forms.ListView();
@@ -72,14 +71,12 @@
             // 
             this.listViewLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             listViewItem1.Tag = "Details";
-            listViewItem2.Tag = "inventory";
-            listViewItem3.Tag = "mine";
-            listViewItem4.Tag = "event";
+            listViewItem2.Tag = "mine";
+            listViewItem3.Tag = "event";
             this.listViewLeft.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem3});
             this.listViewLeft.Location = new System.Drawing.Point(3, 3);
             this.listViewLeft.MultiSelect = false;
             this.listViewLeft.Name = "listViewLeft";
