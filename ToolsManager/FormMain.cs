@@ -18,6 +18,7 @@ namespace ToolsManager
         {
             InitializeComponent();
             //Global.FormLogin = new FormLogin();
+            
         }
         /// <summary>
         /// 打开各个功能窗口
@@ -128,6 +129,15 @@ namespace ToolsManager
                 Global.FormTaskReceiveList.Focus();
                 timer1.Start();
 
+            }
+
+            foreach (ListViewItem i in listView1.Items)
+            {
+                //Debug.WriteLine(i.Text);
+                if (i.Text == "维护管理" && Global.LoginInfo.role == 1)
+                {
+                    i.Remove();
+                }
             }
 
         }

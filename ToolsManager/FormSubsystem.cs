@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WebKit;
+//using WebKit;
 
 namespace ToolsManager
 {
@@ -21,10 +21,10 @@ namespace ToolsManager
         private void FormSubsystem_Load(object sender, EventArgs e)
         {
             //webBrowser1.ObjectForScripting = this;
-            WebKit.WebKitBrowser browser = new WebKitBrowser();
-            browser.Dock = DockStyle.Fill;
-            tabPage2.Controls.Add(browser);
-            browser.Navigate("http://"+Global.ServerIp+"/control_air_airdev.html?dev_sn=808600006512");
+            //WebKit.WebKitBrowser browser = new WebKitBrowser();
+            //browser.Dock = DockStyle.Fill;
+            //tabPage2.Controls.Add(browser);
+            //browser.Navigate("http://"+Global.ServerIp+"/control_air_airdev.html?dev_sn=808600006512");
 
             //tabPage2.Controls.Add()
         }

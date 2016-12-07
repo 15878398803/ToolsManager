@@ -49,7 +49,7 @@
             this.listViewTop.LargeImageList = this.imageList1;
             this.listViewTop.Location = new System.Drawing.Point(3, 3);
             this.listViewTop.Name = "listViewTop";
-            this.listViewTop.Size = new System.Drawing.Size(838, 145);
+            this.listViewTop.Size = new System.Drawing.Size(838, 133);
             this.listViewTop.TabIndex = 1;
             this.listViewTop.UseCompatibleStateImageBehavior = false;
             // 
@@ -73,7 +73,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.85442F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.14558F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(844, 802);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(844, 741);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -83,11 +83,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.tabControl1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 154);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 142);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(838, 645);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(838, 596);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tabControl1
@@ -99,7 +99,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(832, 639);
+            this.tabControl1.Size = new System.Drawing.Size(832, 590);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -107,7 +107,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(824, 613);
+            this.tabPage1.Size = new System.Drawing.Size(824, 564);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "视频监控系统";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -136,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 802);
+            this.ClientSize = new System.Drawing.Size(844, 741);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSubsystem";

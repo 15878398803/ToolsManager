@@ -83,7 +83,6 @@ namespace ToolsManager
                     lastTable = "增购申请";
                     Global.SelectedTaskId = -1;
                     dataGridView1.DataSource = null;
-
                     break;
                 case "未完成的工作任务":
                     Global.SelectedTaskId = -1;

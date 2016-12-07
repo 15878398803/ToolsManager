@@ -42,6 +42,7 @@ namespace ToolsManager
             //超级密码为123465
             //var t = await Server.AutoLogin(1, Properties.Settings.Default.LastUserCode);
             //var tt = await Server.AutoLogin(1, Global.AutoLogin.user_code);
+            tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = false;
 
 
             //return;

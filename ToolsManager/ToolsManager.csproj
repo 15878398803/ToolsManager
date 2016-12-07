@@ -134,10 +134,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\WebKitBrowser.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excel.cs" />
@@ -387,7 +383,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="ToolsManager_TemporaryKey.pfx" />
-    <None Include="WebKitDll\WebKitBrowser.dll.manifest" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -408,23 +403,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="desktop.ico" />
-    <Content Include="WebKitDll\CFLite.dll" />
-    <Content Include="WebKitDll\icudt40.dll" />
-    <Content Include="WebKitDll\icuin40.dll" />
-    <Content Include="WebKitDll\icuuc40.dll" />
-    <Content Include="WebKitDll\JavaScriptCore.dll" />
-    <Content Include="WebKitDll\libcurl.dll" />
-    <Content Include="WebKitDll\libeay32.dll" />
-    <Content Include="WebKitDll\libexslt.dll" />
-    <Content Include="WebKitDll\libxml2.dll" />
-    <Content Include="WebKitDll\libxslt.dll" />
-    <Content Include="WebKitDll\objc.dll" />
-    <Content Include="WebKitDll\pthreadVC2.dll" />
-    <Content Include="WebKitDll\SQLite3.dll" />
-    <Content Include="WebKitDll\ssleay32.dll" />
-    <Content Include="WebKitDll\WebKit.dll" />
-    <Content Include="WebKitDll\WebKit.Interop.dll" />
-    <Content Include="WebKitDll\WebKitBrowser.dll" />
     <None Include="Resources\%24this.Icon.ico" />
     <None Include="Resources\icon.bmp" />
     <None Include="Resources\登录-副本_0000s_0005_登录矩形框.png" />

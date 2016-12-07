@@ -38,7 +38,14 @@ namespace ToolsManager
 
         private void FormRecord_Load(object sender, EventArgs e)
         {
-
+            foreach (ListViewItem i in listViewLeft.Items)
+            {
+                //Debug.WriteLine(i.Text);
+                if (i.Text == "单号事件记录表" && Global.LoginInfo.role == 1)
+                {
+                    i.Remove();
+                }
+            }
         }
 
         private void FormRecord_FormClosing(object sender, FormClosingEventArgs e)
@@ -314,9 +321,7 @@ namespace ToolsManager
                     lastTable = "领还明细";
                     await TableReceiveList(1);
                     break;
-                case "现存库存":
-                    lastTable = "现存库存";
-                    break;
+                
                 case "我的领用":
                     lastTable = "我的领用";
                     await UserReceiveList(1);
