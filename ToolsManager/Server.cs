@@ -1255,11 +1255,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> GetReadyTestTools(int user_id, string UserCode, int StationId)
+        async public static Task<bool> GetReadyTestTools(int user_id, string UserCode)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/tools/ready_test_tools.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
+            builder.AppendFormat("http://{0}/tools/ready_test_tools.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? "0" : Global.LoginInfo.station_id);
 #if !DEBUG                        
             try
             {
@@ -1287,11 +1287,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> GetReadyDeathTools(int user_id, string UserCode, int StationId)
+        async public static Task<bool> GetReadyDeathTools(int user_id, string UserCode)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/tools/ready_death_list.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? 0 : Global.StationId);
+            builder.AppendFormat("http://{0}/tools/ready_death_list.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? "0" : Global.LoginInfo.station_id);
 #if !DEBUG
             try
             {
@@ -1425,11 +1425,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> GetDeathList(int user_id, string UserCode, int StationId, int page, int num)
+        async public static Task<bool> GetDeathList(int user_id, string UserCode, int page, int num)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/scrap/scrap_list.api?user_id={1}&user_code={2}&station_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode, StationId, page, num);
+            builder.AppendFormat("http://{0}/scrap/scrap_list.api?user_id={1}&user_code={2}&station_id={3}&page={4}&num={5}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? "0" : Global.LoginInfo.station_id, page, num);
 #if !DEBUG
             try
             {
@@ -1456,11 +1456,11 @@ namespace ToolsManager
 #endif
 
         }
-        async public static Task<bool> GetBuyList(int user_id, string UserCode, int StationId)
+        async public static Task<bool> GetBuyList(int user_id, string UserCode)
         {
             StringBuilder builder = new StringBuilder(200);
 
-            builder.AppendFormat("http://{0}/buy/buy_list.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, StationId);
+            builder.AppendFormat("http://{0}/buy/buy_list.api?user_id={1}&user_code={2}&station_id={3}", Global.ServerIp, user_id, UserCode, Global.LoginInfo.role == 3 ? "0" : Global.LoginInfo.station_id);
 #if !DEBUG
             try
             {

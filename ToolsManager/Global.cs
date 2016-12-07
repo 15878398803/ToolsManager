@@ -12,6 +12,7 @@ namespace ToolsManager
         public static string PasswordInput;
         public static string UserInput;
         public static string SensorIdSelected;
+        public static string StationSelected;
 
         public static bool isLocalSuper;
         private static FormMain formMain;

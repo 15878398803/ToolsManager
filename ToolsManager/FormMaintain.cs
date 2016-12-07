@@ -277,7 +277,7 @@ namespace ToolsManager
 
         async public Task<bool> ReadyDeathToolsList()
         {
-            if (await Server.GetReadyDeathTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1))
+            if (await Server.GetReadyDeathTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code))
             {
                 //               maxPageNum = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
                 int list_num = Global.ReadyDeathTools.Count;
@@ -335,7 +335,7 @@ namespace ToolsManager
         }
         async public Task<bool> ReadyTestToolsList()
         {
-            if (await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1))
+            if (await Server.GetReadyTestTools(Global.LoginInfo.user_id, Global.LoginInfo.user_code))
             {
                 //               maxPageNum = (Global.ToolsList.num.list_num / Convert.ToInt32(Global.ToolsList.num.page_num)) + 1;
                 int list_num = Global.ReadyTestTools.Count;
@@ -614,7 +614,8 @@ namespace ToolsManager
         }
         async public Task<bool> BuyList()
         {
-            if (await Server.GetBuyList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, 1))
+
+            if (await Server.GetBuyList(Global.LoginInfo.user_id, Global.LoginInfo.user_code))
             {
                 lb_cur.Text = "第1页";
                 lb_sum.Text = "共1页";

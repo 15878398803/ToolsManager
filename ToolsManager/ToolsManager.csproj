@@ -231,6 +231,12 @@
     <Compile Include="FormSelectChecks.Designer.cs">
       <DependentUpon>FormSelectChecks.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelectStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectStation.Designer.cs">
+      <DependentUpon>FormSelectStation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSelectWork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelectChecks.resx">
       <DependentUpon>FormSelectChecks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectStation.resx">
+      <DependentUpon>FormSelectStation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelectWork.resx">
       <DependentUpon>FormSelectWork.cs</DependentUpon>
