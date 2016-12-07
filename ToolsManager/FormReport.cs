@@ -62,11 +62,11 @@ namespace ToolsManager
                     break;
                 case "报废记录":
                     lastTable = "报废记录";
-                    await ReadDeathList(page+1,Global.StationId);
+                    await ReadDeathList(page + 1);
                     break;
                 case "局报废汇总":
                     lastTable = "局报废汇总";
-                    await ReadDeathList(page+1,0);
+                    await ReadDeathList(page + 1);
                     break;
                 case "工作类别":
                     lastTable = "工作类别";
@@ -551,10 +551,10 @@ namespace ToolsManager
             }
             return true;
         }
-        async public Task<bool> ReadDeathList(int page ,int StationId)
+        async public Task<bool> ReadDeathList(int page)
         {
             int x = 1;
-            if (await Server.GetDeathList(Global.LoginInfo.user_id, Global.LoginInfo.user_code,StationId,page, Global.PageNum))
+            if (await Server.GetDeathList(Global.LoginInfo.user_id, Global.LoginInfo.user_code, page, Global.PageNum))
             {
                 await Server.GetStationList();
                 if (Global.DeathList.list == null)
@@ -562,7 +562,7 @@ namespace ToolsManager
                     return false;
                 }
                 lb_cur.Text = "第" + page + "页";
-                maxPageNum = (Convert.ToInt32(Global.DeathList.num.list_num) / Convert.ToInt32(Global.DeathList.num.page_num)) + 1;
+                maxPageNum = ( Convert.ToInt32(Global.DeathList.num.list_num) / Convert.ToInt32(Global.DeathList.num.page_num) ) + 1;
                 lb_sum.Text = "共" + maxPageNum + "页";
                 if (maxPageNum != comboBox1.Items.Count)
                 {
@@ -575,9 +575,9 @@ namespace ToolsManager
                 foreach (var death in Global.DeathList.list)
                 {
                     var s = Global.StationList.Find(t => t.station_id == Convert.ToInt32(death.station_id));
-                    if(s!=null)
+                    if (s != null)
                     {
-                        death.station_id= s.name + "("+ death.station_id + ")";
+                        death.station_id = s.name + "(" + death.station_id + ")";
                     }
                     else
                     {
@@ -586,19 +586,19 @@ namespace ToolsManager
                     death.num = x.ToString();
                     x++;
                 }
-                    //foreach (var t in Global.TaskList.list)
-                    //{
-                    //    if (t.type_complete == "1")
-                    //        t.type_complete = "是";
-                    //    else
-                    //        t.type_complete = "否";
-                    //    t.work_id = Global.WorkTypeList.Find(x => x.work_id == t.work_id).name;
-                    //}
+                //foreach (var t in Global.TaskList.list)
+                //{
+                //    if (t.type_complete == "1")
+                //        t.type_complete = "是";
+                //    else
+                //        t.type_complete = "否";
+                //    t.work_id = Global.WorkTypeList.Find(x => x.work_id == t.work_id).name;
+                //}
                 dataGridView1.DataSource = Global.DeathList.list;
                 if (Global.DeathList.list.Count > 0)
                 {
                     dataGridView1.Columns[0].HeaderText = "序号";
-                    dataGridView1.Columns[1].HeaderText = "报废记录id标识";                    
+                    dataGridView1.Columns[1].HeaderText = "报废记录id标识";
                     dataGridView1.Columns[2].HeaderText = "类别id标识";
                     dataGridView1.Columns[3].HeaderText = "类别名称";
                     dataGridView1.Columns[4].HeaderText = "报废时间";
@@ -612,8 +612,8 @@ namespace ToolsManager
                     dataGridView1.Columns[12].HeaderText = "报废原因";
                     dataGridView1.Columns[13].HeaderText = "站点id标识";
                     dataGridView1.Columns[14].HeaderText = "备注";
-                    
-                    if (StationId != 0)
+
+                    if (Global.LoginInfo.station_id != "0")
                         dataGridView1.Columns[13].Visible = false;
                     else
                         dataGridView1.Columns[13].Visible = true;

@@ -37,9 +37,9 @@ namespace ToolsManager
                 {
                     for (int i = 0; i < comboBox1.Items.Count; i++)
                     {
-                        if (comboBox2.Items[i].ToString().StartsWith(BuyListItem.station_id))
+                        if (comboBox1.Items[i].ToString().StartsWith(BuyListItem.station_id))
                         {
-                            comboBox2.SelectedIndex = i;
+                            comboBox1.SelectedIndex = i;
                             break;
                         }
                     }
@@ -48,8 +48,18 @@ namespace ToolsManager
                     textBox2.Text = BuyListItem.model;
                     textBox3.Text = BuyListItem.number;
                     textBox4.Text = BuyListItem.sensor_id;
-                    var type = Convert.ToInt32(BuyListItem.type.Trim());
-                    comboBox2.SelectedIndex = type - 1 >= 0 ? type - 1 : 0;
+                    if (BuyListItem.type == "手动添加")
+                    {
+                        comboBox2.SelectedIndex = 0;
+                    }else
+                    {
+                        comboBox2.SelectedIndex = 1;
+                    }
+                    comboBox2.Enabled = false;
+                    //var type = Convert.ToInt32(BuyListItem.type.Trim());
+                    //comboBox2.SelectedIndex = type - 1 >= 0 ? type - 1 : 0;
+                    button2.Text = "修改";
+                    Text = "修改申购计划";
                 }
                 else
                 {
@@ -86,7 +96,8 @@ namespace ToolsManager
                                 if (await Server.UpdateBuyPlan(Global.LoginInfo.user_id, Global.LoginInfo.user_code, stationid, textBox4.Text, textBox1.Text, textBox2.Text, textBox3.Text, ( comboBox2.SelectedIndex + 1 ).ToString(), BuyListItem.buyplan_id))
                                 {
                                     MessageBox.Show("修改成功");
-                                }else
+                                }
+                                else
                                 {
                                     MessageBox.Show("修改失败");
                                 }
@@ -95,10 +106,11 @@ namespace ToolsManager
                             }
                             else
                             {
-                                if(await Server.InsertBuyPlan(Global.LoginInfo.user_id, Global.LoginInfo.user_code, stationid, textBox4.Text, textBox1.Text, textBox2.Text, textBox3.Text, ( comboBox2.SelectedIndex + 1 ).ToString()))
+                                if (await Server.InsertBuyPlan(Global.LoginInfo.user_id, Global.LoginInfo.user_code, stationid, textBox4.Text, textBox1.Text, textBox2.Text, textBox3.Text, ( comboBox2.SelectedIndex + 1 ).ToString()))
                                 {
                                     MessageBox.Show("增加成功");
-                                }else
+                                }
+                                else
                                 {
                                     MessageBox.Show("增加失败");
                                 }

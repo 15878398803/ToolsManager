@@ -42,9 +42,8 @@ namespace ToolsManager
             //超级密码为123465
             //var t = await Server.AutoLogin(1, Properties.Settings.Default.LastUserCode);
             //var tt = await Server.AutoLogin(1, Global.AutoLogin.user_code);
+            linkLabel1.Text = "正在登录...";
             tx_username.Enabled = tx_password.Enabled = pictureBox1.Enabled = false;
-
-
             //return;
             if (tx_username.Text == "admin")
             {
@@ -78,7 +77,9 @@ namespace ToolsManager
                 //Global.FormRecord.Show();
                 Global.FormLogin.Hide();
                 timer1.Stop();
-                new FormInsertUpdateBuy().Show();
+                linkLabel1.Text = " ";
+
+                //new FormInsertUpdateBuy().Show();
             }
             else
             {
